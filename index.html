@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magadh Institute of Pharmacy - Premier Pharmacy Education</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Medicine Loading Animation -->
+    <div id="medicineLoader" class="medicine-loader">
+        <div class="loader-content">
+            <div class="medicine-container">
+                <div class="pill pill-1"></div>
+                <div class="pill pill-2"></div>
+                <div class="pill pill-3"></div>
+                <div class="capsule capsule-1"></div>
+                <div class="capsule capsule-2"></div>
+            </div>
+            <div class="loader-text">
+                <h3>Magadh Institute of Pharmacy</h3>
+                <p class="typewriter-text">
+                    <span id="typewriterText">Loading Excellence in Pharmaceutical Education</span>
+                    <span class="typewriter-cursor">|</span>
+                </p>
+                <div class="loading-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-2">
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="welcome-marquee">
+                        <marquee behavior="scroll" direction="left" scrollamount="3">
+                            Welcome to Magadh Institute of Pharmacy - Shaping Future Pharmacists | Admissions Open for 2025-26 | Excellence in Pharmaceutical Education
+                        </marquee>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <span>+91-9876543210</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <!-- University Carousel on the left (no card style) -->
+                <div class="col-md-2">
+                    <div class="university-carousel" data-aos="fade-right">
+                        <div id="universityCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="university-slide">
+                                        <img src="images/university1.png" alt="Affiliated University 1" class="uni-logo">
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="university-slide">
+                                        <img src="images/university2.png" alt="Affiliated University 2" class="uni-logo">
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="university-slide">
+                                        <img src="images/university3.png" alt="Affiliated University 3" class="uni-logo">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Logo section in the middle -->
+                <div class="col-md-7">
+                    <div class="logo-section text-center" data-aos="fade-up">
+                        <img src="images/logos/main-logo.png" alt="Magadh Institute of Pharmacy" class="main-logo shadow-lg">
+                    </div>
+                </div>
+                <!-- Action buttons on the right -->
+                <div class="col-md-3">
+                    <div class="action-buttons text-end" data-aos="fade-left">
+                        <a href="#admission" class="btn btn-primary btn-admission">
+                            <i class="fas fa-graduation-cap"></i>
+                            Apply Now
+                        </a>
+                        <a href="#contact" class="btn btn-outline-primary btn-query">
+                            <i class="fas fa-question-circle"></i>
+                            Enquiry
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="navbar navbar-expand-lg main-navbar sticky-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler mobile-menu-btn" type="button" id="mobileMenuBtn">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#about" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            About
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a class="dropdown-item" href="about.html">About Us</a></li>
+                            <li><a class="dropdown-item" href="chairperson-message.html">Chairperson Message</a></li>
+                            <li><a class="dropdown-item" href="principal-message.html">Principal Message</a></li>
+                            <li><a class="dropdown-item" href="mandatory-public-disclosure.html">Mandatory Disclosure</a></li>
+                            <li><a class="dropdown-item" href="faculty.html">Faculty</a></li>
+                            <li><a class="dropdown-item" href="vision-mission.html">Vision & Mission</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#academics" id="academicsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Academics
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="academicsDropdown">
+                            <li><a class="dropdown-item" href="academics.html">Academic</a></li>
+                            <li><a class="dropdown-item" href="admission.html">Admission</a></li>
+                            <li><a class="dropdown-item" href="campus-life.html">Campus Life</a></li>
+                            <li><a class="dropdown-item" href="scholarship.html">Scholarship</a></li>
+                            <li><a class="dropdown-item" href="tuition-fee.html">Tuition Fee</a></li>
+                            <li><a class="dropdown-item" href="programs.html">Programs</a></li>
+                            <li><a class="dropdown-item" href="department-details.html">Department Details</a></li>
+                            <li><a class="dropdown-item" href="time-table.html">Time Table</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="examination.html">Examination</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#student-corner" id="studentCornerDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Student Corner</a>
+                        <ul class="dropdown-menu" aria-labelledby="studentCornerDropdown">
+                            <li><a class="dropdown-item" href="syllabus.html">Syllabus</a></li>
+                            <li><a class="dropdown-item" href="study-materials.html">Study Materials</a></li>
+                            <li><a class="dropdown-item" href="results.html">Results</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="information.html">Information Corner</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="facilities.html">Facilities</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="placement.html">T & P Cell</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#gallery" id="galleryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Gallery
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="galleryDropdown">
+                            <li><a class="dropdown-item" href="events.html">Events</a></li>
+                            <li><a class="dropdown-item" href="gallery.html">Photo Gallery</a></li>
+                            <li><a class="dropdown-item" href="video-gallery.html">Video Gallery</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End of Navigation Menu -->
+
+    <!-- Mobile Sidebar Menu -->
+    <div class="mobile-sidebar" id="mobileSidebar">
+        <div class="mobile-sidebar-overlay" id="mobileSidebarOverlay"></div>
+        <div class="mobile-sidebar-content">
+            <div class="mobile-sidebar-header">
+                <div class="mobile-logo">
+                    <img src="images/logos/main-logo.png" alt="Magadh Institute of Pharmacy" class="mobile-logo-img">
+                </div>
+                <button class="mobile-close-btn" id="mobileCloseBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="mobile-sidebar-body">
+                <ul class="mobile-nav-list">
+                    <li class="mobile-nav-item">
+                        <a class="mobile-nav-link" href="index.html">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                    </li>
+                    <li class="mobile-nav-item mobile-dropdown">
+                        <a class="mobile-nav-link mobile-dropdown-toggle" href="#" data-target="aboutSubmenu">
+                            <i class="fas fa-info-circle"></i> About <i class="fas fa-chevron-down mobile-dropdown-arrow"></i>
+                        </a>
+                        <ul class="mobile-submenu" id="aboutSubmenu">
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="chairperson-message.html">Chairperson Message</a></li>
+                            <li><a href="principal-message.html">Principal Message</a></li>
+                            <li><a href="mandatory-public-disclosure.html">Mandatory Disclosure</a></li>
+                            <li><a href="faculty.html">Faculty</a></li>
+                            <li><a href="vision-mission.html">Vision & Mission</a></li>
+                        </ul>
+                    </li>
+                    <li class="mobile-nav-item mobile-dropdown">
+                        <a class="mobile-nav-link mobile-dropdown-toggle" href="#" data-target="academicsSubmenu">
+                            <i class="fas fa-graduation-cap"></i> Academics <i class="fas fa-chevron-down mobile-dropdown-arrow"></i>
+                        </a>
+                        <ul class="mobile-submenu" id="academicsSubmenu">
+                            <li><a href="academics.html">Academic</a></li>
+                            <li><a href="admission.html">Admission</a></li>
+                            <li><a href="campus-life.html">Campus Life</a></li>
+                            <li><a href="scholarship.html">Scholarship</a></li>
+                            <li><a href="tuition-fee.html">Tuition Fee</a></li>
+                            <li><a href="programs.html">Programs</a></li>
+                            <li><a href="department-details.html">Department Details</a></li>
+                            <li><a href="time-table.html">Time Table</a></li>
+                        </ul>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a class="mobile-nav-link" href="examination.html">
+                            <i class="fas fa-clipboard-check"></i> Examination
+                        </a>
+                    </li>
+                    <li class="mobile-nav-item mobile-dropdown">
+                        <a class="mobile-nav-link mobile-dropdown-toggle" href="#" data-target="studentSubmenu">
+                            <i class="fas fa-user-graduate"></i> Student Corner <i class="fas fa-chevron-down mobile-dropdown-arrow"></i>
+                        </a>
+                        <ul class="mobile-submenu" id="studentSubmenu">
+                            <li><a href="syllabus.html">Syllabus</a></li>
+                            <li><a href="study-materials.html">Study Materials</a></li>
+                            <li><a href="results.html">Results</a></li>
+                        </ul>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a class="mobile-nav-link" href="information.html">
+                            <i class="fas fa-info"></i> Information Corner
+                        </a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a class="mobile-nav-link" href="facilities.html">
+                            <i class="fas fa-building"></i> Facilities
+                        </a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a class="mobile-nav-link" href="placement.html">
+                            <i class="fas fa-briefcase"></i> T & P Cell
+                        </a>
+                    </li>
+                    <li class="mobile-nav-item mobile-dropdown">
+                        <a class="mobile-nav-link mobile-dropdown-toggle" href="#" data-target="gallerySubmenu">
+                            <i class="fas fa-images"></i> Gallery <i class="fas fa-chevron-down mobile-dropdown-arrow"></i>
+                        </a>
+                        <ul class="mobile-submenu" id="gallerySubmenu">
+                            <li><a href="events.html">Events</a></li>
+                            <li><a href="gallery.html">Photo Gallery</a></li>
+                            <li><a href="video-gallery.html">Video Gallery</a></li>
+                        </ul>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a class="mobile-nav-link" href="contact.html">
+                            <i class="fas fa-phone"></i> Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="mobile-sidebar-footer">
+                <div class="mobile-contact-info">
+                    <p><i class="fas fa-phone"></i> +91-9876543210</p>
+                    <p><i class="fas fa-envelope"></i> info@magadhpharmacy.edu.in</p>
+                </div>
+                <div class="mobile-social-links">
+                    <a href="#" class="mobile-social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="mobile-social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="mobile-social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="mobile-social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Mobile Sidebar Menu -->
+
+    <!-- Hero Slider -->
+    <section id="home" class="hero-slider">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="hero-slide" style="background-image: url('images/pharmacy-lab1.jpg');">
+                        <div class="hero-overlay"></div>
+                        <div class="container">
+                            <div class="hero-content" data-aos="fade-up">
+                                <h1 class="hero-title">Excellence in Pharmaceutical Education</h1>
+                                <p class="hero-subtitle">Shaping the future of healthcare through innovative pharmacy education</p>
+                                <a href="#about" class="btn btn-hero">Discover More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="hero-slide" style="background-image: url('images/pharmacy-lab2.jpg');">
+                        <div class="hero-overlay"></div>
+                        <div class="container">
+                            <div class="hero-content" data-aos="fade-up">
+                                <h1 class="hero-title">State-of-the-Art Facilities</h1>
+                                <p class="hero-subtitle">Modern laboratories and research facilities for comprehensive learning</p>
+                                <a href="#facilities" class="btn btn-hero">Explore Facilities</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="hero-slide" style="background-image: url('images/pharmacy-students.jpg');">
+                        <div class="hero-overlay"></div>
+                        <div class="container">
+                            <div class="hero-content" data-aos="fade-up">
+                                <h1 class="hero-title">Join Our Community</h1>
+                                <p class="hero-subtitle">Be part of a legacy of excellence in pharmaceutical sciences</p>
+                                <a href="#admission" class="btn btn-hero">Apply Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Quick Info Section -->
+    <section class="quick-info py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>1000+</h3>
+                        <p>Students Graduated</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <h3>15+</h3>
+                        <p>Modern Laboratories</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h3>50+</h3>
+                        <p>Expert Faculty</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>95%</h3>
+                        <p>Placement Rate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="about-content">
+                        <h2 class="section-title">About Magadh Institute of Pharmacy</h2>
+                        <p class="lead">Established with a vision to provide quality pharmaceutical education, Magadh Institute of Pharmacy has been a beacon of excellence in pharmaceutical sciences.</p>
+                        <p>Our institution is committed to nurturing competent pharmacy professionals who contribute significantly to the healthcare sector. With state-of-the-art infrastructure, experienced faculty, and innovative teaching methodologies, we prepare our students for successful careers in pharmacy.</p>
+                        <div class="about-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>NAAC Accredited Institution</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Approved by Pharmacy Council</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Industry-Connected Curriculum</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="about-image">
+                        <img src="images/about-college.jpg" alt="About Magadh Institute" class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admission Section -->
+    <section id="admission" class="admission-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Admission Process</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Join our prestigious institution and start your journey in pharmaceutical sciences</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="admission-info">
+                        <h3>Eligibility Criteria</h3>
+                        <div class="eligibility-card">
+                            <h4>D.Pharma</h4>
+                            <ul>
+                                <li>10+2 with Physics, Chemistry, Biology/Mathematics</li>
+                                <li>Minimum 50% marks</li>
+                                <li>Age: 17-23 years</li>
+                            </ul>
+                        </div>
+                        <div class="eligibility-card">
+                            <h4>B.Pharma</h4>
+                            <ul>
+                                <li>10+2 with PCM/PCB</li>
+                                <li>Minimum 50% marks</li>
+                                <li>Valid entrance exam score</li>
+                            </ul>
+                        </div>
+                        <div class="eligibility-card">
+                            <h4>M.Pharma</h4>
+                            <ul>
+                                <li>B.Pharma from recognized university</li>
+                                <li>Minimum 55% marks</li>
+                                <li>GPAT/NIPER JEE qualified</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="admission-process">
+                        <h3>How to Apply</h3>
+                        <div class="process-steps">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h5>Online Registration</h5>
+                                    <p>Fill the online application form with required details</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h5>Document Submission</h5>
+                                    <p>Upload all required documents and certificates</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h5>Fee Payment</h5>
+                                    <p>Pay application fee through online mode</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h5>Merit List</h5>
+                                    <p>Check merit list and counseling schedule</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="admission-dates">
+                            <h4>Important Dates</h4>
+                            <p><strong>Application Start:</strong> January 15, 2025</p>
+                            <p><strong>Last Date:</strong> March 31, 2025</p>
+                            <p><strong>Merit List:</strong> April 15, 2025</p>
+                            <p><strong>Counseling:</strong> April 20-30, 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="academics" class="courses-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Our Academic Programs</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Choose from our comprehensive pharmacy programs designed for your success</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="flip-left" data-aos-delay="100">
+                    <div class="course-card">
+                        <div class="course-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <h3>M.Pharma</h3>
+                        <p>Master of Pharmacy - Advanced studies in pharmaceutical sciences with specialization options</p>
+                        <ul class="course-features">
+                            <li>Duration: 2 Years</li>
+                            <li>Specializations Available</li>
+                            <li>Research Opportunities</li>
+                            <li>Industry Exposure</li>
+                        </ul>
+                        <div class="course-hover-content">
+                            <h4>Specializations:</h4>
+                            <ul>
+                                <li>Pharmaceutics</li>
+                                <li>Pharmacology</li>
+                                <li>Pharmaceutical Chemistry</li>
+                                <li>Pharmacognosy</li>
+                            </ul>
+                            <a href="#admission" class="btn btn-course">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="flip-left" data-aos-delay="200">
+                    <div class="course-card">
+                        <div class="course-icon">
+                            <i class="fas fa-pills"></i>
+                        </div>
+                        <h3>B.Pharma</h3>
+                        <p>Bachelor of Pharmacy - Comprehensive undergraduate program in pharmaceutical sciences</p>
+                        <ul class="course-features">
+                            <li>Duration: 4 Years</li>
+                            <li>Industry Training</li>
+                            <li>Modern Curriculum</li>
+                            <li>Placement Support</li>
+                        </ul>
+                        <div class="course-hover-content">
+                            <h4>Key Subjects:</h4>
+                            <ul>
+                                <li>Pharmaceutical Chemistry</li>
+                                <li>Pharmacology</li>
+                                <li>Pharmaceutics</li>
+                                <li>Clinical Pharmacy</li>
+                            </ul>
+                            <a href="#admission" class="btn btn-course">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="flip-left" data-aos-delay="300">
+                    <div class="course-card">
+                        <div class="course-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <h3>D.Pharma</h3>
+                        <p>Diploma in Pharmacy - Foundation program for pharmaceutical practice and drug dispensing</p>
+                        <ul class="course-features">
+                            <li>Duration: 2 Years</li>
+                            <li>Practical Training</li>
+                            <li>Quick Employment</li>
+                            <li>Foundation Course</li>
+                        </ul>
+                        <div class="course-hover-content">
+                            <h4>Career Options:</h4>
+                            <ul>
+                                <li>Community Pharmacist</li>
+                                <li>Hospital Pharmacist</li>
+                                <li>Drug Inspector</li>
+                                <li>Medical Representative</li>
+                            </ul>
+                            <a href="#admission" class="btn btn-course">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Examination Section -->
+    <section id="examination" class="examination-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Examination System</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Comprehensive evaluation system ensuring quality education</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="exam-card">
+                        <div class="exam-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h4>Semester System</h4>
+                        <p>Regular semester examinations conducted as per university guidelines with continuous assessment.</p>
+                        <ul>
+                            <li>Mid-term examinations</li>
+                            <li>End-term examinations</li>
+                            <li>Practical assessments</li>
+                            <li>Internal evaluations</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="exam-card">
+                        <div class="exam-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h4>Evaluation Pattern</h4>
+                        <p>Fair and transparent evaluation system with multiple assessment methods.</p>
+                        <ul>
+                            <li>Theory Papers: 75 marks</li>
+                            <li>Internal Assessment: 25 marks</li>
+                            <li>Practical Exams: 50 marks</li>
+                            <li>Project Work: 100 marks</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="exam-card">
+                        <div class="exam-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h4>Results & Grades</h4>
+                        <p>Timely declaration of results with detailed grade analysis and improvement guidelines.</p>
+                        <ul>
+                            <li>CGPA based grading</li>
+                            <li>Grade cards online</li>
+                            <li>Performance analytics</li>
+                            <li>Improvement exams</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News & Announcements -->
+    <section class="news-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h2 class="section-title" data-aos="fade-up">Latest News & Updates</h2>
+                    <div class="news-carousel" data-aos="fade-up" data-aos-delay="100">
+                        <div class="news-item">
+                            <div class="news-date">
+                                <span class="day">15</span>
+                                <span class="month">Dec</span>
+                            </div>
+                            <div class="news-content">
+                                <h4>Admissions Open for Academic Year 2025-26</h4>
+                                <p>Applications are now open for all pharmacy programs. Early bird discount available until January 31st.</p>
+                            </div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-date">
+                                <span class="day">10</span>
+                                <span class="month">Dec</span>
+                            </div>
+                            <div class="news-content">
+                                <h4>Research Paper Published in International Journal</h4>
+                                <p>Our faculty's groundbreaking research on drug delivery systems published in prestigious journal.</p>
+                            </div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-date">
+                                <span class="day">05</span>
+                                <span class="month">Dec</span>
+                            </div>
+                            <div class="news-content">
+                                <h4>Pharmacy Week Celebrations</h4>
+                                <p>Annual pharmacy week celebrated with seminars, workshops, and cultural programs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="section-title" data-aos="fade-up">Important Notices</h3>
+                    <div class="notice-board" data-aos="fade-up" data-aos-delay="100">
+                        <div class="notice-item">
+                            <i class="fas fa-bullhorn"></i>
+                            <p>Semester examination schedule released</p>
+                            <small>2 days ago</small>
+                        </div>
+                        <div class="notice-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <p>Industrial visit to pharmaceutical company</p>
+                            <small>5 days ago</small>
+                        </div>
+                        <div class="notice-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <p>Convocation ceremony date announced</p>
+                            <small>1 week ago</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Corner Section -->
+    <section id="student-corner" class="student-corner-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Student Corner</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Everything students need for a successful academic journey</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="student-service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h4>E-Library</h4>
+                        <p>Access to digital books, journals, and research papers</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Access Now</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="student-service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <h4>Downloads</h4>
+                        <p>Syllabus, time tables, forms, and important documents</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Download</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="student-service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h4>Student Portal</h4>
+                        <p>Online portal for attendance, results, and fee payment</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Login</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="student-service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h4>Grievance</h4>
+                        <p>Submit complaints and suggestions for improvement</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Submit</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Information Corner Section -->
+    <section id="information" class="information-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Information Corner</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Stay updated with latest information and resources</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="info-category-card">
+                        <h4><i class="fas fa-info-circle"></i> Academic Information</h4>
+                        <ul>
+                            <li><a href="#">Academic Calendar</a></li>
+                            <li><a href="#">Examination Schedule</a></li>
+                            <li><a href="#">Course Curriculum</a></li>
+                            <li><a href="#">Faculty Details</a></li>
+                            <li><a href="#">Library Resources</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="info-category-card">
+                        <h4><i class="fas fa-clipboard-list"></i> Administrative Info</h4>
+                        <ul>
+                            <li><a href="#">Fee Structure</a></li>
+                            <li><a href="#">Admission Guidelines</a></li>
+                            <li><a href="#">Scholarship Information</a></li>
+                            <li><a href="#">Rules & Regulations</a></li>
+                            <li><a href="#">Contact Directory</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="info-category-card">
+                        <h4><i class="fas fa-briefcase"></i> Career Resources</h4>
+                        <ul>
+                            <li><a href="#">Placement Statistics</a></li>
+                            <li><a href="#">Industry Connections</a></li>
+                            <li><a href="#">Alumni Network</a></li>
+                            <li><a href="#">Career Guidance</a></li>
+                            <li><a href="#">Internship Opportunities</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section id="facilities" class="facilities-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">World-Class Facilities</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">State-of-the-art infrastructure for comprehensive learning</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="facility-card">
+                        <div class="facility-image">
+                            <img src="images/lab-facility.jpg" alt="Modern Laboratory" class="img-fluid">
+                        </div>
+                        <div class="facility-content">
+                            <h4><i class="fas fa-microscope"></i> Advanced Laboratories</h4>
+                            <p>15+ well-equipped laboratories with modern instruments for practical learning and research work.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="facility-card">
+                        <div class="facility-image">
+                            <img src="images/library-facility.jpg" alt="Library" class="img-fluid">
+                        </div>
+                        <div class="facility-content">
+                            <h4><i class="fas fa-book"></i> Central Library</h4>
+                            <p>Extensive collection of books, journals, and digital resources with reading halls and study areas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="facility-card">
+                        <div class="facility-image">
+                            <img src="images/hostel-facility.jpg" alt="Hostel" class="img-fluid">
+                        </div>
+                        <div class="facility-content">
+                            <h4><i class="fas fa-bed"></i> Hostel Accommodation</h4>
+                            <p>Comfortable hostel facilities for boys and girls with mess, recreation, and study areas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training & Placement Section -->
+    <section id="placement" class="placement-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Training & Placement Cell</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Bridging the gap between education and industry</p>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="placement-content">
+                        <h3>Career Development Programs</h3>
+                        <p>Our dedicated Training & Placement Cell works tirelessly to ensure excellent career opportunities for our students.</p>
+                        <div class="placement-features">
+                            <div class="feature-item">
+                                <i class="fas fa-chart-line"></i>
+                                <span>95% Placement Rate</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-building"></i>
+                                <span>100+ Partner Companies</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>Competitive Salary Packages</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-handshake"></i>
+                                <span>Industry Mentorship</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="placement-stats">
+                        <h4>Placement Statistics 2024</h4>
+                        <div class="stat-item">
+                            <div class="stat-number">350+</div>
+                            <div class="stat-label">Students Placed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">₹8.5 LPA</div>
+                            <div class="stat-label">Highest Package</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">₹4.2 LPA</div>
+                            <div class="stat-label">Average Package</div>
+                        </div>
+                        <div class="recruiting-companies">
+                            <h5>Top Recruiters</h5>
+                            <div class="company-logos">
+                                <img src="images/company1.png" alt="Company 1" class="company-logo">
+                                <img src="images/company2.png" alt="Company 2" class="company-logo">
+                                <img src="images/company3.png" alt="Company 3" class="company-logo">
+                                <img src="images/company4.png" alt="Company 4" class="company-logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toppers Section -->
+    <section class="toppers-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Our Toppers</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Celebrating excellence and achievements</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="topper-card">
+                        <div class="topper-image">
+                            <img src="images/topper1.jpg" alt="Topper 1" class="img-fluid">
+                            <div class="topper-rank">1st</div>
+                        </div>
+                        <div class="topper-info">
+                            <h4>Priya Sharma</h4>
+                            <p>B.Pharma - 2024</p>
+                            <span class="topper-percentage">95.8%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="topper-card">
+                        <div class="topper-image">
+                            <img src="images/topper2.jpg" alt="Topper 2" class="img-fluid">
+                            <div class="topper-rank">2nd</div>
+                        </div>
+                        <div class="topper-info">
+                            <h4>Rahul Kumar</h4>
+                            <p>M.Pharma - 2024</p>
+                            <span class="topper-percentage">94.2%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="topper-card">
+                        <div class="topper-image">
+                            <img src="images/topper3.jpg" alt="Topper 3" class="img-fluid">
+                            <div class="topper-rank">3rd</div>
+                        </div>
+                        <div class="topper-info">
+                            <h4>Anita Singh</h4>
+                            <p>D.Pharma - 2024</p>
+                            <span class="topper-percentage">92.5%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Campus Gallery</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Explore our beautiful campus and facilities</p>
+                </div>
+            </div>
+            <div class="row gallery-grid">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-item">
+                        <img src="images/gallery1.jpg" alt="Campus View" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <h4>Main Campus</h4>
+                            <p>Beautiful campus infrastructure</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-item">
+                        <img src="images/gallery2.jpg" alt="Laboratory" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <h4>Research Lab</h4>
+                            <p>State-of-the-art laboratory</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="gallery-item">
+                        <img src="images/gallery3.jpg" alt="Library" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <h4>Library</h4>
+                            <p>Well-stocked library</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="gallery-item">
+                        <img src="images/gallery4.jpg" alt="Auditorium" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <h4>Auditorium</h4>
+                            <p>Modern auditorium facility</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="gallery-item">
+                        <img src="images/gallery5.jpg" alt="Students" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <h4>Student Life</h4>
+                            <p>Vibrant campus life</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="gallery-item">
+                        <img src="images/gallery6.jpg" alt="Events" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <h4>Events</h4>
+                            <p>Annual college events</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultation Form -->
+    <section class="consultation-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h2 class="section-title">Get Free Consultation</h2>
+                    <p class="section-subtitle">Have questions about our programs? Get in touch with our admission counselors.</p>
+                    <div class="consultation-features">
+                        <div class="feature-item">
+                            <i class="fas fa-phone"></i>
+                            <span>Phone Consultation Available</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-video"></i>
+                            <span>Video Call Support</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Quick Response Time</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <form class="consultation-form">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <input type="email" class="form-control" placeholder="Email Address" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <input type="tel" class="form-control" placeholder="Phone Number" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <select class="form-control" required>
+                                    <option value="">Select Course</option>
+                                    <option value="dpharm">D.Pharma</option>
+                                    <option value="bpharm">B.Pharma</option>
+                                    <option value="mpharm">M.Pharma</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="4" placeholder="Your Message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Student Testimonials</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">What our students say about us</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div id="testimonialCarousel" class="carousel slide testimonial-carousel" data-bs-ride="carousel">
+                        <div class="carousel-inner carousel-fade">
+                            <div class="carousel-item active">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-5 col-md-6 mb-4">
+                                        <div class="testimonial-card" data-aos="fade-up">
+                                            <div class="testimonial-content">
+                                                <div class="quote-icon">
+                                                    <i class="fas fa-quote-left"></i>
+                                                </div>
+                                                <p>"The faculty at Magadh Institute of Pharmacy are exceptional. They provided me with the knowledge and skills needed to excel in my career."</p>
+                                            </div>
+                                            <div class="testimonial-author">
+                                                <img src="images/student1.jpg" alt="Student" class="img-fluid">
+                                                <div class="author-info">
+                                                    <h5>Anjali Verma</h5>
+                                                    <span>B.Pharma Graduate</span>
+                                                    <div class="rating">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5 col-md-6 mb-4">
+                                        <div class="testimonial-card" data-aos="fade-up">
+                                            <div class="testimonial-content">
+                                                <div class="quote-icon">
+                                                    <i class="fas fa-quote-left"></i>
+                                                </div>
+                                                <p>"Great infrastructure and excellent placement support. I got placed in a top pharmaceutical company immediately after graduation."</p>
+                                            </div>
+                                            <div class="testimonial-author">
+                                                <img src="images/student2.jpg" alt="Student" class="img-fluid">
+                                                <div class="author-info">
+                                                    <h5>Rajesh Gupta</h5>
+                                                    <span>M.Pharma Graduate</span>
+                                                    <div class="rating">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="carousel-item">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-5 col-md-6 mb-4">
+                                        <div class="testimonial-card" data-aos="fade-up">
+                                            <div class="testimonial-content">
+                                                <div class="quote-icon">
+                                                    <i class="fas fa-quote-left"></i>
+                                                </div>
+                                                <p>"The practical training and industry exposure provided here helped me understand the real-world applications of pharmacy."</p>
+                                            </div>
+                                            <div class="testimonial-author">
+                                                <img src="images/student3.jpg" alt="Student" class="img-fluid">
+                                                <div class="author-info">
+                                                    <h5>Pooja Singh</h5>
+                                                    <span>D.Pharma Graduate</span>
+                                                    <div class="rating">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5 col-md-6 mb-4">
+                                        <div class="testimonial-card" data-aos="fade-up">
+                                            <div class="testimonial-content">
+                                                <div class="quote-icon">
+                                                    <i class="fas fa-quote-left"></i>
+                                                </div>
+                                                <p>"The practical training and industry exposure provided here helped me understand the real-world applications of pharmacy."</p>
+                                            </div>
+                                            <div class="testimonial-author">
+                                                <img src="images/student3.jpg" alt="Student" class="img-fluid">
+                                                <div class="author-info">
+                                                    <h5>Pooja Singh</h5>
+                                                    <span>D.Pharma Graduate</span>
+                                                    <div class="rating">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Contact Us</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Get in touch with us for any queries or information</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 mb-4" data-aos="fade-right">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4>Address</h4>
+                        <p>Magadh Institute of Pharmacy<br>University Road, Gaya<br>Bihar - 823001, India</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4" data-aos="fade-up">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h4>Phone</h4>
+                        <p>+91-9876543210<br>+91-9876543211<br>Office: 0631-2234567</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4" data-aos="fade-left">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4>Email</h4>
+                        <p>info@magadhpharmacy.edu.in<br>admission@magadhpharmacy.edu.in<br>placement@magadhpharmacy.edu.in</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-widget">
+                        <div class="footer-logo">
+                            <img src="images/logo-white.png" alt="Magadh Institute of Pharmacy" class="img-fluid">
+                            <h3>Magadh Institute of Pharmacy</h3>
+                        </div>
+                        <p>Excellence in pharmaceutical education, shaping the future of healthcare professionals.</p>
+                        <div class="footer-social">
+                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-widget">
+                        <h4>Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#academics">Academics</a></li>
+                            <li><a href="#admission">Admission</a></li>
+                            <li><a href="#facilities">Facilities</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-widget">
+                        <h4>Academics</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">D.Pharma</a></li>
+                            <li><a href="#">B.Pharma</a></li>
+                            <li><a href="#">M.Pharma</a></li>
+                            <li><a href="#">Research</a></li>
+                            <li><a href="#">Library</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-widget footer-contact-widget" style="color: rgb(255, 255, 255);">
+                        <h4>Contact Information</h4>
+                        <ul class="footer-contact-list list-unstyled mb-0">
+                            <li class="footer-contact-item mb-2 d-flex align-items-start">
+                                <span class="footer-contact-icon me-2">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </span>
+                                <span>
+                                    Magadh Institute of Pharmacy<br>
+                                    Danapur, Patna, Bihar - 823001
+                                </span>
+                            </li>
+                            <li class="footer-contact-item mb-2 d-flex align-items-start">
+                                <span class="footer-contact-icon me-2">
+                                    <i class="fas fa-phone"></i>
+                                </span>
+                                <span>
+                                    +91-9876543210<br>
+                                    +91-9876543211
+                                </span>
+                            </li>
+                            <li class="footer-contact-item d-flex align-items-start">
+                                <span class="footer-contact-icon me-2">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <span>
+                                    info@magadhpharmacy.edu.in<br>
+                                    admission@magadhpharmacy.edu.in
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.8974540103913!2d85.01203791501283!3d24.79686598405739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f32b9b637230a9%3A0x6f6a1a9b1a9b1a9b!2sGaya%2C%20Bihar!5e0!3m2!1sen!2sin!4v1638360000000!5m2!1sen!2sin" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <p>&copy; 2025 <strong>Magadh Institute of Pharmacy</strong>. All rights reserved. | Designed by <strong>SecureWave</strong></p>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <div class="footer-bottom-links">
+                            <a href="#">Privacy Policy</a>
+                            <a href="#">Terms & Conditions</a>
+                            <a href="#">Sitemap</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>
