@@ -34,34 +34,40 @@
   --sidebar-ring: oklch(0.645 0.246 16.439);
 }
 
-/* Root Variables */
+/* Root Variables - Nature to Ocean Gradient Theme */
 :root {
-    --primary-color: #87986A;    /* Deep Sage Green */
-    --secondary-color: #A9CE80;  /* Light Green */
-    --accent-color: #FEC5BB;     /* Peach */
-    --accent-secondary: #FFD7BA; /* Light Peach */
+    /* Primary Brand Colors - From Light Green to Deep Ocean */
+    --primary-color: #52b69a;    /* Primary Teal - Main brand color */
+    --secondary-color: #76c893;  /* Secondary Green-Teal */
+    --accent-color: #d9ed92;     /* Light Green - Accents and highlights */
+    --accent-secondary: #b5e48c; /* Medium Light Green */
+    --tertiary-color: #99d98c;   /* Balanced Green */
+    
+    /* Ocean Blues - For depth and sophistication */
+    --ocean-primary: #34a0a4;    /* Ocean Teal */
+    --ocean-medium: #168aad;     /* Medium Ocean Blue */
+    --ocean-deep: #1a759f;      /* Deep Ocean Blue */
+    --ocean-darker: #1e6091;     /* Darker Ocean */
+    --ocean-darkest: #184e77;    /* Darkest Ocean Blue */
+    
+    /* Supporting Colors */
     --dark-color: #495057;       /* Dark Gray */
     --darker-color: #212529;     /* Darkest Gray */
-    --light-color: #F8EDEB;      /* Very Light Pink */
-    --light-secondary: #FAE1DD;  /* Light Pink */
-    --light-tertiary: #FCD5CE;   /* Medium Light Pink */
-    --neutral-light: #DFEAD3;    /* Light Sage */
-    --neutral-medium: #C6CFBC;   /* Medium Sage */
-    --neutral-green: #BFD1AB;    /* Soft Green */
-    --nature-light: #E9F5DB;     /* Pale Green */
-    --nature-medium: #CFE1B9;    /* Light Green */
-    --nature-strong: #B5C99A;    /* Medium Green */
-    --earth-tone: #7E8972;       /* Olive Green */
-    --white-color: #F8F9FA;      /* Off White */
-    --light-gray: #E9ECEF;       /* Light Gray */
-    --medium-gray: #DEE2E6;      /* Medium Gray */
-    --border-gray: #ADB5BD;      /* Border Gray */
+    --light-color: #f8f9fa;      /* Off White */
+    --light-secondary: #e9ecef;  /* Light Gray */
+    --light-tertiary: #dee2e6;   /* Medium Light Gray */
+    --white-color: #ffffff;      /* Pure White */
+    --border-gray: #adb5bd;      /* Border Gray */
     --text-color: #495057;       /* Text Gray */
-    --text-light: #6C757D;       /* Light Text */
-    --shadow-color: rgba(73, 80, 87, 0.1);
-    --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    --text-light: #6c757d;       /* Light Text */
+    --shadow-color: rgba(52, 160, 164, 0.15);
+    
+    /* Updated Gradients */
+    --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--ocean-primary));
     --gradient-secondary: linear-gradient(45deg, var(--accent-color), var(--accent-secondary));
-    --gradient-nature: linear-gradient(135deg, var(--nature-medium), var(--nature-strong));
+    --gradient-nature: linear-gradient(135deg, var(--secondary-color), var(--tertiary-color));
+    --gradient-ocean: linear-gradient(135deg, var(--ocean-medium), var(--ocean-deep));
+    --gradient-hero: linear-gradient(135deg, var(--accent-color), var(--primary-color), var(--ocean-primary));
     --gradient-soft: linear-gradient(45deg, var(--light-color), var(--light-secondary));
 }
 
@@ -313,14 +319,14 @@ input:focus, textarea:focus, select:focus, .form-control:focus {
 }
 
 .pill-1 {
-    background: linear-gradient(45deg, #87986A, #A9CE80);
+    background: linear-gradient(45deg, var(--accent-color), var(--accent-secondary));
     top: 20px;
     left: 70px;
     animation-delay: 0s;
 }
 
 .pill-2 {
-    background: linear-gradient(45deg, #495057, #87986A);
+    background: linear-gradient(45deg, var(--secondary-color), var(--tertiary-color));
     top: 60px;
     left: 20px;
     animation-delay: 0.3s;
@@ -329,7 +335,7 @@ input:focus, textarea:focus, select:focus, .form-control:focus {
 }
 
 .pill-3 {
-    background: linear-gradient(45deg, #A9CE80, #FEC5BB);
+    background: linear-gradient(45deg, var(--primary-color), var(--ocean-primary));
     top: 60px;
     right: 20px;
     animation-delay: 0.6s;
@@ -348,14 +354,14 @@ input:focus, textarea:focus, select:focus, .form-control:focus {
 }
 
 .capsule-1 {
-    background: linear-gradient(to bottom, #495057 50%, #F8EDEB 50%);
+    background: linear-gradient(to bottom, var(--ocean-medium) 50%, var(--white-color) 50%);
     top: 120px;
     left: 50px;
     animation-delay: 0.2s;
 }
 
 .capsule-2 {
-    background: linear-gradient(to bottom, #87986A 50%, white 50%);
+    background: linear-gradient(to bottom, var(--ocean-deep) 50%, var(--accent-color) 50%);
     top: 120px;
     right: 50px;
     animation-delay: 0.4s;
@@ -1391,7 +1397,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.3rem;
     margin-bottom: 2rem;
     animation: fadeInUp 1s ease 0.3s both;
-    color: var(--light-gray);
+    color: #040506;
 }
 
 .btn-hero {
@@ -1553,7 +1559,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Courses Section */
 .courses-section {
-    background: var(--light-secondary);
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+    background-attachment: fixed;
     padding: 80px 0;
 }
 
@@ -1576,7 +1583,7 @@ h1, h2, h3, h4, h5, h6 {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: var(--gradient-primary);
+    background: #184e77;
     transition: all 0.5s ease;
     z-index: 1;
 }
@@ -1593,6 +1600,15 @@ h1, h2, h3, h4, h5, h6 {
 .course-card > * {
     position: relative;
     z-index: 2;
+}
+
+.course-main-content {
+    transition: all 0.5s ease;
+}
+
+.course-card:hover .course-main-content {
+    opacity: 0;
+    transform: translateY(-20px);
 }
 
 .course-icon {
@@ -1792,7 +1808,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Toppers Section */
 .toppers-section {
-    background: var(--neutral-light);
+    background: linear-gradient(135deg, var(--tertiary-color), var(--secondary-color));
+    background-attachment: fixed;
     padding: 80px 0;
 }
 
@@ -1922,7 +1939,9 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Consultation Section */
 .consultation-section {
-    background: var(--light-tertiary);
+    background: linear-gradient(135deg, var(--ocean-darker), var(--ocean-darkest));
+    background-attachment: fixed;
+    color: white;
     padding: 80px 0;
 }
 
@@ -1959,7 +1978,10 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Testimonials Section */
 .testimonials-section {
+    background: linear-gradient(135deg, var(--primary-color), var(--ocean-primary));
+    background-attachment: fixed;
     padding: 80px 0;
+    color: white;
 }
 
 .testimonial-carousel .carousel-control-prev,
@@ -1973,12 +1995,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .testimonial-card {
-    background: var(--white-color);
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 20px;
     padding: 40px;
-    box-shadow: 0 15px 35px var(--shadow-color);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
     margin: 20px;
     transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
 }
 
 .testimonial-card:hover {
@@ -2268,16 +2291,37 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Facilities Section */
 .facilities-section {
-    background: var(--light-secondary);
+    background: linear-gradient(135deg, var(--ocean-medium), var(--ocean-deep));
+    background-attachment: fixed;
+    color: white;
+    padding: 80px 0;
 }
 
 .facility-card {
-    background: var(--white-color);
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 10px 30px var(--shadow-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
     height: 100%;
+    backdrop-filter: blur(10px);
+}
+
+/* White text sections styling */
+.testimonials-section .section-title,
+.testimonials-section .section-subtitle,
+.facilities-section .section-title,
+.facilities-section .section-subtitle,
+.consultation-section .section-title,
+.consultation-section .section-subtitle {
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.testimonials-section .section-title::after,
+.facilities-section .section-title::after,
+.consultation-section .section-title::after {
+    background: var(--accent-color);
 }
 
 .facility-card:hover {
@@ -2426,7 +2470,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Footer */
 .main-footer {
-    background: var(--darker-color);
+    background: linear-gradient(135deg, var(--ocean-darkest), var(--darker-color));
     color: var(--white-color);
     padding: 60px 0 0;
 }
@@ -3117,14 +3161,31 @@ a {
 
 /* About Page Specific Styles */
 .hero-section {
-    background: linear-gradient(135deg, #F8EDEB, rgba(135, 152, 106, 0.1));
+    background: var(--gradient-hero);
     min-height: 60vh;
+    position: relative;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 1;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
 }
 
 .hero-title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #495057;
+    color: #03192f;
     margin-bottom: 1rem;
 }
 
@@ -3282,7 +3343,8 @@ a {
 }
 
 .program-card.featured {
-    border: 2px solid #87986A;
+    border: 2px solid var(--primary-color);
+    background: linear-gradient(135deg, var(--accent-color), rgba(255, 255, 255, 0.95));
     transform: scale(1.05);
 }
 
@@ -3294,7 +3356,7 @@ a {
     position: absolute;
     top: 15px;
     right: 15px;
-    background: linear-gradient(135deg, #87986A, #A9CE80);
+    background: var(--gradient-ocean);
     color: white;
     padding: 5px 15px;
     border-radius: 20px;
