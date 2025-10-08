@@ -2498,7 +2498,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-widget p {
-    color: var(--light-gray);
+    color: #f2fcf1;
     line-height: 1.6;
 }
 
@@ -2524,7 +2524,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-links a {
-    color: var(--light-gray);
+    color: #f2fcf1;
     text-decoration: none;
     transition: all 0.3s ease;
 }
