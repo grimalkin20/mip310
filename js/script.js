@@ -3,6 +3,7 @@
 // Medicine Loader Control
 window.addEventListener('load', function() {
     const loader = document.getElementById('medicineLoader');
+    const popup = document.getElementById('imagePopup');
     
     // Show loader for minimum 2 seconds for better UX
     setTimeout(function() {
@@ -11,6 +12,15 @@ window.addEventListener('load', function() {
         // Remove loader from DOM after fade out
         setTimeout(function() {
             loader.style.display = 'none';
+            
+            // Show popup after loader disappears
+            setTimeout(function() {
+                if (window.showPopupAfterLoader) {
+                    window.showPopupAfterLoader();
+                } else if (popup && sessionStorage.getItem('popupClosed') !== 'true') {
+                    popup.classList.add('show');
+                }
+            }, 300); // Small delay after loader disappears
         }, 500);
     }, 2000);
 });
@@ -1167,6 +1177,64 @@ document.addEventListener('DOMContentLoaded', function() {
             closeMobileSidebar();
         }
     });
+});
+
+// Popup Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const popup = document.getElementById('imagePopup');
+    const closeButton = document.getElementById('closePopup');
+    
+    if (popup && closeButton) {
+        // Close popup when clicking the close button
+        closeButton.addEventListener('click', function() {
+            popup.classList.remove('show');
+        });
+        
+        // Close popup when clicking outside the popup container
+        popup.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                popup.classList.remove('show');
+            }
+        });
+        
+        // Close popup when pressing Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && popup.classList.contains('show')) {
+                popup.classList.remove('show');
+            }
+        });
+        
+        // Prevent popup from showing again if user closes it
+        // Store in sessionStorage so it only affects current session
+        let popupClosed = false;
+        
+        closeButton.addEventListener('click', function() {
+            popupClosed = true;
+            sessionStorage.setItem('popupClosed', 'true');
+        });
+        
+        popup.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                popupClosed = true;
+                sessionStorage.setItem('popupClosed', 'true');
+            }
+        });
+        
+        // Check if popup was already closed in this session
+        if (sessionStorage.getItem('popupClosed') === 'true') {
+            popupClosed = true;
+        }
+        
+        // Prevent popup from showing if already closed
+        const originalShowPopup = function() {
+            if (!popupClosed) {
+                popup.classList.add('show');
+            }
+        };
+        
+        // Override the popup show functionality
+        window.showPopupAfterLoader = originalShowPopup;
+    }
 });
 
 console.log('Magadh Institute of Pharmacy website loaded successfully! 🎓');

@@ -24,7 +24,7 @@ A modern, responsive website for Magadh Institute of Pharmacy featuring beautifu
 4. **Hero Slider**: Interactive image slider with pharmacy-related content
 5. **Quick Info**: Statistics with animated counters
 6. **About Section**: Institution information with features
-7. **Courses Section**: Interactive course cards (M.Pharma, B.Pharma, D.Pharma)
+7. **Courses Section**: Interactive course cards (M.Pharm, B.Pharm, D.Pharm)
 8. **News & Announcements**: Latest updates and notices
 9. **Toppers Section**: Student achievement showcase
 10. **Gallery**: Campus and facility images with lightbox effect

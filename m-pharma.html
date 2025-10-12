@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M.Pharm - Master of Pharmacy | Magadh Institute of Pharmacy</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-2">
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="welcome-marquee">
+                        <marquee behavior="scroll" direction="left" scrollamount="3">
+                            Welcome to Magadh Institute of Pharmacy - Shaping Future Pharmacists | Admissions Open for 2025-26 | Excellence in Pharmaceutical Education
+                        </marquee>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <span>+91-9341512761</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <!-- University Carousel on the left -->
+                <div class="col-md-2">
+                    <div class="university-carousel" data-aos="fade-right">
+                        <div id="universityCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="university-slide">
+                                        <img src="images/logos/header-carousel/pci-logo.png" alt="PCI Logo" class="uni-logo">
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="university-slide">
+                                        <img src="images/logos/header-carousel/aku-logo.png" alt="AKU Logo" class="uni-logo">
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="university-slide">
+                                        <img src="images/logos/header-carousel/buhs-logo.png" alt="BUHS Logo" class="uni-logo">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Logo section in the middle -->
+                <div class="col-md-7">
+                    <div class="logo-section text-center" data-aos="fade-up">
+                        <img src="images/logos/main-logo.png" alt="Magadh Institute of Pharmacy" class="main-logo shadow-lg">
+                    </div>
+                </div>
+                <!-- Action buttons on the right -->
+                <div class="col-md-3">
+                    <div class="action-buttons text-end" data-aos="fade-left">
+                        <a href="admission.html" class="btn btn-primary btn-admission">
+                            <i class="fas fa-graduation-cap"></i>
+                            Apply Now
+                        </a>
+                        <a href="contact.html" class="btn btn-outline-primary btn-query">
+                            <i class="fas fa-question-circle"></i>
+                            Enquiry
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="navbar navbar-expand-lg main-navbar sticky-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler mobile-menu-btn" type="button" id="mobileMenuBtn">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#about" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            About
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a class="dropdown-item" href="about.html">About Us</a></li>
+                            <li><a class="dropdown-item" href="chairperson-message.html">Chairperson Message</a></li>
+                            <li><a class="dropdown-item" href="principal-message.html">Principal Message</a></li>
+                            <li><a class="dropdown-item" href="mandatory-public-disclosure.html">Mandatory Disclosure</a></li>
+                            <li><a class="dropdown-item" href="faculty.html">Faculty</a></li>
+                            <li><a class="dropdown-item" href="vision-mission.html">Vision & Mission</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#academics" id="academicsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Academics
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="academicsDropdown">
+                            <li><a class="dropdown-item" href="academics.html">Academic</a></li>
+                            <li><a class="dropdown-item" href="admission.html">Admission</a></li>
+                            <li><a class="dropdown-item" href="campus-life.html">Campus Life</a></li>
+                            <li><a class="dropdown-item" href="scholarship.html">Scholarship</a></li>
+                            <li><a class="dropdown-item" href="tuition-fee.html">Tuition Fee</a></li>
+                            <li><a class="dropdown-item" href="programs.html">Programs</a></li>
+                            <li><a class="dropdown-item" href="d-pharma.html">D.Pharm</a></li>
+                            <li><a class="dropdown-item" href="b-pharma.html">B.Pharm</a></li>
+                            <li><a class="dropdown-item" href="m-pharma.html">M.Pharm</a></li>
+                            <li><a class="dropdown-item" href="department-details.html">Department Details</a></li>
+                            <li><a class="dropdown-item" href="time-table.html">Time Table</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="examination.html">Examination</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#student-corner" id="studentCornerDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Student Corner</a>
+                        <ul class="dropdown-menu" aria-labelledby="studentCornerDropdown">
+                            <li><a class="dropdown-item" href="syllabus.html">Syllabus</a></li>
+                            <li><a class="dropdown-item" href="study-materials.html">Study Materials</a></li>
+                            <li><a class="dropdown-item" href="results.html">Results</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="information.html">Information Corner</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="facilities.html">Facilities</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="placement.html">T & P Cell</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#gallery" id="galleryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Gallery
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="galleryDropdown">
+                            <li><a class="dropdown-item" href="events.html">Events</a></li>
+                            <li><a class="dropdown-item" href="gallery.html">Photo Gallery</a></li>
+                            <li><a class="dropdown-item" href="video-gallery.html">Video Gallery</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Course Hero Section -->
+    <section class="hero-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            <i class="fas fa-flask me-3"></i>
+                            M.Pharm
+                        </h1>
+                        <h2 class="hero-subtitle">Master of Pharmacy</h2>
+                        <p class="lead">Advanced postgraduate program with specialized tracks in pharmaceutical sciences. Excel in research, academics, and high-level pharmaceutical industry positions.</p>
+                        <div class="course-highlights">
+                            <span class="badge bg-primary me-2"><i class="fas fa-clock me-1"></i>2 Years</span>
+                            <span class="badge bg-success me-2"><i class="fas fa-certificate me-1"></i>Master's Degree</span>
+                            <span class="badge bg-info"><i class="fas fa-graduation-cap me-1"></i>Postgraduate</span>
+                        </div>
+                        <div class="hero-buttons mt-4">
+                            <a href="admission.html" class="btn btn-primary btn-lg me-3">Apply Now</a>
+                            <a href="#course-details" class="btn btn-outline-primary btn-lg">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="hero-image">
+                        <img src="images/courses/m-pharma-hero.jpg" alt="M.Pharm Course" class="img-fluid rounded shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Overview -->
+    <section id="course-details" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Course Overview</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Advanced specialization in pharmaceutical sciences</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8" data-aos="fade-right">
+                    <div class="course-description">
+                        <h3>About M.Pharm</h3>
+                        <p>The Master of Pharmacy (M.Pharm) is a 2-year postgraduate program that provides advanced knowledge and specialized training in various branches of pharmaceutical sciences. This program is designed for students who want to pursue careers in research, academia, or high-level positions in the pharmaceutical industry.</p>
+                        
+                        <h4>Program Highlights</h4>
+                        <ul class="course-features-list">
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Advanced specialization in chosen pharmaceutical discipline</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Extensive research work and dissertation project</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>State-of-the-art research laboratories and equipment</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Faculty with Ph.D. and industry experience</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Industry collaborations and research partnerships</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Publication opportunities in peer-reviewed journals</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Gateway to Ph.D. and academic careers</li>
+                        </ul>
+
+                        <h4>Learning Outcomes</h4>
+                        <p>Upon completion of the M.Pharm program, graduates will be able to:</p>
+                        <ul>
+                            <li>Conduct independent research in pharmaceutical sciences</li>
+                            <li>Design and develop innovative pharmaceutical products</li>
+                            <li>Apply advanced analytical techniques and instrumentation</li>
+                            <li>Lead pharmaceutical research and development teams</li>
+                            <li>Teach pharmaceutical sciences at undergraduate level</li>
+                            <li>Contribute to regulatory science and drug approval processes</li>
+                            <li>Pursue Ph.D. and advanced research careers</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-left">
+                    <div class="course-info-card">
+                        <h4>Course Information</h4>
+                        <div class="info-item">
+                            <strong>Duration:</strong> 2 Years (4 Semesters)
+                        </div>
+                        <div class="info-item">
+                            <strong>Level:</strong> Master's Degree
+                        </div>
+                        <div class="info-item">
+                            <strong>Mode:</strong> Full-time
+                        </div>
+                        <div class="info-item">
+                            <strong>Intake:</strong> 18 Students (per specialization)
+                        </div>
+                        <div class="info-item">
+                            <strong>Affiliation:</strong> Pharmacy Council of India
+                        </div>
+                        <div class="info-item">
+                            <strong>Recognition:</strong> BUHS & AKU
+                        </div>
+                        <div class="info-item">
+                            <strong>Research:</strong> Mandatory Dissertation
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specializations -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Specializations Available</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Choose your area of expertise</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="specialization-card">
+                        <div class="spec-icon">
+                            <i class="fas fa-capsules"></i>
+                        </div>
+                        <h4>Pharmaceutics</h4>
+                        <p>Advanced drug delivery systems, nanotechnology, and pharmaceutical technology</p>
+                        <ul class="spec-features">
+                            <li>Novel Drug Delivery Systems</li>
+                            <li>Nanotechnology in Drug Delivery</li>
+                            <li>Pharmaceutical Technology</li>
+                            <li>Biopharmaceutics & Pharmacokinetics</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="specialization-card">
+                        <div class="spec-icon">
+                            <i class="fas fa-molecular-formula"></i>
+                        </div>
+                        <h4>Pharmaceutical Chemistry</h4>
+                        <p>Drug design, synthesis, and analytical method development</p>
+                        <ul class="spec-features">
+                            <li>Medicinal Chemistry</li>
+                            <li>Drug Design & Development</li>
+                            <li>Analytical Method Development</li>
+                            <li>Quality Control & Assurance</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="specialization-card">
+                        <div class="spec-icon">
+                            <i class="fas fa-heart-pulse"></i>
+                        </div>
+                        <h4>Pharmacology</h4>
+                        <p>Advanced pharmacology, toxicology, and clinical research</p>
+                        <ul class="spec-features">
+                            <li>Clinical Pharmacology</li>
+                            <li>Toxicology & Drug Safety</li>
+                            <li>Pharmacovigilance</li>
+                            <li>Experimental Pharmacology</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="specialization-card">
+                        <div class="spec-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h4>Pharmacognosy</h4>
+                        <p>Natural product research and phytochemistry</p>
+                        <ul class="spec-features">
+                            <li>Natural Product Chemistry</li>
+                            <li>Herbal Drug Research</li>
+                            <li>Phytochemistry</li>
+                            <li>Traditional Medicine Systems</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="specialization-card">
+                        <div class="spec-icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <h4>Pharmaceutical Analysis</h4>
+                        <p>Advanced analytical techniques and quality control</p>
+                        <ul class="spec-features">
+                            <li>Instrumental Analysis</li>
+                            <li>Method Validation</li>
+                            <li>Pharmaceutical Quality Control</li>
+                            <li>Regulatory Analysis</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="specialization-card">
+                        <div class="spec-icon">
+                            <i class="fas fa-bacteria"></i>
+                        </div>
+                        <h4>Pharmaceutical Microbiology</h4>
+                        <p>Microbiology applications in pharmaceutical sciences</p>
+                        <ul class="spec-features">
+                            <li>Industrial Microbiology</li>
+                            <li>Pharmaceutical Biotechnology</li>
+                            <li>Sterile Product Manufacturing</li>
+                            <li>Microbial Contamination Control</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eligibility Criteria -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Eligibility Criteria</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="eligibility-card" data-aos="fade-up">
+                        <h4><i class="fas fa-graduation-cap me-2"></i>Academic Requirements</h4>
+                        <ul>
+                            <li><strong>Educational Qualification:</strong> B.Pharm degree from a recognized university</li>
+                            <li><strong>Minimum Marks:</strong> 55% aggregate in B.Pharm (50% for reserved categories)</li>
+                            <li><strong>Entrance Exam:</strong> GPAT/NIPER JEE/State Level entrance exam</li>
+                            <li><strong>Age Limit:</strong> No upper age limit</li>
+                            <li><strong>Work Experience:</strong> Preferred but not mandatory</li>
+                        </ul>
+                        
+                        <h5 class="mt-4">Entrance Examinations</h5>
+                        <div class="entrance-exams">
+                            <div class="exam-item">
+                                <i class="fas fa-trophy"></i>
+                                <span><strong>GPAT</strong> - Graduate Pharmacy Aptitude Test</span>
+                            </div>
+                            <div class="exam-item">
+                                <i class="fas fa-university"></i>
+                                <span><strong>NIPER JEE</strong> - Joint Entrance Examination</span>
+                            </div>
+                            <div class="exam-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span><strong>State Level</strong> - State entrance examinations</span>
+                            </div>
+                            <div class="exam-item">
+                                <i class="fas fa-school"></i>
+                                <span><strong>Institutional</strong> - College specific entrance test</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Curriculum Structure</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">2-year program with coursework and research</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="curriculum-year">
+                        <h3><i class="fas fa-calendar-alt me-2"></i>First Year</h3>
+                        <div class="semester-structure">
+                            <h4>Semester I & II</h4>
+                            <div class="subjects-list">
+                                <div class="subject-card">
+                                    <h5>Core Subjects (Specialization Based)</h5>
+                                    <p>Advanced topics in chosen specialization area</p>
+                                </div>
+                                <div class="subject-card">
+                                    <h5>Research Methodology</h5>
+                                    <p>Statistical analysis and research design</p>
+                                </div>
+                                <div class="subject-card">
+                                    <h5>Advanced Instrumentation</h5>
+                                    <p>Modern analytical instruments and techniques</p>
+                                </div>
+                                <div class="subject-card">
+                                    <h5>Literature Review</h5>
+                                    <p>Comprehensive review of research literature</p>
+                                </div>
+                                <div class="subject-card">
+                                    <h5>Seminar Presentations</h5>
+                                    <p>Research presentation and communication skills</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="curriculum-year">
+                        <h3><i class="fas fa-calendar-alt me-2"></i>Second Year</h3>
+                        <div class="semester-structure">
+                            <h4>Semester III & IV</h4>
+                            <div class="subjects-list">
+                                <div class="subject-card">
+                                    <h5>Research Work</h5>
+                                    <p>Independent research project execution</p>
+                                </div>
+                                <div class="subject-card">
+                                    <h5>Dissertation Writing</h5>
+                                    <p>Thesis preparation and documentation</p>
+                                </div>
+                                <div class="subject-card">
+                                    <h5>Advanced Electives</h5>
+                                    <p>Specialized topics and current research trends</p>
+                                </div>
+                                <div class="subject-card">
+                                    <h5>Industry Training</h5>
+                                    <p>Practical training in pharmaceutical industry</p>
+                                </div>
+                                <div class="subject-card">
+                                    <h5>Thesis Defense</h5>
+                                    <p>Final presentation and viva voce examination</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Opportunities -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Career Opportunities</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Advanced career paths in pharmaceutical sciences</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="career-card">
+                        <div class="career-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <h4>Research Scientist</h4>
+                        <p>Lead research projects in pharmaceutical R&D, biotechnology companies</p>
+                        <div class="salary-range">
+                            <small>Salary: ₹6-20 LPA</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="career-card">
+                        <div class="career-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h4>Academician</h4>
+                        <p>Teaching positions in pharmacy colleges, universities, and research institutes</p>
+                        <div class="salary-range">
+                            <small>Salary: ₹5-15 LPA</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="career-card">
+                        <div class="career-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h4>Regulatory Affairs Manager</h4>
+                        <p>Drug approval processes, regulatory submissions, and compliance</p>
+                        <div class="salary-range">
+                            <small>Salary: ₹8-25 LPA</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="career-card">
+                        <div class="career-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Product Manager</h4>
+                        <p>Product development, marketing, and business development in pharma</p>
+                        <div class="salary-range">
+                            <small>Salary: ₹10-30 LPA</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="career-card">
+                        <div class="career-icon">
+                            <i class="fas fa-vial"></i>
+                        </div>
+                        <h4>Quality Assurance Head</h4>
+                        <p>Quality control, validation, and GMP compliance in manufacturing</p>
+                        <div class="salary-range">
+                            <small>Salary: ₹6-18 LPA</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="career-card">
+                        <div class="career-icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <h4>Clinical Research</h4>
+                        <p>Clinical research management, biostatistics, and data analysis</p>
+                        <div class="salary-range">
+                            <small>Salary: ₹7-22 LPA</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="700">
+                    <div class="career-card">
+                        <div class="career-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h4>Consultant</h4>
+                        <p>Technical consulting for pharmaceutical and biotechnology companies</p>
+                        <div class="salary-range">
+                            <small>Salary: ₹8-35 LPA</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="800">
+                    <div class="career-card">
+                        <div class="career-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h4>Entrepreneur</h4>
+                        <p>Start pharmaceutical research company or consulting firm</p>
+                        <div class="salary-range">
+                            <small>Earning Potential: Variable</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <h4>Top Employers</h4>
+                    <div class="employers-list">
+                        <span class="employer-tag">Cipla</span>
+                        <span class="employer-tag">Dr. Reddy's</span>
+                        <span class="employer-tag">Sun Pharma</span>
+                        <span class="employer-tag">Lupin</span>
+                        <span class="employer-tag">Aurobindo</span>
+                        <span class="employer-tag">Biocon</span>
+                        <span class="employer-tag">CDRI</span>
+                        <span class="employer-tag">NIPER</span>
+                        <span class="employer-tag">AIIMS</span>
+                        <span class="employer-tag">IIT/IISc</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Areas -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Current Research Areas</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Cutting-edge research opportunities</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="research-card">
+                        <h5><i class="fas fa-pills me-2"></i>Drug Delivery Systems</h5>
+                        <p>Nanotechnology-based drug delivery, targeted therapy, and controlled release systems</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="research-card">
+                        <h5><i class="fas fa-dna me-2"></i>Personalized Medicine</h5>
+                        <p>Pharmacogenomics, biomarkers, and individualized drug therapy approaches</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="research-card">
+                        <h5><i class="fas fa-leaf me-2"></i>Natural Products</h5>
+                        <p>Herbal drug development, phytochemistry, and traditional medicine validation</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="research-card">
+                        <h5><i class="fas fa-brain me-2"></i>Neuropharmacology</h5>
+                        <p>CNS drug development, neurological disorders, and brain-targeted delivery</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="research-card">
+                        <h5><i class="fas fa-heartbeat me-2"></i>Cardiovascular Research</h5>
+                        <p>Cardiac drug development, hypertension, and cardiovascular therapeutics</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="research-card">
+                        <h5><i class="fas fa-shield-virus me-2"></i>Antimicrobial Research</h5>
+                        <p>Antibiotic resistance, new antimicrobial agents, and infection control</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admission Process -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Admission Process</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="admission-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h5>GPAT/Entrance Exam</h5>
+                                <p>Qualify GPAT or other recognized entrance examinations</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h5>Application Submission</h5>
+                                <p>Submit application with entrance score and required documents</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h5>Merit List & Interview</h5>
+                                <p>Merit-based selection and technical interview (if required)</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h5>Final Admission</h5>
+                                <p>Document verification, fee payment, and specialization selection</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="admission-info">
+                        <h4>Important Dates 2025-26</h4>
+                        <div class="dates-list">
+                            <div class="date-item">
+                                <strong>GPAT Exam:</strong> February 2025
+                            </div>
+                            <div class="date-item">
+                                <strong>Application Start:</strong> March 2025
+                            </div>
+                            <div class="date-item">
+                                <strong>Last Date:</strong> May 31, 2025
+                            </div>
+                            <div class="date-item">
+                                <strong>Merit List:</strong> June 15, 2025
+                            </div>
+                            <div class="date-item">
+                                <strong>Counseling:</strong> June 20-30, 2025
+                            </div>
+                            <div class="date-item">
+                                <strong>Classes Begin:</strong> July 15, 2025
+                            </div>
+                        </div>
+
+                        <h5 class="mt-4">Required Documents</h5>
+                        <ul class="documents-list">
+                            <li>B.Pharm Degree Certificate</li>
+                            <li>B.Pharm Marksheets (All Years)</li>
+                            <li>GPAT Score Card</li>
+                            <li>Transfer Certificate</li>
+                            <li>Character Certificate</li>
+                            <li>Category Certificate (if applicable)</li>
+                            <li>Research Experience Certificate</li>
+                            <li>Passport Size Photographs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fee Structure -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Fee Structure</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="fee-table" data-aos="fade-up">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Fee Component</th>
+                                    <th>First Year</th>
+                                    <th>Second Year</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tuition Fee</td>
+                                    <td>₹95,000</td>
+                                    <td>₹95,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Research Fee</td>
+                                    <td>₹20,000</td>
+                                    <td>₹20,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Laboratory Fee</td>
+                                    <td>₹15,000</td>
+                                    <td>₹15,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Library Fee</td>
+                                    <td>₹5,000</td>
+                                    <td>₹5,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Dissertation Fee</td>
+                                    <td>-</td>
+                                    <td>₹15,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Examination Fee</td>
+                                    <td>₹5,000</td>
+                                    <td>₹8,000</td>
+                                </tr>
+                                <tr class="table-active">
+                                    <th>Total Annual Fee</th>
+                                    <th>₹1,40,000</th>
+                                    <th>₹1,58,000</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="fee-note">
+                            <p><strong>Note:</strong> GPAT qualified students may be eligible for stipend. Fellowship opportunities available for research scholars. Fees are subject to revision.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 class="section-title" data-aos="fade-up">Ready to Excel in Advanced Pharmaceutical Research?</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Join M.Pharm at Magadh Institute of Pharmacy and become a pharmaceutical research leader</p>
+                    <div class="cta-buttons mt-4" data-aos="fade-up" data-aos-delay="200">
+                        <a href="admission.html" class="btn btn-primary btn-lg me-3">Apply Now</a>
+                        <a href="contact.html" class="btn btn-outline-primary btn-lg">Get More Info</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-widget">
+                        <div class="footer-logo">
+                            <img src="images/logo-white.png" alt="Magadh Institute of Pharmacy" class="img-fluid">
+                            <h3>Magadh Institute of Pharmacy</h3>
+                        </div>
+                        <p>Excellence in pharmaceutical education, shaping the future of healthcare professionals.</p>
+                        <div class="footer-social">
+                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-widget">
+                        <h4>Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="academics.html">Academics</a></li>
+                            <li><a href="admission.html">Admission</a></li>
+                            <li><a href="facilities.html">Facilities</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-widget">
+                        <h4>Programs</h4>
+                        <ul class="footer-links">
+                            <li><a href="d-pharma.html">D.Pharm</a></li>
+                            <li><a href="b-pharma.html">B.Pharm</a></li>
+                            <li><a href="m-pharma.html">M.Pharm</a></li>
+                            <li><a href="placement.html">Placement</a></li>
+                            <li><a href="faculty.html">Faculty</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-widget footer-contact-widget" style="color: rgb(255, 255, 255);">
+                        <h4>Contact Information</h4>
+                        <ul class="footer-contact-list list-unstyled mb-0">
+                            <li class="footer-contact-item mb-2 d-flex align-items-start">
+                                <span class="footer-contact-icon me-2">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </span>
+                                <span>
+                                    Opposit Pillor No 207, Rupaspur Nahar Road,<br> Vivek Vihar Colony, Patna, Bihar 801503
+                                </span>
+                            </li>
+                            <li class="footer-contact-item mb-2 d-flex align-items-start">
+                                <span class="footer-contact-icon me-2">
+                                    <i class="fas fa-phone"></i>
+                                </span>
+                                <span>
+                                    +91-9341512761<br>
+                                    +91-8825315989
+                                </span>
+                            </li>
+                            <li class="footer-contact-item d-flex align-items-start">
+                                <span class="footer-contact-icon me-2">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <span>
+                                    info@magadhpharmacy.edu.in<br>
+                                    admission@magadhpharmacy.edu.in
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <p>&copy; 2025 <strong>Magadh Institute of Pharmacy</strong>. All rights reserved. | Designed by <strong>SecureWave</strong></p>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <div class="footer-bottom-links">
+                            <a href="#">Privacy Policy</a>
+                            <a href="#">Terms & Conditions</a>
+                            <a href="#">Sitemap</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>
