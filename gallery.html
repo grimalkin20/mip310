@@ -158,7 +158,7 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#academics" id="academicsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle active" href="#academics" id="academicsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Academics
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="academicsDropdown">
@@ -168,6 +168,9 @@
                             <li><a class="dropdown-item" href="scholarship.html">Scholarship</a></li>
                             <li><a class="dropdown-item" href="tuition-fee.html">Tuition Fee</a></li>
                             <li><a class="dropdown-item" href="programs.html">Programs</a></li>
+                            <li><a class="dropdown-item" href="d-pharma.html">D.Pharm</a></li>
+                            <li><a class="dropdown-item" href="b-pharma.html">B.Pharm</a></li>
+                            <li><a class="dropdown-item" href="m-pharma.html">M.Pharm</a></li>
                             <li><a class="dropdown-item" href="department-details.html">Department Details</a></li>
                             <li><a class="dropdown-item" href="time-table.html">Time Table</a></li>
                         </ul>
@@ -253,6 +256,9 @@
                             <li><a href="scholarship.html">Scholarship</a></li>
                             <li><a href="tuition-fee.html">Tuition Fee</a></li>
                             <li><a href="programs.html">Programs</a></li>
+                            <li><a href="d-pharma.html">D.Pharm</a></li>
+                            <li><a href="b-pharma.html">B.Pharm</a></li>
+                            <li><a href="m-pharma.html">M.Pharm</a></li>
                             <li><a href="department-details.html">Department Details</a></li>
                             <li><a href="time-table.html">Time Table</a></li>
                         </ul>
@@ -331,8 +337,8 @@
             </div>
             <div class="row gallery-grid">
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="../images/gallery1.jpg" data-title="Main Campus" data-caption="Beautiful campus infrastructure">
-                        <img src="../images/gallery1.jpg" alt="Campus View" class="img-fluid">
+                    <div class="gallery-item" data-bs-toggle="modal"  data-img="images/gallery/infra/main-campus.jpg" data-title="Main Campus" data-caption="Beautiful campus infrastructure">
+                        <img src="images/gallery/infra/main-campus.jpg" alt="Campus View" class="img-fluid">
                         <div class="gallery-overlay">
                             <h4>Main Campus</h4>
                             <p>Beautiful campus infrastructure</p>
@@ -340,8 +346,17 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="../images/gallery2.jpg" data-title="Research Lab" data-caption="State-of-the-art laboratory">
-                        <img src="../images/gallery2.jpg" alt="Laboratory" class="img-fluid">
+                    <div class="gallery-item" data-bs-toggle="modal"  data-img="images/gallery/lab/laboratory.jpg" data-title="Research Lab" data-caption="State-of-the-art laboratory">
+                        <img src="images/gallery/lab/laboratory.jpg" alt="Laboratory" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <h4>Research Lab</h4>
+                            <p>State-of-the-art laboratory</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-item" data-bs-toggle="modal"  data-img="images/gallery/lab/campus-life.jpg" data-title="Research Lab" data-caption="State-of-the-art laboratory">
+                        <img src="images/gallery/lab/campus-life.jpg" alt="Laboratory" class="img-fluid">
                         <div class="gallery-overlay">
                             <h4>Research Lab</h4>
                             <p>State-of-the-art laboratory</p>
@@ -349,8 +364,8 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="../images/gallery3.jpg" data-title="Library" data-caption="Well-stocked library">
-                        <img src="../images/gallery3.jpg" alt="Library" class="img-fluid">
+                    <div class="gallery-item" data-bs-toggle="modal"  data-img="images/gallery/library/library-3.jpg" data-title="Library" data-caption="Well-stocked library">
+                        <img src="images/gallery/library/library-3.jpg" alt="Library" class="img-fluid">
                         <div class="gallery-overlay">
                             <h4>Library</h4>
                             <p>Well-stocked library</p>
@@ -358,8 +373,8 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
-                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="../images/gallery4.jpg" data-title="Auditorium" data-caption="Modern auditorium facility">
-                        <img src="../images/gallery4.jpg" alt="Auditorium" class="img-fluid">
+                    <div class="gallery-item" data-bs-toggle="modal"  data-img="images/gallery/event/event-2.jpg" data-title="Auditorium" data-caption="Modern auditorium facility">
+                        <img src="images/gallery/event/event-2.jpg" alt="Auditorium" class="img-fluid">
                         <div class="gallery-overlay">
                             <h4>Auditorium</h4>
                             <p>Modern auditorium facility</p>
@@ -367,23 +382,16 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
-                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="../images/gallery5.jpg" data-title="Student Life" data-caption="Vibrant campus life">
-                        <img src="../images/gallery5.jpg" alt="Students" class="img-fluid">
+                    <div class="gallery-item" data-bs-toggle="modal"  data-img="images/gallery/classroom/exam-hall.jpg" data-title="Student Life" data-caption="Vibrant campus life">
+                        <img src="images/gallery/classroom/exam-hall.jpg" alt="Students" class="img-fluid">
                         <div class="gallery-overlay">
                             <h4>Student Life</h4>
                             <p>Vibrant campus life</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
-                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="../images/gallery6.jpg" data-title="Events" data-caption="Annual college events">
-                        <img src="../images/gallery6.jpg" alt="Events" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h4>Events</h4>
-                            <p>Annual college events</p>
-                        </div>
-                    </div>
-                </div>
+
+                <span>More images will be updated soon....</span>
             </div>
             <!-- Gallery Modal -->
             <div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel" aria-hidden="true">
