@@ -799,13 +799,19 @@ section {
     clear: both;
 }
 
-body {
+html, body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
     margin: 0;
     padding: 0;
-    /* Remove overflow-x: hidden to prevent double scrollbars */
+    overflow-x: hidden; /* Only prevent horizontal scroll */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
 .container-fluid {
@@ -2954,9 +2960,116 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 576px) {
-    /* Hide loader on mobile devices */
+    /* Mobile Medicine Loader Optimizations */
     .medicine-loader {
-        display: none !important;
+        padding: 15px;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f1f3f4 100%);
+    }
+    
+    .loader-content {
+        padding: 0 10px;
+        max-width: 100%;
+    }
+    
+    .medicine-container {
+        width: 140px;
+        height: 140px;
+        margin: 0 auto 25px;
+        position: relative;
+    }
+    
+    /* Optimize pills for mobile */
+    .pill {
+        width: 38px;
+        height: 19px;
+        border-radius: 9.5px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    
+    .pill-1 {
+        top: 14px;
+        left: 49px;
+        animation-delay: 0s;
+    }
+    
+    .pill-2 {
+        top: 42px;
+        left: 14px;
+        transform: rotate(45deg);
+        animation-delay: 0.3s;
+    }
+    
+    .pill-3 {
+        top: 42px;
+        right: 14px;
+        transform: rotate(45deg);
+        animation-delay: 0.6s;
+    }
+    
+    /* Optimize capsules for mobile */
+    .capsule {
+        width: 14px;
+        height: 32px;
+        border-radius: 7px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    
+    .capsule-1 {
+        top: 85px;
+        left: 50%;
+        transform: translateX(-50%) translateX(-14px);
+        animation-delay: 0.1s;
+    }
+    
+    .capsule-2 {
+        top: 85px;
+        left: 50%;
+        transform: translateX(-50%) translateX(14px);
+        animation-delay: 0.3s;
+    }
+    
+    /* Mobile text optimizations */
+    .loader-text h3 {
+        font-size: 1.3rem;
+        line-height: 1.2;
+        margin-bottom: 8px;
+        text-align: center;
+        padding: 0 10px;
+    }
+    
+    .loader-text p {
+        font-size: 0.85rem;
+        line-height: 1.3;
+        margin-bottom: 15px;
+        text-align: center;
+        padding: 0 15px;
+    }
+    
+    .typewriter-text {
+        font-size: 0.8rem;
+        max-width: 250px;
+        margin: 0 auto;
+    }
+    
+    .loading-dots {
+        gap: 5px;
+        justify-content: center;
+    }
+    
+    .loading-dots span {
+        width: 6px;
+        height: 6px;
+    }
+    
+    /* Prevent common horizontal overflow elements */
+    img, video, iframe {
+        max-width: 100% !important;
+        height: auto;
+    }
+    
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
     
     .container-fluid {

@@ -34,34 +34,40 @@
   --sidebar-ring: oklch(0.645 0.246 16.439);
 }
 
-/* Root Variables */
+/* Root Variables - Nature to Ocean Gradient Theme */
 :root {
-    --primary-color: #87986A;    /* Deep Sage Green */
-    --secondary-color: #A9CE80;  /* Light Green */
-    --accent-color: #FEC5BB;     /* Peach */
-    --accent-secondary: #FFD7BA; /* Light Peach */
+    /* Primary Brand Colors - From Light Green to Deep Ocean */
+    --primary-color: #52b69a;    /* Primary Teal - Main brand color */
+    --secondary-color: #76c893;  /* Secondary Green-Teal */
+    --accent-color: #d9ed92;     /* Light Green - Accents and highlights */
+    --accent-secondary: #b5e48c; /* Medium Light Green */
+    --tertiary-color: #99d98c;   /* Balanced Green */
+    
+    /* Ocean Blues - For depth and sophistication */
+    --ocean-primary: #34a0a4;    /* Ocean Teal */
+    --ocean-medium: #168aad;     /* Medium Ocean Blue */
+    --ocean-deep: #1a759f;      /* Deep Ocean Blue */
+    --ocean-darker: #1e6091;     /* Darker Ocean */
+    --ocean-darkest: #184e77;    /* Darkest Ocean Blue */
+    
+    /* Supporting Colors */
     --dark-color: #495057;       /* Dark Gray */
     --darker-color: #212529;     /* Darkest Gray */
-    --light-color: #F8EDEB;      /* Very Light Pink */
-    --light-secondary: #FAE1DD;  /* Light Pink */
-    --light-tertiary: #FCD5CE;   /* Medium Light Pink */
-    --neutral-light: #DFEAD3;    /* Light Sage */
-    --neutral-medium: #C6CFBC;   /* Medium Sage */
-    --neutral-green: #BFD1AB;    /* Soft Green */
-    --nature-light: #E9F5DB;     /* Pale Green */
-    --nature-medium: #CFE1B9;    /* Light Green */
-    --nature-strong: #B5C99A;    /* Medium Green */
-    --earth-tone: #7E8972;       /* Olive Green */
-    --white-color: #F8F9FA;      /* Off White */
-    --light-gray: #E9ECEF;       /* Light Gray */
-    --medium-gray: #DEE2E6;      /* Medium Gray */
-    --border-gray: #ADB5BD;      /* Border Gray */
+    --light-color: #f8f9fa;      /* Off White */
+    --light-secondary: #e9ecef;  /* Light Gray */
+    --light-tertiary: #dee2e6;   /* Medium Light Gray */
+    --white-color: #ffffff;      /* Pure White */
+    --border-gray: #adb5bd;      /* Border Gray */
     --text-color: #495057;       /* Text Gray */
-    --text-light: #6C757D;       /* Light Text */
-    --shadow-color: rgba(73, 80, 87, 0.1);
-    --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    --text-light: #6c757d;       /* Light Text */
+    --shadow-color: rgba(52, 160, 164, 0.15);
+    
+    /* Updated Gradients */
+    --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--ocean-primary));
     --gradient-secondary: linear-gradient(45deg, var(--accent-color), var(--accent-secondary));
-    --gradient-nature: linear-gradient(135deg, var(--nature-medium), var(--nature-strong));
+    --gradient-nature: linear-gradient(135deg, var(--secondary-color), var(--tertiary-color));
+    --gradient-ocean: linear-gradient(135deg, var(--ocean-medium), var(--ocean-deep));
+    --gradient-hero: linear-gradient(135deg, var(--accent-color), var(--primary-color), var(--ocean-primary));
     --gradient-soft: linear-gradient(45deg, var(--light-color), var(--light-secondary));
 }
 
@@ -242,6 +248,8 @@ input:focus, textarea:focus, select:focus, .form-control:focus {
     transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
+
+
 .medicine-loader.fade-out {
     opacity: 0;
     visibility: hidden;
@@ -311,14 +319,14 @@ input:focus, textarea:focus, select:focus, .form-control:focus {
 }
 
 .pill-1 {
-    background: linear-gradient(45deg, #87986A, #A9CE80);
+    background: linear-gradient(45deg, var(--accent-color), var(--accent-secondary));
     top: 20px;
     left: 70px;
     animation-delay: 0s;
 }
 
 .pill-2 {
-    background: linear-gradient(45deg, #495057, #87986A);
+    background: linear-gradient(45deg, var(--secondary-color), var(--tertiary-color));
     top: 60px;
     left: 20px;
     animation-delay: 0.3s;
@@ -327,7 +335,7 @@ input:focus, textarea:focus, select:focus, .form-control:focus {
 }
 
 .pill-3 {
-    background: linear-gradient(45deg, #A9CE80, #FEC5BB);
+    background: linear-gradient(45deg, var(--primary-color), var(--ocean-primary));
     top: 60px;
     right: 20px;
     animation-delay: 0.6s;
@@ -346,14 +354,14 @@ input:focus, textarea:focus, select:focus, .form-control:focus {
 }
 
 .capsule-1 {
-    background: linear-gradient(to bottom, #495057 50%, #F8EDEB 50%);
+    background: linear-gradient(to bottom, var(--ocean-medium) 50%, var(--white-color) 50%);
     top: 120px;
     left: 50px;
     animation-delay: 0.2s;
 }
 
 .capsule-2 {
-    background: linear-gradient(to bottom, #87986A 50%, white 50%);
+    background: linear-gradient(to bottom, var(--ocean-deep) 50%, var(--accent-color) 50%);
     top: 120px;
     right: 50px;
     animation-delay: 0.4s;
@@ -481,8 +489,8 @@ input:focus, textarea:focus, select:focus, .form-control:focus {
 /* Responsive Design for Loader */
 @media (max-width: 768px) {
     .medicine-container {
-        width: 150px;
-        height: 150px;
+        width: 100%;
+        height: 100%;
         margin: 0 auto 20px;
     }
     
@@ -561,8 +569,6 @@ input:focus, textarea:focus, select:focus, .form-control:focus {
         width: 120px;
         height: 120px;
         margin: 0 auto 20px;
-        left: 50%;
-        transform: translateX(-50%);
     }
     
     .pill {
@@ -793,13 +799,19 @@ section {
     clear: both;
 }
 
-body {
+html, body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
     margin: 0;
     padding: 0;
-    /* Remove overflow-x: hidden to prevent double scrollbars */
+    overflow-x: hidden; /* Only prevent horizontal scroll */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
 .container-fluid {
@@ -842,8 +854,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Back to Top Button */
 .back-to-top {
     position: fixed;
+    right: 1.25rem; /* anchor to the right so it overlays and doesn't reserve space */
     bottom: 30px;
-    right: 30px;
     width: 50px;
     height: 50px;
     background: var(--gradient-primary);
@@ -855,9 +867,49 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     font-size: 1.2rem;
     cursor: pointer;
-    z-index: 1000;
-    transition: all 0.3s ease;
+    z-index: 1030; /* ensure it overlays content (higher than most elements) */
+    transition: transform 0.25s ease, opacity 0.25s ease;
     box-shadow: 0 4px 15px var(--shadow-color);
+    margin: 0; /* ensure no accidental spacing */
+    box-sizing: border-box;
+    touch-action: manipulation;
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+}
+
+/* when shown use flex so it doesn't affect layout */
+.back-to-top.show {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* hide visually but keep out of flow when not shown */
+.back-to-top:not(.show) {
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+}
+
+/* Responsive adjustments keep it overlayed and off the page flow */
+@media screen and (max-width: 768px) {
+    .back-to-top {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        bottom: 20px;
+        right: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .back-to-top {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+        bottom: 15px;
+        right: 0.75rem;
+    }
 }
 
 .back-to-top:hover {
@@ -1323,6 +1375,80 @@ h1, h2, h3, h4, h5, h6 {
     backface-visibility: hidden;
 }
 
+@media (max-width: 768px) {
+    /* Reduce header space to avoid gap between menu and slider */
+    .main-header {
+        min-height: 72px; /* smaller header on mobile */
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+    .main-header .row {
+        min-height: auto;
+        align-items: center;
+    }
+    .main-navbar {
+        margin-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .navbar, .navbar-collapse {
+        margin-bottom: 0;
+    }
+
+    /* Make slider height adaptive and avoid cropping */
+    .hero-slider {
+        height: 40vh;
+        width: 100%;
+        padding: 0;
+        margin-top: 0 !important;
+    }
+
+    /* For <img> based slides: preserve full image */
+    .hero-slider img,
+    .hero-slide img {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        object-fit: contain;
+        object-position: center;
+    }
+
+    /* For background-image based slides: show whole image */
+    .hero-slide {
+        background-size: contain !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        min-height: 30vh; /* keep a reasonable visible area */
+        height: auto;
+        margin-top: 0 !important;
+    }
+
+    /* Remove possible top margins on first section elements */
+    .hero-slider, .hero-slide, #heroCarousel, .hero-section {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+}
+
+/* Extra small / landscape phones: ensure no cropping when viewport is short */
+@media (max-height: 500px) and (orientation: landscape) {
+    .main-header {
+        min-height: 56px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+    }
+    .hero-slider,
+    .hero-slide {
+        min-height: 30vh;
+        margin-top: 0 !important;
+    }
+    .hero-slider img,
+    .hero-slide img {
+        max-height: 100%;
+    }
+}
+
 /* Fix Bootstrap Carousel Issues */
 #heroCarousel {
     height: 100%;
@@ -1389,7 +1515,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.3rem;
     margin-bottom: 2rem;
     animation: fadeInUp 1s ease 0.3s both;
-    color: var(--light-gray);
+    color: #040506;
 }
 
 .btn-hero {
@@ -1475,6 +1601,12 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%;
 }
 
+@media (max-width: 480px) {
+    .quick-card-p {
+        margin-bottom: 20px;
+    }
+}
+
 .info-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
@@ -1520,6 +1652,12 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 20px;
 }
 
+.leads {
+    font-size: 1.2rem;
+    color: var(--darker-color);
+    margin-bottom: 20px;
+}
+
 .about-features {
     margin-top: 30px;
 }
@@ -1551,7 +1689,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Courses Section */
 .courses-section {
-    background: var(--light-secondary);
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+    background-attachment: fixed;
     padding: 80px 0;
 }
 
@@ -1574,7 +1713,7 @@ h1, h2, h3, h4, h5, h6 {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: var(--gradient-primary);
+    background: #184e77;
     transition: all 0.5s ease;
     z-index: 1;
 }
@@ -1591,6 +1730,15 @@ h1, h2, h3, h4, h5, h6 {
 .course-card > * {
     position: relative;
     z-index: 2;
+}
+
+.course-main-content {
+    transition: all 0.5s ease;
+}
+
+.course-card:hover .course-main-content {
+    opacity: 0;
+    transform: translateY(-20px);
 }
 
 .course-icon {
@@ -1790,7 +1938,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Toppers Section */
 .toppers-section {
-    background: var(--neutral-light);
+    background: linear-gradient(135deg, var(--tertiary-color), var(--secondary-color));
+    background-attachment: fixed;
     padding: 80px 0;
 }
 
@@ -1920,7 +2069,9 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Consultation Section */
 .consultation-section {
-    background: var(--light-tertiary);
+    background: linear-gradient(135deg, var(--ocean-darker), var(--ocean-darkest));
+    background-attachment: fixed;
+    color: white;
     padding: 80px 0;
 }
 
@@ -1957,7 +2108,10 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Testimonials Section */
 .testimonials-section {
+    background: linear-gradient(135deg, var(--primary-color), var(--ocean-primary));
+    background-attachment: fixed;
     padding: 80px 0;
+    color: white;
 }
 
 .testimonial-carousel .carousel-control-prev,
@@ -1971,12 +2125,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .testimonial-card {
-    background: var(--white-color);
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 20px;
     padding: 40px;
-    box-shadow: 0 15px 35px var(--shadow-color);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
     margin: 20px;
     transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
 }
 
 .testimonial-card:hover {
@@ -2266,16 +2421,37 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Facilities Section */
 .facilities-section {
-    background: var(--light-secondary);
+    background: linear-gradient(135deg, var(--ocean-medium), var(--ocean-deep));
+    background-attachment: fixed;
+    color: white;
+    padding: 80px 0;
 }
 
 .facility-card {
-    background: var(--white-color);
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 10px 30px var(--shadow-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
     height: 100%;
+    backdrop-filter: blur(10px);
+}
+
+/* White text sections styling */
+.testimonials-section .section-title,
+.testimonials-section .section-subtitle,
+.facilities-section .section-title,
+.facilities-section .section-subtitle,
+.consultation-section .section-title,
+.consultation-section .section-subtitle {
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.testimonials-section .section-title::after,
+.facilities-section .section-title::after,
+.consultation-section .section-title::after {
+    background: var(--accent-color);
 }
 
 .facility-card:hover {
@@ -2424,7 +2600,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Footer */
 .main-footer {
-    background: var(--darker-color);
+    background: linear-gradient(135deg, var(--ocean-darkest), var(--darker-color));
     color: var(--white-color);
     padding: 60px 0 0;
 }
@@ -2452,7 +2628,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-widget p {
-    color: var(--light-gray);
+    color: #f2fcf1;
     line-height: 1.6;
 }
 
@@ -2478,7 +2654,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-links a {
-    color: var(--light-gray);
+    color: #f2fcf1;
     text-decoration: none;
     transition: all 0.3s ease;
 }
@@ -2645,6 +2821,8 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+
+
 @media (max-width: 768px) {
     .top-bar .row > div {
         text-align: center;
@@ -2670,8 +2848,8 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .main-logo {
-        width: 90px;
-        height: 60px;
+        width: 100%;
+        height: 100%;
     }
     
     .institute-name h1 {
@@ -2782,6 +2960,119 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 576px) {
+    /* Mobile Medicine Loader Optimizations */
+    .medicine-loader {
+        padding: 15px;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f1f3f4 100%);
+    }
+    
+    .loader-content {
+        padding: 0 10px;
+        max-width: 100%;
+    }
+    
+    .medicine-container {
+        width: 140px;
+        height: 140px;
+        margin: 0 auto 25px;
+        position: relative;
+    }
+    
+    /* Optimize pills for mobile */
+    .pill {
+        width: 38px;
+        height: 19px;
+        border-radius: 9.5px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    
+    .pill-1 {
+        top: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation-delay: 0s;
+    }
+    
+    .pill-2 {
+        top: 40px;
+        left: 15px;
+        transform: rotate(45deg);
+        animation-delay: 0.2s;
+    }
+    
+    .pill-3 {
+        top: 40px;
+        right: 15px;
+        transform: rotate(-45deg);
+        animation-delay: 0.4s;
+    }
+    
+    /* Optimize capsules for mobile */
+    .capsule {
+        width: 14px;
+        height: 32px;
+        border-radius: 7px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    
+    .capsule-1 {
+        top: 85px;
+        left: 50%;
+        transform: translateX(-50%) translateX(-14px);
+        animation-delay: 0.1s;
+    }
+    
+    .capsule-2 {
+        top: 85px;
+        left: 50%;
+        transform: translateX(-50%) translateX(14px);
+        animation-delay: 0.3s;
+    }
+    
+    /* Mobile text optimizations */
+    .loader-text h3 {
+        font-size: 1.3rem;
+        line-height: 1.2;
+        margin-bottom: 8px;
+        text-align: center;
+        padding: 0 10px;
+    }
+    
+    .loader-text p {
+        font-size: 0.85rem;
+        line-height: 1.3;
+        margin-bottom: 15px;
+        text-align: center;
+        padding: 0 15px;
+    }
+    
+    .typewriter-text {
+        font-size: 0.8rem;
+        max-width: 250px;
+        margin: 0 auto;
+    }
+    
+    .loading-dots {
+        gap: 5px;
+        justify-content: center;
+    }
+    
+    .loading-dots span {
+        width: 6px;
+        height: 6px;
+    }
+    
+    /* Prevent common horizontal overflow elements */
+    img, video, iframe {
+        max-width: 100% !important;
+        height: auto;
+    }
+    
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
     .container-fluid {
         padding-left: 0.5rem;
         padding-right: 0.5rem;
@@ -2794,6 +3085,10 @@ h1, h2, h3, h4, h5, h6 {
     .btn-hero {
         padding: 12px 30px;
         font-size: 0.9rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
     }
     
     .info-card {
@@ -3115,14 +3410,31 @@ a {
 
 /* About Page Specific Styles */
 .hero-section {
-    background: linear-gradient(135deg, #F8EDEB, rgba(135, 152, 106, 0.1));
+    background: var(--gradient-hero);
     min-height: 60vh;
+    position: relative;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 1;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
 }
 
 .hero-title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #495057;
+    color: #03192f;
     margin-bottom: 1rem;
 }
 
@@ -3280,7 +3592,8 @@ a {
 }
 
 .program-card.featured {
-    border: 2px solid #87986A;
+    border: 2px solid var(--primary-color);
+    background: linear-gradient(135deg, var(--accent-color), rgba(255, 255, 255, 0.95));
     transform: scale(1.05);
 }
 
@@ -3292,7 +3605,7 @@ a {
     position: absolute;
     top: 15px;
     right: 15px;
-    background: linear-gradient(135deg, #87986A, #A9CE80);
+    background: var(--gradient-ocean);
     color: white;
     padding: 5px 15px;
     border-radius: 20px;
@@ -3303,7 +3616,8 @@ a {
 .program-icon {
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, #87986A, #A9CE80);
+    /* background: linear-gradient(135deg, #87986A, #A9CE80); */
+    background: linear-gradient(135deg, #8bd7e1, #fcfffa);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -3966,8 +4280,8 @@ a {
 }
 
 .mobile-logo-img {
-    width: 45px;
-    height: 30px;
+    width: 100%;
+    height: 50%;
     object-fit: contain;
     border-radius: 4px;
 }
@@ -4160,4 +4474,221 @@ a {
     .mobile-sidebar {
         display: none;
     }
+}
+
+/* Faculty Section Styles */
+.faculty-section {
+    background: var(--light-color);
+}
+
+.faculty-card {
+    background: var(--white-color);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+    border: 2px solid transparent;
+}
+
+.faculty-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-color);
+}
+
+.faculty-card img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 4px solid var(--accent-color);
+    margin: 0 auto 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.faculty-card:hover img {
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.faculty-card h4 {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.faculty-card:hover h4 {
+    color: var(--ocean-medium);
+}
+
+.faculty-card p {
+    color: var(--text-color);
+    font-size: 1rem;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+/* Responsive adjustments for faculty cards */
+@media (max-width: 768px) {
+    .faculty-card {
+        padding: 25px 20px;
+    }
+    
+    .faculty-card img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .faculty-card h4 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .faculty-card img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .faculty-card h4 {
+        font-size: 1.1rem;
+    }
+}
+
+/* === POPUP STYLES === */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.popup-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-container {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+}
+
+.popup-overlay.show .popup-container {
+    transform: scale(1);
+}
+
+.popup-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 18px;
+    color: var(--ocean-deeper);
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.popup-close:hover {
+    background: white;
+    transform: scale(1.1);
+    color: var(--primary-color);
+}
+
+.popup-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-image img {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 15px;
+}
+
+/* Responsive Design for Popup */
+@media (max-width: 768px) {
+    .popup-container {
+        max-width: 95%;
+        max-height: 85%;
+        margin: 20px;
+    }
+    
+    .popup-close {
+        top: 10px;
+        right: 10px;
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+    
+    .popup-image img {
+        max-height: 75vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .popup-container {
+        max-width: 98%;
+        max-height: 80%;
+        margin: 10px;
+        border-radius: 10px;
+    }
+    
+    .popup-close {
+        top: 8px;
+        right: 8px;
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+    
+    .popup-image img {
+        max-height: 70vh;
+        border-radius: 10px;
+    }
+}
+
+
+.recruiters img {
+    max-height: 60px;
+    object-fit: contain;
+    opacity: 0.7;
+    transition: all 0.3s ease;
 }
