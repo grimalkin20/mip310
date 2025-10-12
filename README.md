@@ -136,7 +136,7 @@ For questions or support regarding this website:
 - **Institute**: Magadh Institute of Pharmacy
 - **Location**: University Road,  Bihar - 823001
 - **Phone**: +91-9341512761
-- **Email**: info@magadhpharmacy.edu.in
+- **Email**: magadhpharmcy@gmail.com
 
 ## License
 

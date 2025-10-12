@@ -1602,6 +1602,12 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 20px;
 }
 
+.leads {
+    font-size: 1.2rem;
+    color: var(--darker-color);
+    margin-bottom: 20px;
+}
+
 .about-features {
     margin-top: 30px;
 }
