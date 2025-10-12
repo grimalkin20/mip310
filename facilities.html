@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magadh Institute of Pharmacy - Premier Pharmacy Education</title>
+    <!-- Favicon Icon  -->
+    <link rel="shortcut icon" href="images/logos/favicon.ico" type="image/x-icon">
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -579,9 +581,63 @@
 
     
     <!-- Footer (reuse from index.html) -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
     <script src="../js/script.js"></script>
-    <script>AOS.init();</script>
+    <script>
+        AOS.init();
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Animated Statistics (Age/Alumni/Faculty)
+        function animateStats() {
+            document.querySelectorAll('.stat-number').forEach(stat => {
+                const target = +stat.getAttribute('data-count');
+                let count = 0;
+                const increment = target > 100 ? Math.ceil(target / 50) : 1;
+                const update = () => {
+                    count += increment;
+                    if (count > target) count = target;
+                    stat.textContent = target >= 1000 ? count + '+' : count + '+';
+                    if (count < target) {
+                        requestAnimationFrame(update);
+                    }
+                };
+                update();
+            });
+        }
+        // Trigger animation when stats are in viewport
+        let statsAnimated = false;
+        window.addEventListener('scroll', function() {
+            const statsSection = document.querySelector('.hero-stats');
+            if (!statsAnimated && statsSection && statsSection.getBoundingClientRect().top < window.innerHeight) {
+                animateStats();
+                statsAnimated = true;
+            }
+        });
+
+        // Loader fade out
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('medicineLoader');
+            if (loader) loader.style.display = 'none';
+        });
+    </script>
 </body>
 </html>
