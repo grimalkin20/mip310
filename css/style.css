@@ -2581,21 +2581,25 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 25px;
     flex-wrap: wrap;
+    padding: 20px 0;
 }
 
 .company-logo {
-    width: 60px;
-    height: 40px;
+    width: 120px;
+    height: 80px;
     object-fit: contain;
-    filter: grayscale(100%);
     transition: all 0.3s ease;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
 }
 
 .company-logo:hover {
     filter: grayscale(0%);
-    transform: scale(1.1);
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 /* Footer */
@@ -2940,12 +2944,15 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .company-logos {
-        gap: 10px;
+        gap: 15px;
+        padding: 15px 0;
+        justify-content: space-around;
     }
     
     .company-logo {
-        width: 50px;
-        height: 35px;
+        width: 80px;
+        height: 55px;
+        padding: 8px;
     }
     
     .facility-image img {
@@ -4557,6 +4564,21 @@ a {
     
     .faculty-card h4 {
         font-size: 1.1rem;
+    }
+    
+    /* Company logos for small mobile screens */
+    .company-logos {
+        gap: 12px;
+        padding: 10px 0;
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .company-logo {
+        width: 70px;
+        height: 48px;
+        padding: 6px;
+        margin: 5px;
     }
 }
 
