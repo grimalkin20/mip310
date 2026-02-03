@@ -6,6 +6,7 @@
 -- Generation Time: Nov 23, 2025 at 07:46 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.4.0
+-- CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +20,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dps_panel`
+-- Database: `mip_panel`
 --
 
 -- --------------------------------------------------------

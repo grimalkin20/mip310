@@ -3,7 +3,7 @@
 $host = 'localhost';
 $username = 'root';
 $password = '';
-$database = 'dps_panel';
+$database = 'mip_panel';
 
 // Create connection
 $conn = new mysqli($host, $username, $password, $database);
