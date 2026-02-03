@@ -49,6 +49,9 @@ then replace it by
  replace this : /control-dashboard/includes
 with your folder name : /YOUR FOLDER NAME/control-dashboard/includes
 
+
+
+
 after this work is done then we will move to the next part where we will change all the  base directory name path/url to the new one 
 
 old one can be like this 
@@ -58,6 +61,21 @@ old one can be like this
 now in the function file also replace it with the following 
 
 [ /main_folder_name/name_of_the_panel ] for example; /dps/cpntrol-dashboard
+
+-- Example : 
+                // Helper function to get admin panel root path
+                function getAdminRootPath() {
+                    return $_SERVER['DOCUMENT_ROOT'] . '/control-dashboard';
+                }
+
+                |
+                | to this 
+                |
+
+                // Helper function to get admin panel root path
+                    function getAdminRootPath() {
+                        return $_SERVER['DOCUMENT_ROOT'] . '/mip310/control-dashboard';
+                    }
 
 
 maybe wont work, check by removing the "/" before main folder name in function file as shown avove .
