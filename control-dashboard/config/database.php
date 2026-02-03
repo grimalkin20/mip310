@@ -1,0 +1,21 @@
+<?php
+// Database configuration for WAMP Server
+$host = 'localhost';
+$username = 'root';
+$password = '';
+$database = 'dps_panel';
+
+// Create connection
+$conn = new mysqli($host, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Set charset to utf8
+$conn->set_charset("utf8");
+
+// Set timezone
+date_default_timezone_set('Asia/Kolkata');
+?> 
