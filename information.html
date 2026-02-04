@@ -676,7 +676,7 @@
                                         aria-describedby="recipientHelp">
                                         <option value="" selected disabled>-- Choose recipient --</option>
                                         <option value="pavitra_solani">Deepak Sir (Director)</option>
-                                        <option value="pavitra_solani">Pavitra Solani (Chairperson)</option>
+                                        <option value="pavitra_solani">Pavitra Solani (Principal)</option>
                                         <option value="sanjay_kumar">Sanjay Kumar (Member)</option>
                                     </select>
                                     <div id="recipientHelp" class="form-text">Recipient phone/email will populate below.
@@ -744,12 +744,12 @@
                                         documents if available.</div>
                                 </div>
 
-                                <div class="form-check form-switch mb-3">
+                                <!-- <div class="form-check form-switch mb-3">
                                     <input class="form-check-input" type="checkbox" id="sendSmsSwitch" name="send_sms"
                                         checked>
                                     <label class="form-check-label" for="sendSmsSwitch">Also send as SMS (if
                                         enabled)</label>
-                                </div>
+                                </div> -->
 
                                 <div class="d-flex gap-2">
                                     <button type="submit" class="btn btn-danger" id="submitReportBtn"><i
@@ -1005,24 +1005,44 @@
                 });
 
                 console.log('Ragging report payload (preview):', payload);
-                formStatus.innerHTML = '<span class="text-success">Preparing to send... (client-side)</span>';
+                formStatus.innerHTML = '<span class="text-info"><i class="fas fa-spinner fa-spin me-2"></i>Sending report...</span>';
+                document.getElementById('submitReportBtn').disabled = true;
 
-                // TODO: Replace below with actual POST to your backend (e.g., /api/reports) which will:
-                //  - Store the message in the DB
-                //  - Optionally queue/send an SMS via an SMS gateway if send_sms is true
-                // Example:
-                // fetch('/api/reports', { method:'POST', body: formData })
-                //   .then(r=>r.json()).then(resp => {/* handle response */})
+                // Send data to backend API
+                fetch('control-dashboard/api/submit-ragging-report.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('API Response:', data);
 
-                // Simulate success for now
-                setTimeout(() => {
-                    raggingForm.reset();
-                    recipientPhone.value = '';
-                    recipientEmail.value = '';
-                    reporterFields.style.display = '';
-                    raggingForm.classList.remove('was-validated');
-                    formStatus.innerHTML = '<span class="text-success">Your message was submitted locally. It will be sent when the backend is connected.</span>';
-                }, 700);
+                        if (data.success) {
+                            // Success
+                            raggingForm.reset();
+                            recipientPhone.value = '';
+                            recipientEmail.value = '';
+                            reporterFields.style.display = '';
+                            raggingForm.classList.remove('was-validated');
+
+                            formStatus.innerHTML = `<span class="text-success"><i class="fas fa-check-circle me-2"></i>${data.message}</span>`;
+
+                            // Clear success message after 5 seconds
+                            setTimeout(() => {
+                                formStatus.innerHTML = '';
+                            }, 5000);
+                        } else {
+                            // Error from API
+                            throw new Error(data.message || 'Failed to submit report');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error submitting report:', error);
+                        formStatus.innerHTML = `<span class="text-danger"><i class="fas fa-exclamation-circle me-2"></i>Error: ${error.message}</span>`;
+                    })
+                    .finally(() => {
+                        document.getElementById('submitReportBtn').disabled = false;
+                    });
             });
 
             // Initialize reporterFields visible by default

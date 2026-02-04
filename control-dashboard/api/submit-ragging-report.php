@@ -43,7 +43,9 @@ try {
     // Handle file upload if present
     $attachment_filename = null;
     if (isset($_FILES['attachment']) && $_FILES['attachment']['error'] === UPLOAD_ERR_OK) {
-        $upload_result = uploadFile($_FILES['attachment'], 'ragging-reports', ['jpg', 'jpeg', 'png', 'pdf', 'doc', 'docx']);
+        // User requested path: control-dashboard/uploads/materials/ragging-image
+        // uploadFile function prepends "../uploads/materials/" so we pass "ragging-image"
+        $upload_result = uploadFile($_FILES['attachment'], 'ragging-image', ['jpg', 'jpeg', 'png', 'pdf', 'doc', 'docx']);
 
         if ($upload_result['success']) {
             $attachment_filename = $upload_result['filename'];
@@ -69,22 +71,29 @@ try {
         throw new Exception('Database error: ' . $conn->error);
     }
 
-    $stmt->bind_param(
-        "sssssssississs",
-        $report_type,
-        $recipient,
-        $recipient_phone,
-        $recipient_email,
-        $reporter_name,
-        $reporter_phone,
-        $reporter_email,
-        $is_anonymous,
-        $message,
-        $attachment_filename,
-        $send_sms,
-        $ip_address,
-        $user_agent
-    );
+    // Debug logging for query structure
+    // error_log("Query: " . $sql);
+
+    if (
+        !$stmt->bind_param(
+            "sssssssississ",
+            $report_type,
+            $recipient,
+            $recipient_phone,
+            $recipient_email,
+            $reporter_name,
+            $reporter_phone,
+            $reporter_email,
+            $is_anonymous,
+            $message,
+            $attachment_filename,
+            $send_sms,
+            $ip_address,
+            $user_agent
+        )
+    ) {
+        throw new Exception("Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error);
+    }
 
     if ($stmt->execute()) {
         $report_id = $stmt->insert_id;

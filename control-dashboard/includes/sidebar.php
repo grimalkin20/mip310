@@ -5,96 +5,112 @@ if (!function_exists('getAdminUrl')) {
 }
 ?>
 <style>
-.sidebar {
-    color: white !important;
-}
+    .sidebar {
+        color: white !important;
+    }
 
-.sidebar .nav-link {
-    color: white !important;
-}
+    .sidebar .nav-link {
+        color: white !important;
+    }
 
-.sidebar .nav-link:hover {
-    color: #fff !important;
-    background-color: rgba(255, 255, 255, 0.1) !important;
-}
+    .sidebar .nav-link:hover {
+        color: #fff !important;
+        background-color: rgba(255, 255, 255, 0.1) !important;
+    }
 
-.sidebar .nav-link.active {
-    color: #fff !important;
-    background-color: rgba(255, 255, 255, 0.2) !important;
-}
+    .sidebar .nav-link.active {
+        color: #fff !important;
+        background-color: rgba(255, 255, 255, 0.2) !important;
+    }
 
-.sidebar .nav-link i {
-    color: white !important;
-}
+    .sidebar .nav-link i {
+        color: white !important;
+    }
 
-.sidebar h6 {
-    color: rgba(255, 255, 255, 0.7) !important;
-}
+    .sidebar h6 {
+        color: rgba(255, 255, 255, 0.7) !important;
+    }
 
-.sidebar hr {
-    border-color: rgba(255, 255, 255, 0.2) !important;
-}
+    .sidebar hr {
+        border-color: rgba(255, 255, 255, 0.2) !important;
+    }
 </style>
 
 <div class="sidebar" id="sidebar">
     <div class="sidebar-header">
         <h3 style="color:#fff;"><i class="fas fa-shield-alt me-2"></i>Admin Panel</h3>
     </div>
-    
+
     <nav class="sidebar-nav">
         <!-- Dashboard -->
         <div class="nav-item">
-            <a href="<?php echo getAdminUrl('dashboard.php'); ?>" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'dashboard.php' ? 'active' : ''; ?>">
+            <a href="<?php echo getAdminUrl('dashboard.php'); ?>"
+                class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'dashboard.php' ? 'active' : ''; ?>">
                 <i class="fas fa-tachometer-alt"></i>
                 <span>Dashboard</span>
             </a>
         </div>
-        
+
         <!-- Super User Only Section -->
         <?php if (isSuperUser()): ?>
-        <div class="nav-item">
-            <a href="<?php echo getAdminUrl('users/'); ?>" class="nav-link <?php echo strpos($_SERVER['PHP_SELF'], 'users/') !== false ? 'active' : ''; ?>">
-                <i class="fas fa-users"></i>
-                <span>Users</span>
-            </a>
-        </div>
+            <div class="nav-item">
+                <a href="<?php echo getAdminUrl('users/'); ?>"
+                    class="nav-link <?php echo strpos($_SERVER['PHP_SELF'], 'users/') !== false ? 'active' : ''; ?>">
+                    <i class="fas fa-users"></i>
+                    <span>Users</span>
+                </a>
+            </div>
         <?php endif; ?>
-        
+
         <!-- Inquiries -->
         <div class="nav-item">
-            <a href="<?php echo getAdminUrl('inquiries/'); ?>" class="nav-link <?php echo strpos($_SERVER['PHP_SELF'], 'inquiries/') !== false ? 'active' : ''; ?>">
+            <a href="<?php echo getAdminUrl('inquiries/'); ?>"
+                class="nav-link <?php echo strpos($_SERVER['PHP_SELF'], 'inquiries/') !== false ? 'active' : ''; ?>">
                 <i class="fas fa-question-circle"></i>
                 <span>Inquiries</span>
             </a>
         </div>
-        
+
         <!-- Contact -->
         <div class="nav-item">
-            <a href="<?php echo getAdminUrl('contact/'); ?>" class="nav-link <?php echo strpos($_SERVER['PHP_SELF'], 'contact/') !== false ? 'active' : ''; ?>">
+            <a href="<?php echo getAdminUrl('contact/'); ?>"
+                class="nav-link <?php echo strpos($_SERVER['PHP_SELF'], 'contact/') !== false ? 'active' : ''; ?>">
                 <i class="fas fa-address-book"></i>
                 <span>Contact</span>
             </a>
         </div>
-        
+
         <!-- Super User Only Section -->
         <?php if (isSuperUser()): ?>
-        <div class="nav-item">
-            <a href="<?php echo getAdminUrl('feedback/'); ?>" class="nav-link <?php echo strpos($_SERVER['PHP_SELF'], 'feedback/') !== false ? 'active' : ''; ?>">
-                <i class="fas fa-comments"></i>
-                <span>Feedback (From Users)</span>
-            </a>
-        </div>
+            <div class="nav-item">
+                <a href="<?php echo getAdminUrl('feedback/'); ?>"
+                    class="nav-link <?php echo strpos($_SERVER['PHP_SELF'], 'feedback/') !== false ? 'active' : ''; ?>">
+                    <i class="fas fa-comments"></i>
+                    <span>Feedback (From Users)</span>
+                </a>
+            </div>
         <?php endif; ?>
 
-        
+        <!-- Super User Only Section: Ragging Reports -->
+        <?php if (isSuperUser()): ?>
+            <div class="nav-item">
+                <a href="<?php echo getAdminUrl('ragging-reports/'); ?>"
+                    class="nav-link <?php echo strpos($_SERVER['PHP_SELF'], 'ragging-reports/') !== false ? 'active' : ''; ?>">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Ragging Reports</span>
+                </a>
+            </div>
+        <?php endif; ?>
+
+
         <!-- Divider -->
         <hr class="my-3">
-        
+
         <!-- Management Section -->
         <div class="nav-item">
             <h6 class="text-muted px-3 mb-2">MANAGEMENT</h6>
         </div>
-        
+
         <!-- Sliders -->
         <div class="nav-item">
             <a href="#" class="nav-link" data-bs-toggle="collapse" data-bs-target="#slidersSubmenu">
@@ -123,7 +139,7 @@ if (!function_exists('getAdminUrl')) {
                 </div>
             </div>
         </div>
-        
+
         <!-- Mandatory Disclosure -->
         <!-- <div class="nav-item">
             <a href="#" class="nav-link" data-bs-toggle="collapse" data-bs-target="#disclosuresSubmenu">
@@ -152,7 +168,7 @@ if (!function_exists('getAdminUrl')) {
                 </div>
             </div>
         </div> -->
-        
+
         <!-- Gallery -->
         <div class="nav-item">
             <a href="#" class="nav-link" data-bs-toggle="collapse" data-bs-target="#gallerySubmenu">
@@ -193,7 +209,7 @@ if (!function_exists('getAdminUrl')) {
                 </div>
             </div>
         </div>
-        
+
         <!-- Media/Video -->
         <div class="nav-item">
             <a href="#" class="nav-link" data-bs-toggle="collapse" data-bs-target="#mediaSubmenu">
@@ -234,7 +250,7 @@ if (!function_exists('getAdminUrl')) {
                 </div>
             </div>
         </div>
-        
+
         <!-- Study Materials / Homework -->
         <div class="nav-item">
             <a href="#" class="nav-link" data-bs-toggle="collapse" data-bs-target="#materialsSubmenu">
@@ -293,7 +309,7 @@ if (!function_exists('getAdminUrl')) {
                 </div>
             </div>
         </div>
-        
+
         <!-- Announcements / News / Notice -->
         <div class="nav-item">
             <a href="#" class="nav-link" data-bs-toggle="collapse" data-bs-target="#announcementsSubmenu">
@@ -334,7 +350,7 @@ if (!function_exists('getAdminUrl')) {
                 </div>
             </div>
         </div>
-        
+
         <!-- Admission Forms -->
         <!-- <div class="nav-item">
             <a href="<?php echo getAdminUrl('admission-forms/'); ?>" class="nav-link <?php echo strpos($_SERVER['PHP_SELF'], 'admission-forms/') !== false ? 'active' : ''; ?>">
@@ -343,4 +359,4 @@ if (!function_exists('getAdminUrl')) {
             </a>
         </div> -->
     </nav>
-</div> 
+</div>
