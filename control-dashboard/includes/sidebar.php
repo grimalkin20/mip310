@@ -351,6 +351,29 @@ if (!function_exists('getAdminUrl')) {
             </div>
         </div>
 
+        <!-- Results Management -->
+        <div class="nav-item">
+            <a href="#" class="nav-link" data-bs-toggle="collapse" data-bs-target="#resultsSubmenu">
+                <i class="fas fa-file-invoice"></i>
+                <span>Examination Results</span>
+                <i class="fas fa-chevron-down ms-auto"></i>
+            </a>
+            <div class="collapse" id="resultsSubmenu">
+                <div class="nav-item ms-3">
+                    <a href="<?php echo getAdminUrl('results/add.php'); ?>" class="nav-link">
+                        <i class="fas fa-plus"></i>
+                        <span>Upload Results</span>
+                    </a>
+                </div>
+                <div class="nav-item ms-3">
+                    <a href="<?php echo getAdminUrl('results/index.php'); ?>" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Manage Results</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <!-- Admission Forms -->
         <!-- <div class="nav-item">
             <a href="<?php echo getAdminUrl('admission-forms/'); ?>" class="nav-link <?php echo strpos($_SERVER['PHP_SELF'], 'admission-forms/') !== false ? 'active' : ''; ?>">
