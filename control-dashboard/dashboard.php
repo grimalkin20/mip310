@@ -192,7 +192,7 @@ logActivity($_SESSION['user_id'], 'Dashboard Access', 'Accessed dashboard');
                                     <div class="d-grid gap-2">
                                         <a href="sliders/add.php" class="btn btn-primary"><i class="fas fa-plus me-2"></i>Add Slider</a>
                                         <a href="gallery/add-image.php" class="btn btn-success"><i class="fas fa-image me-2"></i>Add Gallery Image</a>
-                                        <a href="disclosures/add.php" class="btn btn-info"><i class="fas fa-file me-2"></i>Add Disclosure</a>
+                                        <!-- <a href="disclosures/add.php" class="btn btn-info"><i class="fas fa-file me-2"></i>Add Disclosure</a> -->
                                         <a href="media/add-link.php" class="btn btn-warning"><i class="fas fa-video me-2"></i>Add Media Link</a>
                                         <a href="users/add.php" class="btn btn-danger"><i class="fas fa-user-plus me-2"></i>Add User</a>
                                     </div>

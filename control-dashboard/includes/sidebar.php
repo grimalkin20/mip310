@@ -63,6 +63,7 @@ if (!function_exists('getAdminUrl')) {
         <?php endif; ?>
 
         <!-- Inquiries -->
+        <?php if (isSuperUser()): ?>
         <div class="nav-item">
             <a href="<?php echo getAdminUrl('inquiries/'); ?>"
                 class="nav-link <?php echo strpos($_SERVER['PHP_SELF'], 'inquiries/') !== false ? 'active' : ''; ?>">
@@ -70,8 +71,10 @@ if (!function_exists('getAdminUrl')) {
                 <span>Inquiries</span>
             </a>
         </div>
+        <?php endif; ?>
 
         <!-- Contact -->
+        <?php if (isSuperUser()): ?>
         <div class="nav-item">
             <a href="<?php echo getAdminUrl('contact/'); ?>"
                 class="nav-link <?php echo strpos($_SERVER['PHP_SELF'], 'contact/') !== false ? 'active' : ''; ?>">
@@ -79,6 +82,7 @@ if (!function_exists('getAdminUrl')) {
                 <span>Contact</span>
             </a>
         </div>
+        <?php endif; ?>
 
         <!-- Super User Only Section -->
         <?php if (isSuperUser()): ?>
