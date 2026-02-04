@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Video API Test</title>
+</head>
+
+<body>
+    <h1>Video API Test</h1>
+    <button onclick="testAPI()">Test API</button>
+    <pre id="output"></pre>
+
+    <script>
+        function testAPI() {
+            const output = document.getElementById('output');
+            output.textContent = 'Loading...';
+
+            fetch('control-dashboard/api/videos.php')
+                .then(response => {
+                    output.textContent = 'Response Status: ' + response.status + '\n\n';
+                    return response.text();
+                })
+                .then(text => {
+                    output.textContent += 'Raw Response:\n' + text + '\n\n';
+
+                    try {
+                        const data = JSON.parse(text);
+                        output.textContent += 'Parsed JSON:\n' + JSON.stringify(data, null, 2);
+                    } catch (e) {
+                        output.textContent += 'JSON Parse Error: ' + e.message;
+                    }
+                })
+                .catch(error => {
+                    output.textContent = 'Error: ' + error.message;
+                });
+        }
+
+        // Auto-run on load
+        window.onload = testAPI;
+    </script>
+</body>
+
+</html>
