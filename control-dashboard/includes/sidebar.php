@@ -61,12 +61,12 @@ if (!function_exists('getAdminUrl')) {
         <?php endif; ?>
         
         <!-- Inquiries -->
-        <!-- <div class="nav-item">
+        <div class="nav-item">
             <a href="<?php echo getAdminUrl('inquiries/'); ?>" class="nav-link <?php echo strpos($_SERVER['PHP_SELF'], 'inquiries/') !== false ? 'active' : ''; ?>">
                 <i class="fas fa-question-circle"></i>
                 <span>Inquiries</span>
             </a>
-        </div> -->
+        </div>
         
         <!-- Contact -->
         <div class="nav-item">
@@ -85,6 +85,7 @@ if (!function_exists('getAdminUrl')) {
             </a>
         </div>
         <?php endif; ?>
+
         
         <!-- Divider -->
         <hr class="my-3">

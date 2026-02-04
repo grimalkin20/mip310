@@ -1,0 +1,50 @@
+[2026-02-04 05:43:18] === New Form Submission ===
+[2026-02-04 11:13:18] Request Method: POST
+[2026-02-04 11:13:18] Database connected successfully
+[2026-02-04 11:13:18] Raw JSON data: {"name":"John Doe","email":"john@example.com","phone":"+91-9876543210","subject":"Test Inquiry","message":"This is a test message"}
+[2026-02-04 11:13:18] Decoded data: {"name":"John Doe","email":"john@example.com","phone":"+91-9876543210","subject":"Test Inquiry","message":"This is a test message"}
+[2026-02-04 11:13:18] All validations passed
+[2026-02-04 11:13:18] Sanitized data - Name: John Doe, Email: john@example.com, Phone: +91-9876543210, Subject: Test Inquiry
+[2026-02-04 11:13:18] Statement prepared successfully
+[2026-02-04 11:13:18] Parameters bound successfully
+[2026-02-04 11:13:18] SUCCESS: Data inserted successfully with ID: 3
+[2026-02-04 05:43:21] === New Form Submission ===
+[2026-02-04 11:13:21] Request Method: POST
+[2026-02-04 11:13:21] Database connected successfully
+[2026-02-04 11:13:21] Raw JSON data: {"name":"John Doe","email":"john@example.com","phone":"+91-9876543210","subject":"Test Inquiry","message":"This is a test message"}
+[2026-02-04 11:13:21] Decoded data: {"name":"John Doe","email":"john@example.com","phone":"+91-9876543210","subject":"Test Inquiry","message":"This is a test message"}
+[2026-02-04 11:13:21] All validations passed
+[2026-02-04 11:13:21] Sanitized data - Name: John Doe, Email: john@example.com, Phone: +91-9876543210, Subject: Test Inquiry
+[2026-02-04 11:13:21] Statement prepared successfully
+[2026-02-04 11:13:21] Parameters bound successfully
+[2026-02-04 11:13:21] SUCCESS: Data inserted successfully with ID: 4
+[2026-02-04 05:43:24] === New Form Submission ===
+[2026-02-04 11:13:24] Request Method: POST
+[2026-02-04 11:13:24] Database connected successfully
+[2026-02-04 11:13:24] Raw JSON data: {"name":"John Doe","email":"john@example.com","phone":"+91-9876543210","subject":"Test Inquiry","message":"This is a test message"}
+[2026-02-04 11:13:24] Decoded data: {"name":"John Doe","email":"john@example.com","phone":"+91-9876543210","subject":"Test Inquiry","message":"This is a test message"}
+[2026-02-04 11:13:24] All validations passed
+[2026-02-04 11:13:24] Sanitized data - Name: John Doe, Email: john@example.com, Phone: +91-9876543210, Subject: Test Inquiry
+[2026-02-04 11:13:24] Statement prepared successfully
+[2026-02-04 11:13:24] Parameters bound successfully
+[2026-02-04 11:13:24] SUCCESS: Data inserted successfully with ID: 5
+[2026-02-04 05:43:27] === New Form Submission ===
+[2026-02-04 11:13:27] Request Method: POST
+[2026-02-04 11:13:27] Database connected successfully
+[2026-02-04 11:13:27] Raw JSON data: {"name":"John Doe","email":"john@example.com","phone":"+91-9876543210","subject":"Test Inquiry","message":"This is a test message"}
+[2026-02-04 11:13:27] Decoded data: {"name":"John Doe","email":"john@example.com","phone":"+91-9876543210","subject":"Test Inquiry","message":"This is a test message"}
+[2026-02-04 11:13:27] All validations passed
+[2026-02-04 11:13:27] Sanitized data - Name: John Doe, Email: john@example.com, Phone: +91-9876543210, Subject: Test Inquiry
+[2026-02-04 11:13:27] Statement prepared successfully
+[2026-02-04 11:13:27] Parameters bound successfully
+[2026-02-04 11:13:27] SUCCESS: Data inserted successfully with ID: 6
+[2026-02-04 05:53:48] === New Form Submission ===
+[2026-02-04 11:23:48] Request Method: POST
+[2026-02-04 11:23:48] Database connected successfully
+[2026-02-04 11:23:48] Raw JSON data: {"name":"Jay Thakur","email":"kr.himanshu@outlook.in","phone":"07461007540","subject":"Test Inquiry","message":"test for api calls"}
+[2026-02-04 11:23:48] Decoded data: {"name":"Jay Thakur","email":"kr.himanshu@outlook.in","phone":"07461007540","subject":"Test Inquiry","message":"test for api calls"}
+[2026-02-04 11:23:48] All validations passed
+[2026-02-04 11:23:48] Sanitized data - Name: Jay Thakur, Email: kr.himanshu@outlook.in, Phone: 07461007540, Subject: Test Inquiry
+[2026-02-04 11:23:48] Statement prepared successfully
+[2026-02-04 11:23:48] Parameters bound successfully
+[2026-02-04 11:23:48] SUCCESS: Data inserted successfully with ID: 7

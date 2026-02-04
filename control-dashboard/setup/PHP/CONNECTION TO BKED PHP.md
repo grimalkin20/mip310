@@ -18,41 +18,41 @@
 
 
 
-&nbsp;                                       $query = "SELECT id, image, name FROM sliders ORDER BY id";
+                                       $query = "SELECT id, image, name FROM sliders ORDER BY id";
 
-&nbsp;                                       $result = mysqli\_query($conn, $query);
+                                       $result = mysqli\_query($conn, $query);
 
 
 
-&nbsp;                                       if ($result \&\& mysqli\_num\_rows($result) > 0) {
+                                       if ($result \&\& mysqli\_num\_rows($result) > 0) {
 
-&nbsp;                                           while ($row = mysqli\_fetch\_assoc($result)) {
+                                           while ($row = mysqli\_fetch\_assoc($result)) {
 
-&nbsp;                                               $id = (int) $row\['id'];
+                                               $id = (int) $row\['id'];
 
 ?>
 
 
 
-&nbsp;               <li> <img src="control-dashboard/uploads/materials/sliders/<?php echo $row\['image']; ?>" alt="<?php echo $row\['name']; ?>"> </li>
+               <li> <img src="control-dashboard/uploads/materials/sliders/<?php echo $row\['image']; ?>" alt="<?php echo $row\['name']; ?>"> </li>
 
 
 
-&nbsp;               
+               
 
-&nbsp;            <?php
+            <?php
 
-&nbsp;											}
+											}
 
-&nbsp;										} else {
+										} else {
 
-&nbsp;											echo '<p>No images found in the sliders.</p>';
+											echo '<p>No images found in the sliders.</p>';
 
-&nbsp;										}
+										}
 
-&nbsp;										
+										
 
-&nbsp;										?>	              
+										?>	              
 
 
 
@@ -68,45 +68,45 @@
 
 
 
-&nbsp;
+
 
 <?php
 
-&nbsp;                                       // Load download categories and output as menu items.
+                                       // Load download categories and output as menu items.
 
-&nbsp;                                       // Using MySQLi prepared statements for security and compatibility.
+                                       // Using MySQLi prepared statements for security and compatibility.
 
-&nbsp;                                       // Cast IDs to int and escape names for safety and readability.
-
-
-
-&nbsp;                                       $query = "SELECT id, content FROM announcements WHERE id IN (1, 2, 3)";
-
-&nbsp;                                       $result = mysqli\_query($conn, $query);
+                                       // Cast IDs to int and escape names for safety and readability.
 
 
 
-&nbsp;                                       if ($result \&\& mysqli\_num\_rows($result) > 0) {
+                                       $query = "SELECT id, content FROM announcements WHERE id IN (1, 2, 3)";
 
-&nbsp;                                           while ($row = mysqli\_fetch\_assoc($result)) {
+                                       $result = mysqli\_query($conn, $query);
 
-&nbsp;                                               $id = (int) $row\['id'];
 
-&nbsp;                                               $content = htmlspecialchars($row\['content'], ENT\_QUOTES, 'UTF-8');
 
-&nbsp;                                               echo "<li>{$content}</li>\\n";
+                                       if ($result \&\& mysqli\_num\_rows($result) > 0) {
 
-&nbsp;                                           }
+                                           while ($row = mysqli\_fetch\_assoc($result)) {
 
-&nbsp;                                       } else {
+                                               $id = (int) $row\['id'];
 
-&nbsp;                                           // Optional: show a placeholder when no categories exist or on error
+                                               $content = htmlspecialchars($row\['content'], ENT\_QUOTES, 'UTF-8');
 
-&nbsp;                                           // echo '<li><a href="#">No downloads available</a></li>';
+                                               echo "<li>{$content}</li>\\n";
 
-&nbsp;										}// For debugging you can uncomment the next line:
+                                           }
 
-&nbsp;                                           // if (!$result) { echo '<!-- DB error: '.mysqli\_error($conn).' -->'; 
+                                       } else {
+
+                                           // Optional: show a placeholder when no categories exist or on error
+
+                                           // echo '<li><a href="#">No downloads available</a></li>';
+
+										}// For debugging you can uncomment the next line:
+
+                                           // if (!$result) { echo '<!-- DB error: '.mysqli\_error($conn).' -->'; 
 
 ?>
 
@@ -230,119 +230,119 @@
 
 
 
-&nbsp;						
+						
 
-&nbsp;					<?php
+					<?php
 
-&nbsp;                                       // Load download categories and output as menu items.
+                                       // Load download categories and output as menu items.
 
-&nbsp;                                       // Using MySQLi prepared statements for security and compatibility.
+                                       // Using MySQLi prepared statements for security and compatibility.
 
-&nbsp;                                       // Cast IDs to int and escape names for safety and readability.
-
-
-
-&nbsp;                                       $query = "SELECT id, image FROM gallery\_images ORDER BY id DESC";
-
-&nbsp;                                       $result = mysqli\_query($conn, $query);
+                                       // Cast IDs to int and escape names for safety and readability.
 
 
 
-&nbsp;                                       if ($result \&\& mysqli\_num\_rows($result) > 0) {
+                                       $query = "SELECT id, image FROM gallery\_images ORDER BY id DESC";
 
-&nbsp;                                           while ($row = mysqli\_fetch\_assoc($result)) {
-
-&nbsp;                                               $id = (int) $row\['id'];
+                                       $result = mysqli\_query($conn, $query);
 
 
 
-&nbsp;                                           
+                                       if ($result \&\& mysqli\_num\_rows($result) > 0) {
 
-&nbsp;                                           // Optional: show a placeholder when no categories exist or on error
+                                           while ($row = mysqli\_fetch\_assoc($result)) {
 
-&nbsp;                                           // echo '<li><a href="#">No downloads available</a></li>';
+                                               $id = (int) $row\['id'];
 
-&nbsp;                                           // For debugging you can uncomment the next line:
 
-&nbsp;                                           // if (!$result) { echo '<!-- DB error: '.mysqli\_error($conn).' -->'; 
+
+                                           
+
+                                           // Optional: show a placeholder when no categories exist or on error
+
+                                           // echo '<li><a href="#">No downloads available</a></li>';
+
+                                           // For debugging you can uncomment the next line:
+
+                                           // if (!$result) { echo '<!-- DB error: '.mysqli\_error($conn).' -->'; 
 
 ?>
 
-&nbsp;						
+						
 
 
 
-&nbsp;						<div class="isotope-item bottommargin\_30 col-lg-4 col-md-6 col-sm-12 college">
+						<div class="isotope-item bottommargin\_30 col-lg-4 col-md-6 col-sm-12 college">
 
 
 
-&nbsp;							<div class="vertical-item gallery-item content-absolute bottom-content text-center ds">
+							<div class="vertical-item gallery-item content-absolute bottom-content text-center ds">
 
 
 
-&nbsp;								<div class="item-media fill"> <img class="img-thumbnail" src="control-dashboard/uploads/materials/gallery/<?php echo $row\['image']; ?>">
+								<div class="item-media fill"> <img class="img-thumbnail" src="control-dashboard/uploads/materials/gallery/<?php echo $row\['image']; ?>">
 
 
 
-&nbsp;									<div class="media-links middle-links type2">
+									<div class="media-links middle-links type2">
 
 
 
-&nbsp;										<div class="links-wrap"> <a class="p-view prettyPhoto" data-gal="prettyPhoto\[gal]"
+										<div class="links-wrap"> <a class="p-view prettyPhoto" data-gal="prettyPhoto\[gal]"
 
 
 
-&nbsp;											 href="control-dashboard/uploads/materials/gallery/<?php echo $row\['image']; ?>"></a> </div>
+											 href="control-dashboard/uploads/materials/gallery/<?php echo $row\['image']; ?>"></a> </div>
 
 
 
-&nbsp;										</div>
+										</div>
 
 
 
-&nbsp;									</div>
+									</div>
 
 
 
-&nbsp;										<div class="item-content">
+										<div class="item-content">
 
 
 
-&nbsp;											<h4 class="item-meta text-uppercase bottommargin\_0"> <a href="#">DPS School, Barahiya,</a></h4>
+											<h4 class="item-meta text-uppercase bottommargin\_0"> <a href="#">DPS School, Barahiya,</a></h4>
 
 
 
-&nbsp;										</div>
+										</div>
 
 
 
-&nbsp;								</div>
+								</div>
 
 
 
-&nbsp;							</div>		
+							</div>		
 
-&nbsp;						<?php
+						<?php
 
-&nbsp;											}
+											}
 
-&nbsp;										} else {
+										} else {
 
-&nbsp;											echo '<p>No images found in the gallery.</p>';
+											echo '<p>No images found in the gallery.</p>';
 
-&nbsp;										}
+										}
 
-&nbsp;										
+										
 
-&nbsp;										?>	
-
-
-
-&nbsp;					
+										?>	
 
 
 
-&nbsp;						</div>
+					
+
+
+
+						</div>
 
 
 
@@ -376,17 +376,17 @@
 
 $sql = "SELECT m.\*, mt.name as type\_name, c.name as class\_name, s.name as section\_name, sub.name as subject\_name 
 
-&nbsp;       FROM materials m 
+       FROM materials m 
 
-&nbsp;       LEFT JOIN material\_types mt ON m.type\_id = mt.id 
+       LEFT JOIN material\_types mt ON m.type\_id = mt.id 
 
-&nbsp;       LEFT JOIN classes c ON m.class\_id = c.id 
+       LEFT JOIN classes c ON m.class\_id = c.id 
 
-&nbsp;       LEFT JOIN sections s ON m.section\_id = s.id 
+       LEFT JOIN sections s ON m.section\_id = s.id 
 
-&nbsp;       LEFT JOIN subjects sub ON m.subject\_id = sub.id 
+       LEFT JOIN subjects sub ON m.subject\_id = sub.id 
 
-&nbsp;       ORDER BY m.created\_at DESC";
+       ORDER BY m.created\_at DESC";
 
 $result = $conn->query($sql);
 
@@ -402,83 +402,83 @@ $materials = $result->fetch\_all(MYSQLI\_ASSOC);
 
 <table class="materials-table">
 
-&nbsp;   <thead>
+   <thead>
 
-&nbsp;       <tr>
+       <tr>
 
-&nbsp;           <th>S. No.</th>
+           <th>S. No.</th>
 
-&nbsp;           <th>Name</th>
+           <th>Name</th>
 
-&nbsp;           <th>Type</th>
+           <th>Type</th>
 
-&nbsp;           <th>Class</th>
+           <th>Class</th>
 
-&nbsp;           <th>Subject</th>
+           <th>Subject</th>
 
-&nbsp;           <th>Created At</th>
+           <th>Created At</th>
 
-&nbsp;           <th>File</th>
+           <th>File</th>
 
-&nbsp;       </tr>
+       </tr>
 
-&nbsp;   </thead>
+   </thead>
 
-&nbsp;   <tbody>
+   <tbody>
 
-&nbsp;       <?php foreach ($materials as $index => $material): ?>
+       <?php foreach ($materials as $index => $material): ?>
 
-&nbsp;           <tr>
+           <tr>
 
-&nbsp;               <td><?php echo $index + 1; ?></td>
-
-
-
-&nbsp;               <td>
-
-&nbsp;                   <strong><?php echo htmlspecialchars($material\['name']); ?></strong>
-
-&nbsp;                   <?php if ($material\['description']): ?>
-
-&nbsp;                       <br><small class="description"><?php echo htmlspecialchars($material\['description']); ?></small>
-
-&nbsp;                   <?php endif; ?>
-
-&nbsp;               </td>
+               <td><?php echo $index + 1; ?></td>
 
 
 
-&nbsp;               <td><span class="badge badge-info"><?php echo htmlspecialchars($material\['type\_name']); ?></span></td>
+               <td>
+
+                   <strong><?php echo htmlspecialchars($material\['name']); ?></strong>
+
+                   <?php if ($material\['description']): ?>
+
+                       <br><small class="description"><?php echo htmlspecialchars($material\['description']); ?></small>
+
+                   <?php endif; ?>
+
+               </td>
 
 
 
-&nbsp;               <td><span class="badge badge-secondary"><?php echo htmlspecialchars($material\['class\_name']); ?></span></td>
+               <td><span class="badge badge-info"><?php echo htmlspecialchars($material\['type\_name']); ?></span></td>
 
 
 
-&nbsp;               <td><span class="badge badge-primary"><?php echo htmlspecialchars($material\['subject\_name']); ?></span></td>
+               <td><span class="badge badge-secondary"><?php echo htmlspecialchars($material\['class\_name']); ?></span></td>
 
 
 
-&nbsp;               <td><small class="timestamp"><?php echo htmlspecialchars($material\['created\_at']); ?></small></td>
+               <td><span class="badge badge-primary"><?php echo htmlspecialchars($material\['subject\_name']); ?></span></td>
 
 
 
-&nbsp;               <td>
+               <td><small class="timestamp"><?php echo htmlspecialchars($material\['created\_at']); ?></small></td>
 
-&nbsp;                   <a href="control-dashboard/materials/materials/<?php echo htmlspecialchars($material\['file']); ?>" 
 
-&nbsp;                      target="\_blank" class="view-btn">
 
-&nbsp;                       View
+               <td>
 
-&nbsp;                   </a>
+                   <a href="control-dashboard/materials/materials/<?php echo htmlspecialchars($material\['file']); ?>" 
 
-&nbsp;               </td>
+                      target="\_blank" class="view-btn">
 
-&nbsp;           </tr>
+                       View
 
-&nbsp;       <?php endforeach; ?>
+                   </a>
+
+               </td>
+
+           </tr>
+
+       <?php endforeach; ?>
 
 
 

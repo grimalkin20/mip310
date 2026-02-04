@@ -1,3 +1,8 @@
+<?php
+error_reporting(E_ALL & ~E_NOTICE);
+include "control-dashboard/connect.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -21,24 +21,30 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
         $contact = $result->fetch_assoc();
 
         // Move to recycle bin
-        $recycle_sql = "INSERT INTO contacts_recycle (contact_id, name, email, subject, message, deleted_at) VALUES (?, ?, ?, ?, ?, NOW())";
+        $recycle_sql = "INSERT INTO contacts_recycle (contact_id, name, email, phone, subject, message, status, deleted_at) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())";
         $recycle_stmt = $conn->prepare($recycle_sql);
-        $recycle_stmt->bind_param("issss", $id, $contact['name'], $contact['email'], $contact['subject'], $contact['message']);
-
-        if ($recycle_stmt->execute()) {
-            // Delete from main table
-            $delete_sql = "DELETE FROM contacts WHERE id = ?";
-            $delete_stmt = $conn->prepare($delete_sql);
-            $delete_stmt->bind_param("i", $id);
-
-            if ($delete_stmt->execute()) {
-                logActivity($_SESSION['user_id'], 'Delete Contact', "Deleted contact from: {$contact['name']}");
-                $success = "Contact moved to recycle bin successfully!";
-            } else {
-                $error = "Failed to delete contact!";
-            }
+        
+        if (!$recycle_stmt) {
+            $error = "Prepare failed: " . $conn->error;
         } else {
-            $error = "Failed to move contact to recycle bin!";
+            // Always bind all parameters - phone can be NULL
+            $recycle_stmt->bind_param("issssss", $id, $contact['name'], $contact['email'], $contact['phone'], $contact['subject'], $contact['message'], $contact['status']);
+
+            if ($recycle_stmt->execute()) {
+                // Delete from main table
+                $delete_sql = "DELETE FROM contacts WHERE id = ?";
+                $delete_stmt = $conn->prepare($delete_sql);
+                $delete_stmt->bind_param("i", $id);
+
+                if ($delete_stmt->execute()) {
+                    logActivity($_SESSION['user_id'], 'Delete Contact', "Deleted contact from: {$contact['name']}");
+                    $success = "Contact moved to recycle bin successfully!";
+                } else {
+                    $error = "Failed to delete contact!";
+                }
+            } else {
+                $error = "Failed to move contact to recycle bin: " . $recycle_stmt->error;
+            }
         }
     } else {
         $error = "Contact not found!";
@@ -48,7 +54,7 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
 // Handle status toggle
 if (isset($_GET['toggle_status']) && is_numeric($_GET['toggle_status'])) {
     $id = (int)$_GET['toggle_status'];
-    $sql = "UPDATE contacts SET status = CASE WHEN status = 'unread' THEN 'read' ELSE 'unread' END WHERE id = ?";
+    $sql = "UPDATE contacts SET status = CASE WHEN status = 'new' THEN 'read' WHEN status = 'read' THEN 'new' ELSE status END WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id);
 
@@ -78,6 +84,14 @@ $count_result = $conn->query($count_sql);
 $total_contacts = $count_result->fetch_assoc()['total'];
 $total_pages = ceil($total_contacts / $limit);
 
+// Get status counts
+$status_sql = "SELECT status, COUNT(*) as count FROM contacts GROUP BY status";
+$status_result = $conn->query($status_sql);
+$status_counts = [];
+while ($row = $status_result->fetch_assoc()) {
+    $status_counts[$row['status']] = $row['count'];
+}
+
 logActivity($_SESSION['user_id'], 'View Contacts', 'Viewed contacts management page');
 ?>
 <!DOCTYPE html>
@@ -100,6 +114,7 @@ logActivity($_SESSION['user_id'], 'View Contacts', 'Viewed contacts management p
                     <h2><i class="fas fa-envelope me-2"></i>Manage Contacts</h2>
                     <div>
                         <span class="badge bg-primary me-2">Total: <?php echo $total_contacts; ?></span>
+                        <span class="badge bg-warning me-2">New: <?php echo isset($status_counts['new']) ? $status_counts['new'] : 0; ?></span>
                         <a href="recycle.php" class="btn btn-outline-secondary">
                             <i class="fas fa-trash me-2"></i>Recycle Bin
                         </a>
@@ -139,6 +154,7 @@ logActivity($_SESSION['user_id'], 'View Contacts', 'Viewed contacts management p
                                             <th width="50">S.No</th>
                                             <th>Name</th>
                                             <th>Email</th>
+                                            <th>Phone</th>
                                             <th>Subject</th>
                                             <th width="120">Status</th>
                                             <th width="150">Received</th>
@@ -147,7 +163,7 @@ logActivity($_SESSION['user_id'], 'View Contacts', 'Viewed contacts management p
                                     </thead>
                                     <tbody>
                                         <?php foreach ($contacts as $index => $contact): ?>
-                                            <tr class="<?php echo $contact['status'] == 'unread' ? 'table-warning' : ''; ?>">
+                                            <tr class="<?php echo $contact['status'] == 'new' ? 'table-warning' : ''; ?>">
                                                 <td><?php echo $offset + $index + 1; ?></td>
                                                 <td>
                                                     <strong><?php echo htmlspecialchars($contact['name']); ?></strong>
@@ -158,17 +174,29 @@ logActivity($_SESSION['user_id'], 'View Contacts', 'Viewed contacts management p
                                                     </a>
                                                 </td>
                                                 <td>
+                                                    <a href="tel:<?php echo htmlspecialchars($contact['phone']); ?>">
+                                                        <?php echo htmlspecialchars($contact['phone']); ?>
+                                                    </a>
+                                                </td>
+                                                <td>
                                                     <span class="text-truncate d-inline-block" style="max-width: 200px;" 
                                                           title="<?php echo htmlspecialchars($contact['subject']); ?>">
                                                         <?php echo htmlspecialchars($contact['subject']); ?>
                                                     </span>
                                                 </td>
                                                 <td>
-                                                    <?php if ($contact['status'] == 'unread'): ?>
-                                                        <span class="badge bg-warning">Unread</span>
-                                                    <?php else: ?>
-                                                        <span class="badge bg-success">Read</span>
-                                                    <?php endif; ?>
+                                                    <?php 
+                                                    $status_badges = [
+                                                        'new' => 'bg-warning',
+                                                        'read' => 'bg-info',
+                                                        'replied' => 'bg-success',
+                                                        'closed' => 'bg-secondary'
+                                                    ];
+                                                    $badge_class = $status_badges[$contact['status']] ?? 'bg-secondary';
+                                                    ?>
+                                                    <span class="badge <?php echo $badge_class; ?>">
+                                                        <?php echo ucfirst($contact['status']); ?>
+                                                    </span>
                                                 </td>
                                                 <td>
                                                     <small class="text-muted">
@@ -182,12 +210,14 @@ logActivity($_SESSION['user_id'], 'View Contacts', 'Viewed contacts management p
                                                            title="View Details">
                                                             <i class="fas fa-eye"></i>
                                                         </a>
-                                                        <a href="?toggle_status=<?php echo $contact['id']; ?>" 
-                                                           class="btn btn-sm btn-outline-warning" 
-                                                           title="<?php echo $contact['status'] == 'unread' ? 'Mark as Read' : 'Mark as Unread'; ?>"
-                                                           onclick="return confirm('Are you sure you want to mark this contact as <?php echo $contact['status'] == 'unread' ? 'read' : 'unread'; ?>?')">
-                                                            <i class="fas fa-<?php echo $contact['status'] == 'unread' ? 'check' : 'times'; ?>"></i>
-                                                        </a>
+                                                        <div class="btn-group" role="group">
+                                                            <button type="button" class="btn btn-sm btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                <i class="fas fa-tasks"></i>
+                                                            </button>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a class="dropdown-item" href="?toggle_status=<?php echo $contact['id']; ?>">Toggle Status</a></li>
+                                                            </ul>
+                                                        </div>
                                                         <a href="?delete=<?php echo $contact['id']; ?>" 
                                                            class="btn btn-sm btn-outline-danger" 
                                                            title="Delete"

@@ -21,24 +21,29 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
         $inquiry = $result->fetch_assoc();
 
         // Move to recycle bin
-        $recycle_sql = "INSERT INTO inquiries_recycle (inquiry_id, name, email, subject, message, deleted_at) VALUES (?, ?, ?, ?, ?, NOW())";
+        $recycle_sql = "INSERT INTO inquiries_recycle (inquiry_id, name, email, phone, course, message, status, deleted_at) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())";
         $recycle_stmt = $conn->prepare($recycle_sql);
-        $recycle_stmt->bind_param("issss", $id, $inquiry['name'], $inquiry['email'], $inquiry['subject'], $inquiry['message']);
-
-        if ($recycle_stmt->execute()) {
-            // Delete from main table
-            $delete_sql = "DELETE FROM inquiries WHERE id = ?";
-            $delete_stmt = $conn->prepare($delete_sql);
-            $delete_stmt->bind_param("i", $id);
-
-            if ($delete_stmt->execute()) {
-                logActivity($_SESSION['user_id'], 'Delete Inquiry', "Deleted inquiry from: {$inquiry['name']}");
-                $success = "Inquiry moved to recycle bin successfully!";
-            } else {
-                $error = "Failed to delete inquiry!";
-            }
+        
+        if (!$recycle_stmt) {
+            $error = "Prepare failed: " . $conn->error . " - Please run setup: control-dashboard/inquiries/setup-recycle-table.php";
         } else {
-            $error = "Failed to move inquiry to recycle bin!";
+            $recycle_stmt->bind_param("issssss", $id, $inquiry['name'], $inquiry['email'], $inquiry['phone'], $inquiry['course'], $inquiry['message'], $inquiry['status']);
+
+            if ($recycle_stmt->execute()) {
+                // Delete from main table
+                $delete_sql = "DELETE FROM inquiries WHERE id = ?";
+                $delete_stmt = $conn->prepare($delete_sql);
+                $delete_stmt->bind_param("i", $id);
+
+                if ($delete_stmt->execute()) {
+                    logActivity($_SESSION['user_id'], 'Delete Inquiry', "Deleted inquiry from: {$inquiry['name']}");
+                    $success = "Inquiry moved to recycle bin successfully!";
+                } else {
+                    $error = "Failed to delete inquiry!";
+                }
+            } else {
+                $error = "Failed to move inquiry to recycle bin: " . $recycle_stmt->error;
+            }
         }
     } else {
         $error = "Inquiry not found!";
@@ -48,7 +53,7 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
 // Handle status toggle
 if (isset($_GET['toggle_status']) && is_numeric($_GET['toggle_status'])) {
     $id = (int)$_GET['toggle_status'];
-    $sql = "UPDATE inquiries SET status = CASE WHEN status = 'unread' THEN 'read' ELSE 'unread' END WHERE id = ?";
+    $sql = "UPDATE inquiries SET status = CASE WHEN status = 'new' THEN 'read' WHEN status = 'read' THEN 'new' ELSE status END WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id);
 
@@ -70,10 +75,10 @@ $params = [];
 $param_types = '';
 
 if (!empty($search)) {
-    $where_conditions[] = "(name LIKE ? OR email LIKE ? OR subject LIKE ? OR message LIKE ?)";
+    $where_conditions[] = "(name LIKE ? OR email LIKE ? OR phone LIKE ? OR course LIKE ? OR message LIKE ?)";
     $search_param = "%$search%";
-    $params = array_merge($params, [$search_param, $search_param, $search_param, $search_param]);
-    $param_types .= 'ssss';
+    $params = array_merge($params, [$search_param, $search_param, $search_param, $search_param, $search_param]);
+    $param_types .= 'sssss';
 }
 
 if (!empty($status_filter)) {
@@ -136,7 +141,7 @@ logActivity($_SESSION['user_id'], 'View Inquiries', 'Viewed inquiries management
             <?php include '../includes/header.php'; ?>
             <div class="content">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2><i class="fas fa-question-circle me-2"></i>Manage Inquiries</h2>
+                    <h2><i class="fas fa-comment-dots me-2"></i>Manage Inquiries</h2>
                     <div>
                         <span class="badge bg-primary me-2">Total: <?php echo $total_inquiries; ?></span>
                         <a href="recycle.php" class="btn btn-outline-secondary">
@@ -173,8 +178,10 @@ logActivity($_SESSION['user_id'], 'View Inquiries', 'Viewed inquiries management
                                 <label for="status" class="form-label">Status</label>
                                 <select class="form-select" id="status" name="status">
                                     <option value="">All Status</option>
-                                    <option value="unread" <?php echo $status_filter == 'unread' ? 'selected' : ''; ?>>Unread</option>
+                                    <option value="new" <?php echo $status_filter == 'new' ? 'selected' : ''; ?>>New</option>
                                     <option value="read" <?php echo $status_filter == 'read' ? 'selected' : ''; ?>>Read</option>
+                                    <option value="replied" <?php echo $status_filter == 'replied' ? 'selected' : ''; ?>>Replied</option>
+                                    <option value="closed" <?php echo $status_filter == 'closed' ? 'selected' : ''; ?>>Closed</option>
                                 </select>
                             </div>
                             <div class="col-md-3">
@@ -199,7 +206,7 @@ logActivity($_SESSION['user_id'], 'View Inquiries', 'Viewed inquiries management
                     <div class="card-body">
                         <?php if (empty($inquiries)): ?>
                             <div class="text-center py-5">
-                                <i class="fas fa-question-circle fa-3x text-muted mb-3"></i>
+                                <i class="fas fa-comment-dots fa-3x text-muted mb-3"></i>
                                 <h5 class="text-muted">No inquiries found</h5>
                                 <p class="text-muted">Inquiries from your website will appear here.</p>
                             </div>
@@ -211,7 +218,8 @@ logActivity($_SESSION['user_id'], 'View Inquiries', 'Viewed inquiries management
                                             <th width="50">S.No</th>
                                             <th>Name</th>
                                             <th>Email</th>
-                                            <th>Subject</th>
+                                            <th>Phone</th>
+                                            <th>Course</th>
                                             <th width="120">Status</th>
                                             <th width="150">Received</th>
                                             <th width="200">Actions</th>
@@ -219,7 +227,7 @@ logActivity($_SESSION['user_id'], 'View Inquiries', 'Viewed inquiries management
                                     </thead>
                                     <tbody>
                                         <?php foreach ($inquiries as $index => $inquiry): ?>
-                                            <tr class="<?php echo $inquiry['status'] == 'unread' ? 'table-warning' : ''; ?>">
+                                            <tr class="<?php echo $inquiry['status'] == 'new' ? 'table-warning' : ''; ?>">
                                                 <td><?php echo $offset + $index + 1; ?></td>
                                                 <td>
                                                     <strong><?php echo htmlspecialchars($inquiry['name']); ?></strong>
@@ -230,16 +238,22 @@ logActivity($_SESSION['user_id'], 'View Inquiries', 'Viewed inquiries management
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <span class="text-truncate d-inline-block" style="max-width: 200px;" 
-                                                          title="<?php echo htmlspecialchars($inquiry['subject']); ?>">
-                                                        <?php echo htmlspecialchars($inquiry['subject']); ?>
+                                                    <a href="tel:<?php echo htmlspecialchars($inquiry['phone']); ?>">
+                                                        <?php echo htmlspecialchars($inquiry['phone']); ?>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <span class="badge bg-info">
+                                                        <?php echo htmlspecialchars($inquiry['course']); ?>
                                                     </span>
                                                 </td>
                                                 <td>
                                                     <?php 
                                                     $status_badges = [
-                                                        'unread' => 'bg-warning',
-                                                        'read' => 'bg-success'
+                                                        'new' => 'bg-warning',
+                                                        'read' => 'bg-info',
+                                                        'replied' => 'bg-success',
+                                                        'closed' => 'bg-secondary'
                                                     ];
                                                     $badge_class = $status_badges[$inquiry['status']] ?? 'bg-secondary';
                                                     ?>
@@ -255,21 +269,18 @@ logActivity($_SESSION['user_id'], 'View Inquiries', 'Viewed inquiries management
                                                 <td>
                                                     <div class="btn-group" role="group">
                                                         <a href="view.php?id=<?php echo $inquiry['id']; ?>" 
-                                                           class="btn btn-sm btn-outline-primary" 
+                                                           class="btn btn-sm btn-outline-info" 
                                                            title="View Details">
                                                             <i class="fas fa-eye"></i>
                                                         </a>
-                                                        <a href="mailto:<?php echo htmlspecialchars($inquiry['email']); ?>" 
-                                                           class="btn btn-sm btn-outline-info" 
-                                                           title="Reply">
-                                                            <i class="fas fa-reply"></i>
-                                                        </a>
-                                                        <a href="?toggle_status=<?php echo $inquiry['id']; ?>" 
-                                                           class="btn btn-sm btn-outline-warning" 
-                                                           title="<?php echo $inquiry['status'] == 'unread' ? 'Mark as Read' : 'Mark as Unread'; ?>"
-                                                           onclick="return confirm('Are you sure you want to change the status of this inquiry?')">
-                                                            <i class="fas fa-<?php echo $inquiry['status'] == 'unread' ? 'check' : 'undo'; ?>"></i>
-                                                        </a>
+                                                        <div class="btn-group" role="group">
+                                                            <button type="button" class="btn btn-sm btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                <i class="fas fa-tasks"></i>
+                                                            </button>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a class="dropdown-item" href="?toggle_status=<?php echo $inquiry['id']; ?>">Toggle Status</a></li>
+                                                            </ul>
+                                                        </div>
                                                         <a href="?delete=<?php echo $inquiry['id']; ?>" 
                                                            class="btn btn-sm btn-outline-danger" 
                                                            title="Delete"

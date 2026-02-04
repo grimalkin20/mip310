@@ -20,10 +20,10 @@ if (isset($_GET['restore']) && is_numeric($_GET['restore'])) {
     if ($result->num_rows == 1) {
         $inquiry = $result->fetch_assoc();
 
-        // Restore to main table
-        $restore_sql = "INSERT INTO inquiries (inquiry_id, name, email, subject, message, status, created_at) VALUES (?, ?, ?, ?, ?, 'read', NOW())";
+        // Restore to main table with all fields
+        $restore_sql = "INSERT INTO inquiries (name, email, phone, course, message, status, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, NOW(), NOW())";
         $restore_stmt = $conn->prepare($restore_sql);
-        $restore_stmt->bind_param("issss", $inquiry['inquiry_id'], $inquiry['name'], $inquiry['email'], $inquiry['subject'], $inquiry['message']);
+        $restore_stmt->bind_param("ssssss", $inquiry['name'], $inquiry['email'], $inquiry['phone'], $inquiry['course'], $inquiry['message'], $inquiry['status']);
 
         if ($restore_stmt->execute()) {
             // Delete from recycle bin
@@ -140,7 +140,7 @@ logActivity($_SESSION['user_id'], 'View Recycle Bin', 'Viewed inquiries recycle 
                                             <th width="50">S.No</th>
                                             <th>Name</th>
                                             <th>Email</th>
-                                            <th>Subject</th>
+                                            <th>Course</th>
                                             <th width="120">Days Left</th>
                                             <th width="150">Deleted</th>
                                             <th width="200">Actions</th>
@@ -159,9 +159,8 @@ logActivity($_SESSION['user_id'], 'View Recycle Bin', 'Viewed inquiries recycle 
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <span class="text-truncate d-inline-block" style="max-width: 200px;" 
-                                                          title="<?php echo htmlspecialchars($inquiry['subject']); ?>">
-                                                        <?php echo htmlspecialchars($inquiry['subject']); ?>
+                                                    <span class="badge bg-info">
+                                                        <?php echo htmlspecialchars($inquiry['course']); ?>
                                                     </span>
                                                 </td>
                                                 <td>

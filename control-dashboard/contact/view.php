@@ -31,8 +31,8 @@ if ($result->num_rows != 1) {
 
 $contact = $result->fetch_assoc();
 
-// Mark as read if unread
-if ($contact['status'] == 'unread') {
+// Mark as read if new
+if ($contact['status'] == 'new') {
     $update_sql = "UPDATE contacts SET status = 'read' WHERE id = ?";
     $update_stmt = $conn->prepare($update_sql);
     $update_stmt->bind_param("i", $id);
@@ -102,13 +102,11 @@ logActivity($_SESSION['user_id'], 'View Contact', "Viewed contact from: {$contac
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label fw-bold">Status</label>
-                                    <div>
-                                        <?php if ($contact['status'] == 'unread'): ?>
-                                            <span class="badge bg-warning">Unread</span>
-                                        <?php else: ?>
-                                            <span class="badge bg-success">Read</span>
-                                        <?php endif; ?>
+                                    <label class="form-label fw-bold">Phone</label>
+                                    <div class="form-control-plaintext">
+                                        <a href="tel:<?php echo htmlspecialchars($contact['phone']); ?>">
+                                            <?php echo htmlspecialchars($contact['phone']); ?>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -117,17 +115,28 @@ logActivity($_SESSION['user_id'], 'View Contact', "Viewed contact from: {$contac
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label fw-bold">Received</label>
-                                    <div class="form-control-plaintext">
-                                        <?php echo formatDate($contact['created_at']); ?>
+                                    <label class="form-label fw-bold">Status</label>
+                                    <div>
+                                        <?php 
+                                        $status_badges = [
+                                            'new' => 'bg-warning',
+                                            'read' => 'bg-info',
+                                            'replied' => 'bg-success',
+                                            'closed' => 'bg-secondary'
+                                        ];
+                                        $badge_class = $status_badges[$contact['status']] ?? 'bg-secondary';
+                                        ?>
+                                        <span class="badge <?php echo $badge_class; ?>">
+                                            <?php echo ucfirst($contact['status']); ?>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label fw-bold">IP Address</label>
+                                    <label class="form-label fw-bold">Received</label>
                                     <div class="form-control-plaintext">
-                                        <code><?php echo htmlspecialchars($contact['ip_address']); ?></code>
+                                        <?php echo formatDate($contact['created_at']); ?>
                                     </div>
                                 </div>
                             </div>

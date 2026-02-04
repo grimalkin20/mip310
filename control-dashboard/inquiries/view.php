@@ -29,8 +29,8 @@ if ($result->num_rows != 1) {
 
 $inquiry = $result->fetch_assoc();
 
-// Mark as read if unread
-if ($inquiry['status'] == 'unread') {
+// Mark as read if new
+if ($inquiry['status'] == 'new') {
     $update_sql = "UPDATE inquiries SET status = 'read' WHERE id = ?";
     $update_stmt = $conn->prepare($update_sql);
     $update_stmt->bind_param("i", $id);
@@ -66,7 +66,7 @@ logActivity($_SESSION['user_id'], 'View Inquiry', "Viewed inquiry from: {$inquir
             <?php include '../includes/header.php'; ?>
             <div class="content">
                 <div class="d-flex justify-content-between align-items-center mb-4 no-print">
-                    <h2><i class="fas fa-question-circle me-2"></i>View Inquiry</h2>
+                    <h2><i class="fas fa-comment-dots me-2"></i>View Inquiry</h2>
                     <div class="btn-group">
                         <button onclick="window.print()" class="btn btn-outline-primary">
                             <i class="fas fa-print me-2"></i>Print Inquiry
@@ -84,13 +84,15 @@ logActivity($_SESSION['user_id'], 'View Inquiry', "Viewed inquiry from: {$inquir
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <h5 class="mb-0">
-                                <i class="fas fa-question-circle me-2"></i>Inquiry Details
+                                <i class="fas fa-comment-dots me-2"></i>Inquiry Details
                             </h5>
                             <div class="no-print">
                                 <?php 
                                 $status_badges = [
-                                    'unread' => 'bg-warning',
-                                    'read' => 'bg-success'
+                                    'new' => 'bg-warning',
+                                    'read' => 'bg-info',
+                                    'replied' => 'bg-success',
+                                    'closed' => 'bg-secondary'
                                 ];
                                 $badge_class = $status_badges[$inquiry['status']] ?? 'bg-secondary';
                                 ?>
@@ -118,8 +120,16 @@ logActivity($_SESSION['user_id'], 'View Inquiry', "Viewed inquiry from: {$inquir
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Subject:</strong></td>
-                                        <td><?php echo htmlspecialchars($inquiry['subject']); ?></td>
+                                        <td><strong>Phone:</strong></td>
+                                        <td>
+                                            <a href="tel:<?php echo htmlspecialchars($inquiry['phone']); ?>">
+                                                <?php echo htmlspecialchars($inquiry['phone']); ?>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Course:</strong></td>
+                                        <td><span class="badge bg-info"><?php echo htmlspecialchars($inquiry['course']); ?></span></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Received:</strong></td>
@@ -148,9 +158,9 @@ logActivity($_SESSION['user_id'], 'View Inquiry', "Viewed inquiry from: {$inquir
 
                         <div class="row">
                             <div class="col-12">
-                                <h6 class="text-primary mb-3">Message</h6>
+                                <h6 class="text-primary mb-3">Inquiry Message</h6>
                                 <div class="alert alert-light">
-                                    <?php echo nl2br(htmlspecialchars($inquiry['message'])); ?>
+                                    <p><?php echo nl2br(htmlspecialchars($inquiry['message'])); ?></p>
                                 </div>
                             </div>
                         </div>

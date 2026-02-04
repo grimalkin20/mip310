@@ -371,25 +371,61 @@
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="bg-white rounded shadow p-4 h-100">
                         <h5 class="mb-3"><i class="fas fa-paper-plane me-2"></i>Send Us a Message</h5>
-                        <form>
+                        <form class="contact-form">
                             <div class="mb-3">
-                                <label for="name" class="form-label">Your Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                                <label for="contact-name" class="form-label">Your Name</label>
+                                <input type="text" class="form-control" id="contact-name" name="name" placeholder="Enter your name" required>
                             </div>
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                                <label for="contact-email" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="contact-email" name="email" placeholder="Enter your email" required>
                             </div>
                             <div class="mb-3">
-                                <label for="phone" class="form-label">Phone</label>
-                                <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+                                <label for="contact-phone" class="form-label">Phone</label>
+                                <input type="tel" class="form-control" id="contact-phone" name="phone" placeholder="Enter your phone number">
                             </div>
                             <div class="mb-3">
-                                <label for="message" class="form-label">Message</label>
-                                <textarea class="form-control" id="message" rows="4" placeholder="Type your message here" required></textarea>
+                                <label for="contact-subject" class="form-label">Subject</label>
+                                <input type="text" class="form-control" id="contact-subject" name="subject" placeholder="Enter subject" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contact-message" class="form-label">Message</label>
+                                <textarea class="form-control" id="contact-message" name="message" rows="4" placeholder="Type your message here" required></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Send Message</button>
                         </form>
+                        <script>
+                            document.querySelector('.contact-form').addEventListener('submit', function(e) {
+                                e.preventDefault();
+                                
+                                const formData = new FormData(this);
+                                const data = {
+                                    name: formData.get('name'),
+                                    email: formData.get('email'),
+                                    phone: formData.get('phone'),
+                                    subject: formData.get('subject'),
+                                    message: formData.get('message')
+                                };
+                                
+                                fetch('control-dashboard/api/save-contact.php', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(data)
+                                })
+                                .then(response => response.json())
+                                .then(result => {
+                                    if(result.success) {
+                                        alert('Thank you! Your message has been sent successfully.');
+                                        document.querySelector('.contact-form').reset();
+                                    } else {
+                                        alert('Error: ' + result.message);
+                                    }
+                                })
+                                .catch(error => console.error('Error:', error));
+                            });
+                        </script>
                     </div>
                 </div>
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">

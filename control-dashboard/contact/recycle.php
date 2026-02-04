@@ -20,10 +20,10 @@ if (isset($_GET['restore']) && is_numeric($_GET['restore'])) {
     if ($result->num_rows == 1) {
         $contact = $result->fetch_assoc();
 
-        // Restore to main table
-        $restore_sql = "INSERT INTO contacts (contact_id, name, email, subject, message, status, created_at) VALUES (?, ?, ?, ?, ?, 'unread', NOW())";
+        // Restore to main table with all fields including phone
+        $restore_sql = "INSERT INTO contacts (name, email, phone, subject, message, status, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, NOW(), NOW())";
         $restore_stmt = $conn->prepare($restore_sql);
-        $restore_stmt->bind_param("issss", $contact['contact_id'], $contact['name'], $contact['email'], $contact['subject'], $contact['message']);
+        $restore_stmt->bind_param("ssssss", $contact['name'], $contact['email'], $contact['phone'], $contact['subject'], $contact['message'], $contact['status']);
 
         if ($restore_stmt->execute()) {
             // Delete from recycle bin
