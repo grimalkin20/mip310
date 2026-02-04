@@ -361,17 +361,14 @@
                     <div class="message-card h-100" style="min-height: 400px;">
                         <h4 class="mb-2"><i class="fas fa-bullhorn me-2"></i>Notice</h4>
                         <div class="marquee-vertical">
-                            <marquee direction="up" scrollamount="2" onmouseover="this.stop()" onmouseout="this.start()"
-                                style="height: 300px;">
-
-                                <li><i class="fas fa-bullhorn me-2"></i>B. Pharm 2022-26 Sem-6, 2nd Sessional Exam
-                                    starts from 13/10/2025 <a href="exam-schedule.html">Learn more</a></li>
-                                <li><i class="fas fa-bullhorn me-2"></i>B. Pharm 2023-27 Sem-3, 2nd Sessional Exam
-                                    starts from 13/10/2025 <a href="exam-schedule.html">Learn more</a></li>
-                                <li><i class="fas fa-bullhorn me-2"></i>Classes will resume as per schedule from
-                                    16/10/2025</li>
-                                <li><i class="fas fa-bullhorn me-2"></i>M. Pharm Admission Open <a
-                                        href="admission.html">Learn More</a></li>
+                            <marquee id="noticeMarquee" direction="up" scrollamount="2" onmouseover="this.stop()"
+                                onmouseout="this.start()" style="height: 300px;">
+                                <!-- Content will be loaded dynamically -->
+                                <div class="text-center mt-5">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
                             </marquee>
                         </div>
                     </div>
@@ -380,13 +377,13 @@
                     <div class="message-card h-100" style="min-height: 400px;">
                         <h4 class="mb-2"><i class="fas fa-file-alt me-2"></i>Circular</h4>
                         <div class="marquee-vertical">
-                            <marquee direction="up" scrollamount="2" onmouseover="this.stop()" onmouseout="this.start()"
-                                style="height: 300px;">
-
-                                <li><i class="fas fa-file-alt me-2"></i>COVID-19 Guidelines for Campus</li>
-                                <li><i class="fas fa-file-alt me-2"></i>Mask & sanitization mandatory</li>
-                                <li><i class="fas fa-file-alt me-2"></i>Social distancing in classrooms</li>
-
+                            <marquee id="circularMarquee" direction="up" scrollamount="2" onmouseover="this.stop()"
+                                onmouseout="this.start()" style="height: 300px;">
+                                <div class="text-center mt-5">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
                             </marquee>
                         </div>
                     </div>
@@ -395,13 +392,13 @@
                     <div class="message-card h-100" style="min-height: 400px;">
                         <h4 class="mb-2"><i class="fas fa-clock me-2"></i>Update</h4>
                         <div class="marquee-vertical">
-                            <marquee direction="up" scrollamount="2" onmouseover="this.stop()" onmouseout="this.start()"
-                                style="height: 300px;">
-
-                                <li><i class="fas fa-clock me-2"></i>Library Timings Extended</li>
-                                <li><i class="fas fa-clock me-2"></i>Now open till 18:00 PM</li>
-                                <li><i class="fas fa-clock me-2"></i>New books added to reference section</li>
-
+                            <marquee id="updatesMarquee" direction="up" scrollamount="2" onmouseover="this.stop()"
+                                onmouseout="this.start()" style="height: 300px;">
+                                <div class="text-center mt-5">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
                             </marquee>
                         </div>
                     </div>
@@ -1048,6 +1045,139 @@
             // Initialize reporterFields visible by default
             reporterFields.style.display = '';
         })();
+    </script>
+    <!-- Announcement Detail Modal -->
+    <div class="modal fade" id="announcementModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="announcementModalTitle">Announcement</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="announcementModalContent"></div>
+                    <p class="text-muted small mt-3 border-top pt-2">
+                        <i class="far fa-clock me-1"></i> Posted on: <span id="announcementModalDate"></span>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fetch Notices/Announcements
+        document.addEventListener('DOMContentLoaded', function () {
+            const marqueeContainer = document.getElementById('noticeMarquee');
+
+            // Function to show modal (attached to window to be accessible from inline onclick)
+            window.showAnnouncement = function (title, content, date) {
+                document.getElementById('announcementModalTitle').textContent = title;
+                // Using innerHTML for content to allow basic formatting if present in DB
+                // Converting newlines to <br> for better display
+                document.getElementById('announcementModalContent').innerHTML = content.replace(/\n/g, '<br>');
+                document.getElementById('announcementModalDate').textContent = date;
+
+                const modal = new bootstrap.Modal(document.getElementById('announcementModal'));
+                modal.show();
+            };
+
+            fetch('control-dashboard/api/information-end.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.data.length > 0) {
+                        let html = '';
+                        data.data.forEach(item => {
+                            const dateObj = new Date(item.updated_at);
+                            const formattedDate = dateObj.toLocaleDateString('en-IN');
+
+                            // Escape quotes for the function call
+                            const safeTitle = item.title.replace(/'/g, "\\'").replace(/"/g, "&quot;");
+                            const safeContent = item.content ? item.content.replace(/'/g, "\\'").replace(/"/g, "&quot;").replace(/\r\n/g, "\\n").replace(/\n/g, "\\n") : '';
+
+                            html += `<li>
+                                <i class="fas fa-bullhorn me-2"></i>${item.title} 
+                                <small class="text-muted ms-1">(${formattedDate})</small> 
+                                <a href="#" class="text-primary ms-2 text-decoration-none" onclick="showAnnouncement('${safeTitle}', '${safeContent}', '${formattedDate}'); return false;">
+                                    Learn more
+                                </a>
+                            </li>`;
+                        });
+                        marqueeContainer.innerHTML = html;
+                    } else {
+                        marqueeContainer.innerHTML = '<li><i class="fas fa-info-circle me-2"></i>No new notices available at this time.</li>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching notices:', error);
+                    marqueeContainer.innerHTML = '<li><i class="fas fa-exclamation-triangle me-2"></i>Failed to load notices. Please refresh.</li>';
+                });
+            // Fetch Circulars
+            const circularMarquee = document.getElementById('circularMarquee');
+            fetch('control-dashboard/api/circular.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.data.length > 0) {
+                        let html = '';
+                        data.data.forEach(item => {
+                            const dateObj = new Date(item.updated_at);
+                            const formattedDate = dateObj.toLocaleDateString('en-IN');
+
+                            const safeTitle = item.title.replace(/'/g, "\\'").replace(/"/g, "&quot;");
+                            const safeContent = item.content ? item.content.replace(/'/g, "\\'").replace(/"/g, "&quot;").replace(/\r\n/g, "\\n").replace(/\n/g, "\\n") : '';
+
+                            html += `<li>
+                                <i class="fas fa-file-alt me-2"></i>${item.title} 
+                                <small class="text-muted ms-1">(${formattedDate})</small> 
+                                <a href="#" class="text-primary ms-2 text-decoration-none" onclick="showAnnouncement('${safeTitle}', '${safeContent}', '${formattedDate}'); return false;">
+                                    Learn more
+                                </a>
+                            </li>`;
+                        });
+                        circularMarquee.innerHTML = html;
+                    } else {
+                        circularMarquee.innerHTML = '<li><i class="fas fa-info-circle me-2"></i>No circulars available.</li>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching circulars:', error);
+                    circularMarquee.innerHTML = '<li><i class="fas fa-exclamation-triangle me-2"></i>Failed to load circulars.</li>';
+                });
+            // Fetch Updates
+            const updatesMarquee = document.getElementById('updatesMarquee');
+            fetch('control-dashboard/api/updates.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.data.length > 0) {
+                        let html = '';
+                        data.data.forEach(item => {
+                            const dateObj = new Date(item.updated_at);
+                            const formattedDate = dateObj.toLocaleDateString('en-IN');
+
+                            const safeTitle = item.title.replace(/'/g, "\\'").replace(/"/g, "&quot;");
+                            const safeContent = item.content ? item.content.replace(/'/g, "\\'").replace(/"/g, "&quot;").replace(/\r\n/g, "\\n").replace(/\n/g, "\\n") : '';
+
+                            html += `<li>
+                                <i class="fas fa-clock me-2"></i>${item.title} 
+                                <small class="text-muted ms-1">(${formattedDate})</small> 
+                                <a href="#" class="text-primary ms-2 text-decoration-none" onclick="showAnnouncement('${safeTitle}', '${safeContent}', '${formattedDate}'); return false;">
+                                    Learn more
+                                </a>
+                            </li>`;
+                        });
+                        updatesMarquee.innerHTML = html;
+                    } else {
+                        updatesMarquee.innerHTML = '<li><i class="fas fa-info-circle me-2"></i>No updates available.</li>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching updates:', error);
+                    updatesMarquee.innerHTML = '<li><i class="fas fa-exclamation-triangle me-2"></i>Failed to load updates.</li>';
+                });
+
+        });
     </script>
 </body>
 

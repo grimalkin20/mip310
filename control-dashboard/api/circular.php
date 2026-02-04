@@ -1,10 +1,12 @@
 <?php
 header('Content-Type: application/json');
 
+// this api endpoint is for Circular category inside the announcements table 
+
 // Include database configuration
 require_once "../config/database.php";
 
-$sql = "SELECT id, category_id, title, content, updated_at FROM announcements WHERE category_id != 3 ORDER BY updated_at DESC";
+$sql = "SELECT id, category_id, title, content, updated_at FROM announcements WHERE category_id = 5 ORDER BY updated_at DESC";
 $result = $conn->query($sql);
 
 if (!$result) {
@@ -19,7 +21,7 @@ while ($row = $result->fetch_assoc()) {
         'id' => (int) $row['id'],
         'category_id' => (int) $row['category_id'],
         'title' => $row['title'],
-        'content' => substr($row['content'], 0, 100),
+        'content' => $row['content'],
         'updated_at' => $row['updated_at'],
         'day' => date('d', strtotime($row['updated_at'])),
         'month' => date('M', strtotime($row['updated_at']))
