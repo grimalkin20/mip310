@@ -256,7 +256,7 @@ if (!function_exists('getAdminUrl')) {
         </div>
 
         <!-- Study Materials / Homework -->
-        <div class="nav-item">
+        <!-- <div class="nav-item">
             <a href="#" class="nav-link" data-bs-toggle="collapse" data-bs-target="#materialsSubmenu">
                 <i class="fas fa-book"></i>
                 <span>Study Materials / Homework</span>
@@ -275,12 +275,12 @@ if (!function_exists('getAdminUrl')) {
                         <span>Add Class</span>
                     </a>
                 </div>
-                <!-- <div class="nav-item ms-3">
+                <div class="nav-item ms-3">
                     <a href="<?php echo getAdminUrl('materials/section.php'); ?>" class="nav-link">
                         <i class="fas fa-plus"></i>
                         <span>Add Section</span>
                     </a>
-                </div> -->
+                </div>
                 <div class="nav-item ms-3">
                     <a href="<?php echo getAdminUrl('materials/subject.php'); ?>" class="nav-link">
                         <i class="fas fa-plus"></i>
@@ -312,7 +312,7 @@ if (!function_exists('getAdminUrl')) {
                     </a>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Announcements / News / Notice -->
         <div class="nav-item">
