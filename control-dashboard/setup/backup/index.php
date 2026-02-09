@@ -595,21 +595,21 @@ include "control-dashboard/connect.php";
                                 <div class="step-number">1</div>
                                 <div class="step-content">
                                     <h5>Online Registration</h5>
-                                    <p>Fill the online application form with required details</p>
+                                    <p>Fill the application form with required details</p>
                                 </div>
                             </div>
                             <div class="step">
                                 <div class="step-number">2</div>
                                 <div class="step-content">
                                     <h5>Document Submission</h5>
-                                    <p>Upload all required documents and certificates</p>
+                                    <p>Submit all required documents and certificates</p>
                                 </div>
                             </div>
                             <div class="step">
                                 <div class="step-number">3</div>
                                 <div class="step-content">
                                     <h5>Fee Payment</h5>
-                                    <p>Pay application fee through online mode</p>
+                                    <p>Pay application fee through online/offline mode</p>
                                 </div>
                             </div>
                             <div class="step">
@@ -1380,7 +1380,7 @@ include "control-dashboard/connect.php";
                             <i class="fas fa-phone"></i>
                         </div>
                         <h4>Phone</h4>
-                        <p>+91-9341512761<br>+91-8825315989<br>Office: 9341512763</p>
+                        <p>+91-9341512761<br>+91-7979735721<br>Office: 9341512763</p>
                     </div>
                 </div>
                 <div class="col-lg-4 mb-4" data-aos="fade-left">
@@ -1458,7 +1458,7 @@ include "control-dashboard/connect.php";
                                 </span>
                                 <span>
                                     +91-9341512761<br>
-                                    +91-8825315989
+                                    +91-7979735721
                                 </span>
                             </li>
                             <li class="footer-contact-item d-flex align-items-start">
