@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 04, 2026 at 11:30 AM
+-- Generation Time: Feb 09, 2026 at 05:42 AM
 -- Server version: 8.0.18
 -- PHP Version: 7.4.0
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `activity_logs` (
   PRIMARY KEY (`id`),
   KEY `idx_activity_logs_user_id` (`user_id`),
   KEY `idx_activity_logs_created_at` (`created_at`)
-) ENGINE=MyISAM AUTO_INCREMENT=1143 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=1156 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `activity_logs`
@@ -244,7 +244,20 @@ INSERT INTO `activity_logs` (`id`, `user_id`, `action`, `details`, `created_at`)
 (1139, 2, 'Dashboard Access', 'Accessed dashboard', '2026-02-04 11:23:42'),
 (1140, 2, 'Logout', 'User logged out', '2026-02-04 11:25:40'),
 (1141, 1, 'Dashboard Access', 'Accessed dashboard', '2026-02-04 11:25:46'),
-(1142, 1, 'Dashboard Access', 'Accessed dashboard', '2026-02-04 11:27:15');
+(1142, 1, 'Dashboard Access', 'Accessed dashboard', '2026-02-04 11:27:15'),
+(1143, 2, 'Dashboard Access', 'Accessed dashboard', '2026-02-09 04:05:45'),
+(1144, 2, 'Dashboard Access', 'Accessed dashboard', '2026-02-09 04:07:09'),
+(1145, 2, 'Add Gallery Category', 'Accessed add gallery category page', '2026-02-09 04:10:52'),
+(1146, 2, 'Add Gallery Category', 'Added category: pop-up-model', '2026-02-09 04:11:57'),
+(1147, 2, 'Add Gallery Category', 'Accessed add gallery category page', '2026-02-09 04:11:57'),
+(1148, 2, 'View Gallery Categories', 'Viewed gallery category management page', '2026-02-09 04:12:01'),
+(1149, 2, 'Add Gallery Category', 'Accessed add gallery category page', '2026-02-09 04:12:57'),
+(1150, 2, 'Add Gallery Category', 'Added category: TNP-Cell', '2026-02-09 04:13:44'),
+(1151, 2, 'Add Gallery Category', 'Accessed add gallery category page', '2026-02-09 04:13:44'),
+(1152, 2, 'Add Gallery Image', 'Accessed add gallery image page', '2026-02-09 04:15:10'),
+(1153, 2, 'Add Gallery Image', 'Added image: M.Pharm Admission Pop-up', '2026-02-09 04:15:38'),
+(1154, 2, 'Add Gallery Image', 'Accessed add gallery image page', '2026-02-09 04:15:38'),
+(1155, 2, 'View Gallery Images', 'Viewed gallery images management page', '2026-02-09 04:15:41');
 
 -- --------------------------------------------------------
 
@@ -565,14 +578,16 @@ CREATE TABLE IF NOT EXISTS `gallery_categories` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `gallery_categories`
 --
 
 INSERT INTO `gallery_categories` (`id`, `name`, `description`, `status`, `created_at`) VALUES
-(1, 'mip_college', 'test', 'active', '2025-09-26 04:08:11');
+(1, 'mip_college', 'This category is for overall gallery images.', 'active', '2025-09-26 04:08:11'),
+(2, 'pop-up-model', 'This category is for pop-up advertisement model on the home page.', 'active', '2026-02-09 04:11:57'),
+(3, 'TNP-Cell', 'This category is for training and placement cell images.', 'active', '2026-02-09 04:13:44');
 
 -- --------------------------------------------------------
 
@@ -620,7 +635,7 @@ CREATE TABLE IF NOT EXISTS `gallery_images` (
   PRIMARY KEY (`id`),
   KEY `idx_gallery_images_category_id` (`category_id`),
   KEY `idx_gallery_images_status` (`status`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `gallery_images`
@@ -629,7 +644,8 @@ CREATE TABLE IF NOT EXISTS `gallery_images` (
 INSERT INTO `gallery_images` (`id`, `category_id`, `name`, `image`, `description`, `status`, `created_at`) VALUES
 (3, 1, 'test', '69204bd80f4f5_1763724248.png', NULL, 'active', '2025-11-21 10:57:58'),
 (4, 1, 'mip test 2', '698224fd9afb3_1770136829.jpeg', NULL, 'active', '2026-02-03 16:40:29'),
-(5, 1, 'Main Campus', '6982f722c2295_1770190626.jpg', NULL, 'active', '2026-02-04 07:37:06');
+(5, 1, 'Main Campus', '6982f722c2295_1770190626.jpg', NULL, 'active', '2026-02-04 07:37:06'),
+(6, 2, 'M.Pharm Admission Pop-up', '69895f6a33bd4_1770610538.jpg', NULL, 'active', '2026-02-09 04:15:38');
 
 -- --------------------------------------------------------
 
@@ -1096,7 +1112,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `full_name`, `email`, `mobile_number`, `user_type`, `status`, `profile_image`, `last_login`, `created_at`) VALUES
 (1, 'admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Super Administrator', 'admin@adminpanel.com', NULL, 'super_user', 'active', NULL, '2026-02-04 16:55:46', '2025-08-04 08:36:00'),
-(2, 'test', '$2y$10$HIMS.eOvDkxb9LUJVfBbtOEusYfj8MlOpWwGS/XN9zpsDC1M7xVPO', 'jay', 'kr.himanshu@outlook.in', '07461007540', 'admin', 'active', NULL, '2026-02-04 16:53:42', '2025-08-04 08:40:41');
+(2, 'test', '$2y$10$HIMS.eOvDkxb9LUJVfBbtOEusYfj8MlOpWwGS/XN9zpsDC1M7xVPO', 'jay', 'kr.himanshu@outlook.in', '07461007540', 'admin', 'active', NULL, '2026-02-09 09:35:45', '2025-08-04 08:40:41');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
