@@ -328,102 +328,39 @@
     <!-- End of Navigation Menu -->
 
 
-    <section class="events-section py-5">
+    <section class="gallery-section py-5">
         <div class="container">
-            <div class="row mb-5">
-                <div class="col-12 text-center">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
                     <h2 class="section-title" data-aos="fade-up">Events</h2>
-                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Latest events and celebrations</p>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Explore our upcoming events</p>
                 </div>
             </div>
-
-            <span>Updating Soon... Thank you for visiting!</span>
-            <!-- <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                
-                <div class="col" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card h-100 shadow event-card">
-                        <img src="images/event-annualfest.jpg" class="card-img-top" alt="Annual Fest 2025" style="height:180px;object-fit:cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">Annual Fest 2025</h5>
-                            <p class="card-text mb-1"><i class="fas fa-calendar-alt me-2"></i>March 10-12, 2025</p>
-                            <p class="card-text">Music, dance, and cultural performances by students. Celebrity guest, food stalls, and fun activities for all.</p>
+            <div class="row gallery-grid">
+                <!-- Gallery images will be loaded dynamically from database -->
+                <div class="col-12 text-center py-5">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading events...</span>
+                    </div>
+                    <p class="mt-3 text-muted">Loading events...</p>  
+                </div>
+            </div>
+            <!-- Gallery Modal -->
+            <div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header border-0">
+                            <h5 class="modal-title" id="galleryModalLabel"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="card-footer bg-white border-0 text-end">
-                            <span class="badge bg-success">Cultural</span>
+                        <div class="modal-body text-center">
+                            <img id="galleryModalImg" src="" alt="" class="img-fluid rounded shadow">
+                            <p class="mt-3" id="galleryModalCaption"></p>
                         </div>
                     </div>
                 </div>
-                
-                <div class="col" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card h-100 shadow event-card">
-                        <img src="images/event-seminar.jpg" class="card-img-top" alt="Pharmacy Seminar" style="height:180px;object-fit:cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">Pharmacy Seminar</h5>
-                            <p class="card-text mb-1"><i class="fas fa-calendar-alt me-2"></i>April 5, 2025</p>
-                            <p class="card-text">Expert talks and workshops on pharmaceutical innovations, research poster presentations, and networking with industry leaders.</p>
-                        </div>
-                        <div class="card-footer bg-white border-0 text-end">
-                            <span class="badge bg-primary">Academic</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card h-100 shadow event-card">
-                        <img src="images/event-sports.jpg" class="card-img-top" alt="Sports Meet" style="height:180px;object-fit:cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">Sports Meet</h5>
-                            <p class="card-text mb-1"><i class="fas fa-calendar-alt me-2"></i>February 20-22, 2025</p>
-                            <p class="card-text">Inter-departmental sports competitions, athletics, and games. Prizes for winners and spirited participation.</p>
-                        </div>
-                        <div class="card-footer bg-white border-0 text-end">
-                            <span class="badge bg-warning text-dark">Sports</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col" data-aos="fade-up" data-aos-delay="400">
-                    <div class="card h-100 shadow event-card">
-                        <img src="images/event-healthcamp.jpg" class="card-img-top" alt="Health Camp" style="height:180px;object-fit:cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">Health Awareness Camp</h5>
-                            <p class="card-text mb-1"><i class="fas fa-calendar-alt me-2"></i>January 15, 2025</p>
-                            <p class="card-text">Free health check-ups, blood donation drive, and awareness sessions for students and staff.</p>
-                        </div>
-                        <div class="card-footer bg-white border-0 text-end">
-                            <span class="badge bg-danger">Health</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col" data-aos="fade-up" data-aos-delay="500">
-                    <div class="card h-100 shadow event-card">
-                        <img src="images/event-orientation.jpg" class="card-img-top" alt="Orientation Program" style="height:180px;object-fit:cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">Orientation Program</h5>
-                            <p class="card-text mb-1"><i class="fas fa-calendar-alt me-2"></i>August 1, 2025</p>
-                            <p class="card-text">Welcome and induction for new students, campus tour, and interaction with faculty and seniors.</p>
-                        </div>
-                        <div class="card-footer bg-white border-0 text-end">
-                            <span class="badge bg-info text-dark">Student</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col" data-aos="fade-up" data-aos-delay="600">
-                    <div class="card h-100 shadow event-card">
-                        <img src="images/event-alumni.jpg" class="card-img-top" alt="Alumni Meet" style="height:180px;object-fit:cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">Alumni Meet</h5>
-                            <p class="card-text mb-1"><i class="fas fa-calendar-alt me-2"></i>December 10, 2025</p>
-                            <p class="card-text">Reunion of past graduates, networking, and sharing success stories with current students.</p>
-                        </div>
-                        <div class="card-footer bg-white border-0 text-end">
-                            <span class="badge bg-secondary">Alumni</span>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+            </div>
         </div>
     </section>
 
@@ -587,5 +524,99 @@
             if (loader) loader.style.display = 'none';
         });
     </script>
+
+    
+<script>
+    // Fetch gallery images from API
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log('Fetching gallery images...');
+
+        // Fetch Gallery Images
+        fetch('/mip310/control-dashboard/api/events-end.php')
+            .then(response => {
+                console.log('Events API Response status:', response.status);
+                if (!response.ok) {
+                    throw new Error('Events API error: ' + response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Events data received:', data);
+                const galleryGrid = document.querySelector('.gallery-grid');
+
+                // Clear loading spinner
+                galleryGrid.innerHTML = '';
+
+                if (data.success && data.data && data.data.length > 0) {
+                    // Add images from database
+                    data.data.forEach((image, index) => {
+                        const delay = (index % 6) * 100 + 100; // Stagger animations
+                        const imageHTML = `
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="${delay}">
+                            <div class="gallery-item" data-bs-toggle="modal" data-img="${image.image_url}" data-title="${image.name}" data-caption="${image.description || ''}">
+                                <img src="${image.image_url}" alt="${image.name}" class="img-fluid">
+                                <div class="gallery-overlay">
+                                    <h4>${image.name}</h4>
+                                    <p>${image.description || 'View Image'}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                        galleryGrid.innerHTML += imageHTML;
+                    });
+
+                    // Re-initialize lightbox modal logic for dynamically loaded images
+                    initializeLightbox();
+
+                    console.log('Gallery images loaded successfully');
+                } else {
+                    // No images found in database
+                    galleryGrid.innerHTML = `
+                        <div class="col-12 text-center py-5">
+                            <i class="fas fa-images fa-4x text-muted mb-3"></i>
+                            <h4 class="text-muted">No Gallery Images Available</h4>
+                            <p class="text-muted">Images will be displayed here once they are added to the gallery.</p>
+                        </div>
+                    `;
+                    console.warn('No gallery images found:', data);
+                }
+            })
+            .catch(error => {
+                console.error('Error loading gallery images:', error);
+                const galleryGrid = document.querySelector('.gallery-grid');
+                galleryGrid.innerHTML = `
+                    <div class="col-12 text-center py-5">
+                        <i class="fas fa-exclamation-triangle fa-4x text-danger mb-3"></i>
+                        <h4 class="text-danger">Error Loading Gallery</h4>
+                        <p class="text-muted">Unable to load gallery images. Please try again later.</p>
+                    </div>
+                `;
+            });
+    });
+
+    // Lightbox modal logic
+    function initializeLightbox() {
+        var galleryItems = document.querySelectorAll('.gallery-item');
+        var modalImg = document.getElementById('galleryModalImg');
+        var modalTitle = document.getElementById('galleryModalLabel');
+        var modalCaption = document.getElementById('galleryModalCaption');
+
+        galleryItems.forEach(function (item) {
+            item.addEventListener('click', function () {
+                var img = item.getAttribute('data-img');
+                var title = item.getAttribute('data-title');
+                var caption = item.getAttribute('data-caption');
+                modalImg.src = img;
+                modalTitle.textContent = title;
+                modalCaption.textContent = caption;
+
+                // Show the modal
+                var galleryModal = new bootstrap.Modal(document.getElementById('galleryModal'));
+                galleryModal.show();
+            });
+        });
+    }
+</script>
+    
 </body>
 </html>
