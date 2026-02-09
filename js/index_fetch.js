@@ -110,12 +110,26 @@ document.addEventListener('DOMContentLoaded', function () {
                             </div>
                             <div class="news-content">
                                 <h4>${item.title}</h4>
-                                <p>${item.content}...</p>
+                                <p>${item.content}... <a href="information.html">Read More</a></p>
                             </div>
                         </div>
                     `;
                     newsCarousel.innerHTML += newsHTML;
                 });
+                /* Duplicate only when content overflows, so short lists don't show twice */
+                const newsWrap = newsCarousel.closest('.marquee-y-wrap');
+                const newsInner = newsCarousel.parentElement;
+                if (newsWrap && newsInner) {
+                    const wrapHeight = newsWrap.clientHeight;
+                    const contentHeight = newsCarousel.scrollHeight;
+                    if (contentHeight > wrapHeight) {
+                        const newsClone = newsCarousel.cloneNode(true);
+                        newsClone.id = '';
+                        newsClone.setAttribute('aria-hidden', 'true');
+                        newsInner.appendChild(newsClone);
+                        newsWrap.setAttribute('data-marquee-active', 'true');
+                    }
+                }
                 console.log('Announcements loaded successfully');
             }
         })
@@ -145,6 +159,20 @@ document.addEventListener('DOMContentLoaded', function () {
                     `;
                     noticeBoard.innerHTML += noticeHTML;
                 });
+                /* Duplicate only when content overflows, so short lists don't show twice */
+                const noticeWrap = noticeBoard.closest('.marquee-y-wrap');
+                const noticeInner = noticeBoard.parentElement;
+                if (noticeWrap && noticeInner) {
+                    const wrapHeight = noticeWrap.clientHeight;
+                    const contentHeight = noticeBoard.scrollHeight;
+                    if (contentHeight > wrapHeight) {
+                        const noticeClone = noticeBoard.cloneNode(true);
+                        noticeClone.id = '';
+                        noticeClone.setAttribute('aria-hidden', 'true');
+                        noticeInner.appendChild(noticeClone);
+                        noticeWrap.setAttribute('data-marquee-active', 'true');
+                    }
+                }
                 console.log('Notices loaded successfully');
             }
         })

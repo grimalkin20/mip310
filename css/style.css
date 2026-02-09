@@ -1910,6 +1910,51 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 8px 25px var(--shadow-color);
 }
 
+/* Vertical marquee (Y-axis) for News & Notices */
+.marquee-y-wrap {
+    overflow: hidden;
+    max-height: 420px;
+}
+
+.marquee-y-wrap.news-marquee {
+    max-height: 450px;
+}
+
+.marquee-y-wrap.notice-marquee {
+    max-height: 380px;
+}
+
+.marquee-y-inner {
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
+}
+
+.marquee-y-wrap[data-marquee-active="true"] .marquee-y-inner {
+    animation: marqueeY 35s linear infinite;
+}
+
+.marquee-y-wrap.notice-marquee[data-marquee-active="true"] .marquee-y-inner {
+    animation-duration: 40s;
+}
+
+.marquee-y-wrap:hover .marquee-y-inner {
+    animation-play-state: paused;
+}
+
+@keyframes marqueeY {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+.marquee-y-track {
+    flex-shrink: 0;
+}
+
 .notice-item {
     display: flex;
     align-items: flex-start;

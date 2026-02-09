@@ -4,7 +4,7 @@ header('Content-Type: application/json');
 // Include database configuration
 require_once "../config/database.php";
 
-$sql = "SELECT id, category_id, title, content, updated_at FROM announcements WHERE category_id != 3 ORDER BY updated_at DESC";
+$sql = "SELECT id, category_id, title, content, updated_at FROM announcements WHERE category_id != 3 ORDER BY updated_at DESC LIMIT 10";
 $result = $conn->query($sql);
 
 if (!$result) {
