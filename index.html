@@ -1433,6 +1433,41 @@
 
     <!-- Custom JS -->
     <script src="js/script.js"></script>
+
+    <script>
+        // Inquiry form submission logic (if applicable)
+
+document.querySelector('.consultation-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    const data = {
+        name: formData.get('name') || document.querySelector('input[placeholder="Your Name"]').value,
+        email: formData.get('email') || document.querySelector('input[placeholder="Email Address"]').value,
+        phone: formData.get('phone') || document.querySelector('input[placeholder="Phone Number"]').value,
+        course: formData.get('course') || document.querySelector('select').value,
+        message: formData.get('message') || document.querySelector('textarea').value
+    };
+
+    fetch('control-dashboard/api/save-inquiry.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) {
+                alert('Thank you! Your inquiry has been submitted successfully.');
+                document.querySelector('.consultation-form').reset();
+            } else {
+                alert('Error: ' + result.message);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+});
+    </script>
 </body>
 
 </html>

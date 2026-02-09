@@ -1,6 +1,6 @@
 <?php
-// Include database connection
-include "connect.php";
+// Include database connection (use main dashboard config)
+require_once "../config/database.php";
 
 // Set header for JSON response
 header('Content-Type: application/json');

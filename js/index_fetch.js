@@ -186,104 +186,104 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Inquiry form submission logic (if applicable)
 
-document.querySelector('.consultation-form').addEventListener('submit', function (e) {
-    e.preventDefault();
+// document.querySelector('.consultation-form').addEventListener('submit', function (e) {
+//     e.preventDefault();
 
-    const formData = new FormData(this);
-    const data = {
-        name: formData.get('name') || document.querySelector('input[placeholder="Your Name"]').value,
-        email: formData.get('email') || document.querySelector('input[placeholder="Email Address"]').value,
-        phone: formData.get('phone') || document.querySelector('input[placeholder="Phone Number"]').value,
-        course: formData.get('course') || document.querySelector('select').value,
-        message: formData.get('message') || document.querySelector('textarea').value
-    };
+//     const formData = new FormData(this);
+//     const data = {
+//         name: formData.get('name') || document.querySelector('input[placeholder="Your Name"]').value,
+//         email: formData.get('email') || document.querySelector('input[placeholder="Email Address"]').value,
+//         phone: formData.get('phone') || document.querySelector('input[placeholder="Phone Number"]').value,
+//         course: formData.get('course') || document.querySelector('select').value,
+//         message: formData.get('message') || document.querySelector('textarea').value
+//     };
 
-    fetch('control-dashboard/api/save-inquiry.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-        .then(response => response.json())
-        .then(result => {
-            if (result.success) {
-                alert('Thank you! Your inquiry has been submitted successfully.');
-                document.querySelector('.consultation-form').reset();
-            } else {
-                alert('Error: ' + result.message);
-            }
-        })
-        .catch(error => console.error('Error:', error));
-});
+//     fetch('control-dashboard/api/save-inquiry.php', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(data)
+//     })
+//         .then(response => response.json())
+//         .then(result => {
+//             if (result.success) {
+//                 alert('Thank you! Your inquiry has been submitted successfully.');
+//                 document.querySelector('.consultation-form').reset();
+//             } else {
+//                 alert('Error: ' + result.message);
+//             }
+//         })
+//         .catch(error => console.error('Error:', error));
+// });
 
 
 // ==========================================
 
 // Fetch gallery images from API
-document.addEventListener('DOMContentLoaded', function () {
-    console.log('Fetching gallery images...');
+// document.addEventListener('DOMContentLoaded', function () {
+//     console.log('Fetching gallery images...');
 
-    // Fetch Gallery Images
-    fetch('/mip310/control-dashboard/api/gallery.php')
-        .then(response => {
-            console.log('Gallery API Response status:', response.status);
-            if (!response.ok) {
-                throw new Error('Gallery API error: ' + response.status);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Gallery data received:', data);
-            const galleryGrid = document.querySelector('.gallery-grid');
+//     // Fetch Gallery Images
+//     fetch('/mip310/control-dashboard/api/gallery.php')
+//         .then(response => {
+//             console.log('Gallery API Response status:', response.status);
+//             if (!response.ok) {
+//                 throw new Error('Gallery API error: ' + response.status);
+//             }
+//             return response.json();
+//         })
+//         .then(data => {
+//             console.log('Gallery data received:', data);
+//             const galleryGrid = document.querySelector('.gallery-grid');
 
-            // Clear loading spinner
-            galleryGrid.innerHTML = '';
+//             // Clear loading spinner
+//             galleryGrid.innerHTML = '';
 
-            if (data.success && data.data && data.data.length > 0) {
-                // Add images from database
-                data.data.forEach((image, index) => {
-                    const delay = (index % 6) * 100 + 100; // Stagger animations
-                    const imageHTML = `
-                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="${delay}">
-                        <div class="gallery-item" data-bs-toggle="modal" data-img="${image.image_url}" data-title="${image.name}" data-caption="${image.description || ''}">
-                            <img src="${image.image_url}" alt="${image.name}" class="img-fluid">
-                            <div class="gallery-overlay">
-                                <h4>${image.name}</h4>
-                                <p>${image.description || 'View Image'}</p>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                    galleryGrid.innerHTML += imageHTML;
-                });
+//             if (data.success && data.data && data.data.length > 0) {
+//                 // Add images from database
+//                 data.data.forEach((image, index) => {
+//                     const delay = (index % 6) * 100 + 100; // Stagger animations
+//                     const imageHTML = `
+//                     <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="${delay}">
+//                         <div class="gallery-item" data-bs-toggle="modal" data-img="${image.image_url}" data-title="${image.name}" data-caption="${image.description || ''}">
+//                             <img src="${image.image_url}" alt="${image.name}" class="img-fluid">
+//                             <div class="gallery-overlay">
+//                                 <h4>${image.name}</h4>
+//                                 <p>${image.description || 'View Image'}</p>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 `;
+//                     galleryGrid.innerHTML += imageHTML;
+//                 });
 
-                // Re-initialize lightbox modal logic for dynamically loaded images
-                initializeLightbox();
+//                 // Re-initialize lightbox modal logic for dynamically loaded images
+//                 initializeLightbox();
 
-                console.log('Gallery images loaded successfully');
-            } else {
-                // No images found in database
-                galleryGrid.innerHTML = `
-                    <div class="col-12 text-center py-5">
-                        <i class="fas fa-images fa-4x text-muted mb-3"></i>
-                        <h4 class="text-muted">No Gallery Images Available</h4>
-                        <p class="text-muted">Images will be displayed here once they are added to the gallery.</p>
-                    </div>
-                `;
-                console.warn('No gallery images found:', data);
-            }
-        })
-        .catch(error => {
-            console.error('Error loading gallery images:', error);
-            const galleryGrid = document.querySelector('.gallery-grid');
-            galleryGrid.innerHTML = `
-                <div class="col-12 text-center py-5">
-                    <i class="fas fa-exclamation-triangle fa-4x text-danger mb-3"></i>
-                    <h4 class="text-danger">Error Loading Gallery</h4>
-                    <p class="text-muted">Unable to load gallery images. Please try again later.</p>
-                </div>
-            `;
-        });
-});
+//                 console.log('Gallery images loaded successfully');
+//             } else {
+//                 // No images found in database
+//                 galleryGrid.innerHTML = `
+//                     <div class="col-12 text-center py-5">
+//                         <i class="fas fa-images fa-4x text-muted mb-3"></i>
+//                         <h4 class="text-muted">No Gallery Images Available</h4>
+//                         <p class="text-muted">Images will be displayed here once they are added to the gallery.</p>
+//                     </div>
+//                 `;
+//                 console.warn('No gallery images found:', data);
+//             }
+//         })
+//         .catch(error => {
+//             console.error('Error loading gallery images:', error);
+//             const galleryGrid = document.querySelector('.gallery-grid');
+//             galleryGrid.innerHTML = `
+//                 <div class="col-12 text-center py-5">
+//                     <i class="fas fa-exclamation-triangle fa-4x text-danger mb-3"></i>
+//                     <h4 class="text-danger">Error Loading Gallery</h4>
+//                     <p class="text-muted">Unable to load gallery images. Please try again later.</p>
+//                 </div>
+//             `;
+//         });
+// });
 

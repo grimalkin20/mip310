@@ -12,8 +12,8 @@ function logToFile($message) {
 
 logToFile('=== New Form Submission ===');
 
-// Include database connection
-include "connect.php";
+// Include database connection (use main dashboard config)
+require_once "../config/database.php";
 
 // Set header for JSON response
 header('Content-Type: application/json');
@@ -117,13 +117,9 @@ if (!$stmt) {
 
 logToFile('Statement prepared successfully');
 
-// Bind parameters - handle NULL phone field
-$phoneForBind = $phone; // This will be NULL or a string
-if ($phone === NULL) {
-    $stmt->bind_param("ssnss", $name, $email, $phoneForBind, $subject, $message);
-} else {
-    $stmt->bind_param("sssss", $name, $email, $phone, $subject, $message);
-}
+// Bind parameters - allow NULL phone (MySQLi will handle NULL for string type)
+$phoneForBind = $phone; // NULL or string
+$stmt->bind_param("sssss", $name, $email, $phoneForBind, $subject, $message);
 
 logToFile('Parameters bound successfully');
 
