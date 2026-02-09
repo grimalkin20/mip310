@@ -7,7 +7,36 @@ requireLogin();
 
 $success = '';
 $error = '';
+$announcement = null;
 
+// Get announcement ID
+if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+    header("Location: manage.php");
+    exit();
+}
+
+$id = (int)$_GET['id'];
+
+// Get announcement data
+$sql = "SELECT * FROM announcements WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows != 1) {
+    header("Location: manage.php");
+    exit();
+}
+
+$announcement = $result->fetch_assoc();
+
+// Get all categories for dropdown
+$categories_sql = "SELECT * FROM announcement_categories ORDER BY name";
+$categories_result = $conn->query($categories_sql);
+$categories = $categories_result->fetch_all(MYSQLI_ASSOC);
+
+// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = sanitizeInput($_POST['title']);
     $category_id = (int)$_POST['category_id'];
@@ -20,35 +49,54 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } elseif (empty($content)) {
         $error = "Content is required!";
     } else {
-        $image = '';
+        $new_image_name = $announcement['announce_image'];
+        $update_image = false;
 
-        // Handle image upload if provided
+        // Handle new image upload (optional)
         if (isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
             // Save announcement images under ../uploads/materials/announcement
             $uploadResult = uploadFile($_FILES['image'], 'announcement', ['jpg', 'jpeg', 'png', 'gif']);
 
             if ($uploadResult['success']) {
-                $image = $uploadResult['filename'];
+                // Delete old image file if exists
+                if (!empty($announcement['announce_image'])) {
+                    $old_image_path = "../uploads/materials/announcement/" . $announcement['announce_image'];
+                    if (file_exists($old_image_path)) {
+                        unlink($old_image_path);
+                    }
+                }
+
+                $new_image_name = $uploadResult['filename'];
+                $update_image = true;
             } else {
                 $error = $uploadResult['message'];
             }
         }
 
         if (empty($error)) {
-            // Insert announcement with optional image; id is AUTO_INCREMENT, status defaults to 'active'
-            $sql = "INSERT INTO announcements (category_id, title, content, announce_image) VALUES (?, ?, ?, ?)";
+            // Update announcement (always write announce_image, keeping old if not changed)
+            $sql = "UPDATE announcements 
+                    SET category_id = ?, title = ?, content = ?, announce_image = ?, updated_at = NOW() 
+                    WHERE id = ?";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("isss", $category_id, $title, $content, $image);
+            $stmt->bind_param("isssi", $category_id, $title, $content, $new_image_name, $id);
 
             if ($stmt->execute()) {
-                logActivity($_SESSION['user_id'], 'Add Announcement', "Added announcement: $title");
-                $success = "Announcement added successfully!";
-                $title = '';
-                $category_id = '';
-                $content = '';
+                logActivity($_SESSION['user_id'], 'Edit Announcement', "Updated announcement: $title");
+                $success = "Announcement updated successfully!";
+
+                // Refresh announcement data
+                $sql = "SELECT * FROM announcements WHERE id = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("i", $id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $announcement = $result->fetch_assoc();
             } else {
-                $error = "Failed to save announcement to database!";
-                if (!empty($image)) {
+                $error = "Failed to update announcement!";
+
+                // If DB update failed and we uploaded a new image, delete that new file
+                if ($update_image && isset($uploadResult['path'])) {
                     deleteFile($uploadResult['path']);
                 }
             }
@@ -56,19 +104,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-// Get all categories for dropdown
-$categories_sql = "SELECT * FROM announcement_categories ORDER BY name";
-$categories_result = $conn->query($categories_sql);
-$categories = $categories_result->fetch_all(MYSQLI_ASSOC);
-
-logActivity($_SESSION['user_id'], 'Add Announcement', 'Accessed add announcement page');
+logActivity($_SESSION['user_id'], 'Edit Announcement', "Accessed edit page for announcement: {$announcement['title']}");
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Announcement - Admin Panel</title>
+    <title>Edit Announcement - Admin Panel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="<?php echo getAssetUrl('css/style.css'); ?>" rel="stylesheet">
@@ -80,7 +123,7 @@ logActivity($_SESSION['user_id'], 'Add Announcement', 'Accessed add announcement
             <?php include '../includes/header.php'; ?>
             <div class="content">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2><i class="fas fa-bullhorn me-2"></i>Add Announcement</h2>
+                    <h2><i class="fas fa-edit me-2"></i>Edit Announcement</h2>
                     <a href="manage.php" class="btn btn-outline-secondary">
                         <i class="fas fa-arrow-left me-2"></i>Back to Manage
                     </a>
@@ -102,7 +145,7 @@ logActivity($_SESSION['user_id'], 'Add Announcement', 'Accessed add announcement
 
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="mb-0"><i class="fas fa-plus me-2"></i>Add New Announcement</h5>
+                        <h5 class="mb-0"><i class="fas fa-edit me-2"></i>Edit Announcement: <?php echo htmlspecialchars($announcement['title']); ?></h5>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="" enctype="multipart/form-data" data-validate>
@@ -111,8 +154,7 @@ logActivity($_SESSION['user_id'], 'Add Announcement', 'Accessed add announcement
                                     <div class="mb-3">
                                         <label for="title" class="form-label">Title *</label>
                                         <input type="text" class="form-control" id="title" name="title" 
-                                               value="<?php echo isset($_POST['title']) ? htmlspecialchars($_POST['title']) : ''; ?>" 
-                                               required>
+                                               value="<?php echo htmlspecialchars($announcement['title']); ?>" required>
                                         <div class="form-text">Enter a descriptive title for this announcement.</div>
                                     </div>
                                 </div>
@@ -123,7 +165,7 @@ logActivity($_SESSION['user_id'], 'Add Announcement', 'Accessed add announcement
                                             <option value="">Select Category</option>
                                             <?php foreach ($categories as $category): ?>
                                                 <option value="<?php echo $category['id']; ?>" 
-                                                        <?php echo (isset($_POST['category_id']) && $_POST['category_id'] == $category['id']) ? 'selected' : ''; ?>>
+                                                    <?php echo ($announcement['category_id'] == $category['id']) ? 'selected' : ''; ?>>
                                                     <?php echo htmlspecialchars($category['name']); ?>
                                                 </option>
                                             <?php endforeach; ?>
@@ -137,24 +179,26 @@ logActivity($_SESSION['user_id'], 'Add Announcement', 'Accessed add announcement
                                 <div class="col-md-8">
                                     <div class="mb-3">
                                         <label for="content" class="form-label">Content *</label>
-                                        <textarea class="form-control" id="content" name="content" rows="8" required><?php echo isset($_POST['content']) ? htmlspecialchars($_POST['content']) : ''; ?></textarea>
+                                        <textarea class="form-control" id="content" name="content" rows="8" required><?php echo htmlspecialchars($announcement['content']); ?></textarea>
                                         <div class="form-text">Enter the announcement content.</div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <label for="image" class="form-label">Image (Optional)</label>
-                                        <input type="file" class="form-control" id="image" name="image" 
-                                               accept="image/*">
-                                        <div class="form-text">Upload an image for this announcement. Only JPG, JPEG, PNG, GIF allowed.</div>
+                                        <label class="form-label">Current Image</label>
+                                        <div class="mb-2">
+                                            <?php if (!empty($announcement['announce_image'])): ?>
+                                                <img src="<?php echo getUploadUrl('materials/announcement/' . $announcement['announce_image']); ?>" 
+                                                     alt="Announcement Image" 
+                                                     class="img-thumbnail" style="width: 120px; height: 80px; object-fit: cover;">
+                                            <?php else: ?>
+                                                <span class="text-muted">No image uploaded</span>
+                                            <?php endif; ?>
+                                        </div>
+                                        <label for="image" class="form-label">Change Image (Optional)</label>
+                                        <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                                        <div class="form-text">Upload a new image to replace the current one. JPG, JPEG, PNG, GIF only.</div>
                                     </div>
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <div class="alert alert-info">
-                                    <i class="fas fa-info-circle me-2"></i>
-                                    <strong>Note:</strong> Images are optional. If uploaded, they will be displayed with the announcement.
                                 </div>
                             </div>
 
@@ -165,7 +209,7 @@ logActivity($_SESSION['user_id'], 'Add Announcement', 'Accessed add announcement
                                     <i class="fas fa-arrow-left me-2"></i>Cancel
                                 </a>
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fas fa-plus me-2"></i>Add Announcement
+                                    <i class="fas fa-save me-2"></i>Update Announcement
                                 </button>
                             </div>
                         </form>
@@ -178,4 +222,5 @@ logActivity($_SESSION['user_id'], 'Add Announcement', 'Accessed add announcement
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo getAssetUrl('js/admin.js'); ?>"></script>
 </body>
-</html> 
+</html>
+

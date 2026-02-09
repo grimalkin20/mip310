@@ -25,7 +25,8 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
         // Move to recycle bin
         $recycle_sql = "INSERT INTO announcements_recycle (original_id, category_id, title, content, deleted_at) VALUES (?, ?, ?, ?, NOW())";
         $recycle_stmt = $conn->prepare($recycle_sql);
-        $recycle_stmt->bind_param("iiss", $announcemnet['id'], $announcement['category_id'], $announcement['title'], $announcement['content']);
+        // Use the fetched announcement row (correct variable name)
+        $recycle_stmt->bind_param("iiss", $announcement['id'], $announcement['category_id'], $announcement['title'], $announcement['content']);
 
         if ($recycle_stmt->execute()) {
             // Delete from main table
@@ -130,7 +131,7 @@ logActivity($_SESSION['user_id'], 'View Announcements', 'Viewed announcements ma
                                             <th width="50">S.No</th>
                                             <th>Title</th>
                                             <th width="120">Category</th>
-                                            <!-- <th width="100">Image</th> -->
+                                            <th width="100">Image</th>
                                             <th width="120">Status</th>
                                             <th width="150">Created</th>
                                             <th width="200">Actions</th>
@@ -147,15 +148,15 @@ logActivity($_SESSION['user_id'], 'View Announcements', 'Viewed announcements ma
                                                 <td>
                                                     <span class="badge bg-info"><?php echo htmlspecialchars($announcement['category_name']); ?></span>
                                                 </td>
-                                                <!-- <td>
-                                                    <?php if ($announcement['image']): ?>
-                                                        <img src="<?php echo getUploadUrl('announcements/' . $announcement['image']); ?>" 
+                                                <td>
+                                                    <?php if (!empty($announcement['announce_image'])): ?>
+                                                        <img src="<?php echo getUploadUrl('materials/announcement/' . $announcement['announce_image']); ?>" 
                                                              alt="Announcement Image" 
                                                              class="img-thumbnail" style="width: 60px; height: 40px; object-fit: cover;">
                                                     <?php else: ?>
                                                         <span class="text-muted">No image</span>
                                                     <?php endif; ?>
-                                                </td> -->
+                                                </td>
                                                 <td>
                                                     <?php echo getStatusBadge($announcement['status']); ?>
                                                 </td>

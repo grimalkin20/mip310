@@ -7,7 +7,10 @@ header('Content-Type: application/json');
 // Include database configuration
 require_once "../config/database.php";
 
-$sql = "SELECT id, category_id, title, content, updated_at FROM announcements WHERE category_id = 6 ORDER BY updated_at DESC";
+$sql = "SELECT id, category_id, title, content, announce_image, updated_at 
+        FROM announcements 
+        WHERE category_id = 6 AND status = 'active' 
+        ORDER BY updated_at DESC";
 $result = $conn->query($sql);
 
 if (!$result) {
@@ -18,11 +21,15 @@ if (!$result) {
 
 $announcements = [];
 while ($row = $result->fetch_assoc()) {
+    $image = $row['announce_image'] ?? null;
+
     $announcements[] = [
         'id' => (int) $row['id'],
         'category_id' => (int) $row['category_id'],
         'title' => $row['title'],
         'content' => $row['content'],
+        'announce_image' => $image,
+        'image_url' => $image ? '/mip310/control-dashboard/uploads/materials/announcement/' . $image : null,
         'updated_at' => $row['updated_at'],
         'day' => date('d', strtotime($row['updated_at'])),
         'month' => date('M', strtotime($row['updated_at']))

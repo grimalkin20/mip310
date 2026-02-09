@@ -1055,6 +1055,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div id="announcementModalImage" class="mb-3 text-center"></div>
                     <div id="announcementModalContent"></div>
                     <p class="text-muted small mt-3 border-top pt-2">
                         <i class="far fa-clock me-1"></i> Posted on: <span id="announcementModalDate"></span>
@@ -1073,8 +1074,23 @@
             const marqueeContainer = document.getElementById('noticeMarquee');
 
             // Function to show modal (attached to window to be accessible from inline onclick)
-            window.showAnnouncement = function (title, content, date) {
+            window.showAnnouncement = function (title, content, date, imageUrl) {
                 document.getElementById('announcementModalTitle').textContent = title;
+
+                // Show image + simple download link if available
+                const imageContainer = document.getElementById('announcementModalImage');
+                if (imageUrl) {
+                    imageContainer.innerHTML = `
+                        <img src="${imageUrl}" alt="${title}" class="img-fluid mb-2">
+                        <br>
+                        <a href="${imageUrl}" class="btn btn-sm btn-outline-primary mt-1" download>
+                            <i class="fas fa-download me-1"></i>Download Image
+                        </a>
+                    `;
+                } else {
+                    imageContainer.innerHTML = '';
+                }
+
                 // Using innerHTML for content to allow basic formatting if present in DB
                 // Converting newlines to <br> for better display
                 document.getElementById('announcementModalContent').innerHTML = content.replace(/\n/g, '<br>');
@@ -1096,11 +1112,12 @@
                             // Escape quotes for the function call
                             const safeTitle = item.title.replace(/'/g, "\\'").replace(/"/g, "&quot;");
                             const safeContent = item.content ? item.content.replace(/'/g, "\\'").replace(/"/g, "&quot;").replace(/\r\n/g, "\\n").replace(/\n/g, "\\n") : '';
+                            const safeImageUrl = (item.image_url || '').replace(/'/g, "\\'").replace(/"/g, "&quot;");
 
                             html += `<li>
                                 <i class="fas fa-bullhorn me-2"></i>${item.title} 
                                 <small class="text-muted ms-1">(${formattedDate})</small> 
-                                <a href="#" class="text-primary ms-2 text-decoration-none" onclick="showAnnouncement('${safeTitle}', '${safeContent}', '${formattedDate}'); return false;">
+                                <a href="#" class="text-primary ms-2 text-decoration-none" onclick="showAnnouncement('${safeTitle}', '${safeContent}', '${formattedDate}', '${safeImageUrl}'); return false;">
                                     Learn more
                                 </a>
                             </li>`;
@@ -1127,11 +1144,12 @@
 
                             const safeTitle = item.title.replace(/'/g, "\\'").replace(/"/g, "&quot;");
                             const safeContent = item.content ? item.content.replace(/'/g, "\\'").replace(/"/g, "&quot;").replace(/\r\n/g, "\\n").replace(/\n/g, "\\n") : '';
+                            const safeImageUrl = (item.image_url || '').replace(/'/g, "\\'").replace(/"/g, "&quot;");
 
                             html += `<li>
                                 <i class="fas fa-file-alt me-2"></i>${item.title} 
                                 <small class="text-muted ms-1">(${formattedDate})</small> 
-                                <a href="#" class="text-primary ms-2 text-decoration-none" onclick="showAnnouncement('${safeTitle}', '${safeContent}', '${formattedDate}'); return false;">
+                                <a href="#" class="text-primary ms-2 text-decoration-none" onclick="showAnnouncement('${safeTitle}', '${safeContent}', '${formattedDate}', '${safeImageUrl}'); return false;">
                                     Learn more
                                 </a>
                             </li>`;
@@ -1158,11 +1176,12 @@
 
                             const safeTitle = item.title.replace(/'/g, "\\'").replace(/"/g, "&quot;");
                             const safeContent = item.content ? item.content.replace(/'/g, "\\'").replace(/"/g, "&quot;").replace(/\r\n/g, "\\n").replace(/\n/g, "\\n") : '';
+                            const safeImageUrl = (item.image_url || '').replace(/'/g, "\\'").replace(/"/g, "&quot;");
 
                             html += `<li>
                                 <i class="fas fa-clock me-2"></i>${item.title} 
                                 <small class="text-muted ms-1">(${formattedDate})</small> 
-                                <a href="#" class="text-primary ms-2 text-decoration-none" onclick="showAnnouncement('${safeTitle}', '${safeContent}', '${formattedDate}'); return false;">
+                                <a href="#" class="text-primary ms-2 text-decoration-none" onclick="showAnnouncement('${safeTitle}', '${safeContent}', '${formattedDate}', '${safeImageUrl}'); return false;">
                                     Learn more
                                 </a>
                             </li>`;
