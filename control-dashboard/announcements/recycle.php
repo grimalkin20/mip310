@@ -82,14 +82,26 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
 }
 
 // Get all recycled announcements with category names
-$sql = "SELECT ar.*, ac.name as category_name, DATEDIFF(NOW(), ar.deleted_at) as days_in_bin
-        AND od.original_id as original
-        FROM announcements_recycle ar 
-        LEFT JOIN announcement_categories ac ON ar.category_id = ac.id 
-        AND LEFT JOIN announcement_categories ac ON ar.original_id = od.id
-        ORDER BY ar.deleted_at DESC";
+$sql = "
+SELECT 
+    ar.*,
+    ac.name AS category_name,
+    DATEDIFF(NOW(), IFNULL(ar.deleted_at, NOW())) AS days_in_bin,
+    ar.original_id AS original
+FROM announcements_recycle ar
+LEFT JOIN announcement_categories ac 
+    ON ar.category_id = ac.id
+ORDER BY ar.deleted_at DESC
+";
+
 $result = $conn->query($sql);
+
+if (!$result) {
+    die("SQL Error: " . $conn->error);
+}
+
 $recycled_announcements = $result->fetch_all(MYSQLI_ASSOC);
+
 
 logActivity($_SESSION['user_id'], 'View Recycle Bin', 'Viewed announcements recycle bin');
 ?>
