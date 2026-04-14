@@ -91,9 +91,9 @@ logActivity($_SESSION['user_id'], 'View Users', 'Viewed users management page');
 </head>
 <body data-theme="light">
     <div class="admin-layout">
-        <?php include $_SERVER['DOCUMENT_ROOT'] . '/mip310/control-dashboard/includes/sidebar.php'; ?>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . '/control-dashboard/includes/sidebar.php'; ?>
         <div class="main-content">
-            <?php include $_SERVER['DOCUMENT_ROOT'] . '/mip310/control-dashboard/includes/header.php'; ?>
+            <?php include $_SERVER['DOCUMENT_ROOT'] . '/control-dashboard/includes/header.php'; ?>
             <div class="content">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h2><i class="fas fa-users me-2"></i>Manage Users</h2>

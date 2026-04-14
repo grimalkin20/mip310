@@ -348,7 +348,7 @@ include "control-dashboard/connect.php";
             console.log('Page loaded, fetching data...');
             
             // Fetch Sliders
-            fetch('/mip310/control-dashboard/api/sliders.php')
+            fetch('/control-dashboard/api/sliders.php')
                 .then(response => {
                     console.log('Sliders API Response status:', response.status);
                     if (!response.ok) {
@@ -390,7 +390,7 @@ include "control-dashboard/connect.php";
                 .catch(error => console.error('Error loading sliders:', error));
 
             // Fetch Announcements/News
-            fetch('/mip310/control-dashboard/api/announcements.php')
+            fetch('/control-dashboard/api/announcements.php')
                 .then(response => {
                     if (!response.ok) throw new Error('News API error: ' + response.status);
                     return response.json();
@@ -422,7 +422,7 @@ include "control-dashboard/connect.php";
                 .catch(error => console.error('Error loading announcements:', error));
 
             // Fetch Notices
-            fetch('/mip310/control-dashboard/api/notices.php')
+            fetch('/control-dashboard/api/notices.php')
                 .then(response => {
                     if (!response.ok) throw new Error('Notices API error: ' + response.status);
                     return response.json();

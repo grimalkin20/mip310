@@ -81,9 +81,9 @@ logActivity($_SESSION['user_id'], 'Add User', 'Accessed add user page');
 </head>
 <body data-theme="light">
             <div class="admin-layout">
-            <?php include $_SERVER['DOCUMENT_ROOT'] . '/mip310/control-dashboard/includes/sidebar.php'; ?>
+            <?php include $_SERVER['DOCUMENT_ROOT'] . '/control-dashboard/includes/sidebar.php'; ?>
             <div class="main-content">
-                <?php include $_SERVER['DOCUMENT_ROOT'] . '/mip310/control-dashboard/includes/header.php'; ?>
+                <?php include $_SERVER['DOCUMENT_ROOT'] . '/control-dashboard/includes/header.php'; ?>
             <div class="content">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h2><i class="fas fa-user-plus me-2"></i>Add New User</h2>

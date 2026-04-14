@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
-    fetch('/mip310/control-dashboard/api/popup-model-end.php')
+    fetch('/control-dashboard/api/popup-model-end.php')
         .then(response => {
             console.log('Pop-Up API Response status:', response.status);
             if (!response.ok) {
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('Page loaded, fetching data...');
 
     // Fetch Sliders
-    fetch('/mip310/control-dashboard/api/sliders.php')
+    fetch('/control-dashboard/api/sliders.php')
         .then(response => {
             console.log('Sliders API Response status:', response.status);
             if (!response.ok) {
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ==========================
 
     // Fetch Announcements/News
-    fetch('/mip310/control-dashboard/api/announcements.php')
+    fetch('/control-dashboard/api/announcements.php')
         .then(response => {
             if (!response.ok) throw new Error('News API error: ' + response.status);
             return response.json();
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // =========================
 
     // Fetch Notices
-    fetch('/mip310/control-dashboard/api/notices.php')
+    fetch('/control-dashboard/api/notices.php')
         .then(response => {
             if (!response.ok) throw new Error('Notices API error: ' + response.status);
             return response.json();
@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function () {
 //     console.log('Fetching gallery images...');
 
 //     // Fetch Gallery Images
-//     fetch('/mip310/control-dashboard/api/gallery.php')
+//     fetch('/control-dashboard/api/gallery.php')
 //         .then(response => {
 //             console.log('Gallery API Response status:', response.status);
 //             if (!response.ok) {

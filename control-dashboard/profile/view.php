@@ -58,10 +58,10 @@ try {
 </head>
 <body>
     <div class="wrapper">
-        <?php include $_SERVER['DOCUMENT_ROOT'] . '/mip310/control-dashboard/includes/sidebar.php'; ?>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . '/control-dashboard/includes/sidebar.php'; ?>
         
         <div class="main-content">
-            <?php include $_SERVER['DOCUMENT_ROOT'] . '/mip310/control-dashboard/includes/header.php'; ?>
+            <?php include $_SERVER['DOCUMENT_ROOT'] . '/control-dashboard/includes/header.php'; ?>
             
             <div class="container-fluid">
                 <div class="row">

@@ -55,12 +55,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body data-theme="light">
     <div class="admin-layout">
         <!-- Sidebar -->
-        <?php include $_SERVER['DOCUMENT_ROOT'] . '/mip310/control-dashboard/includes/sidebar.php'; ?>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . '/control-dashboard/includes/sidebar.php'; ?>
         
         <!-- Main Content -->
         <div class="main-content">
             <!-- Header -->
-            <?php include $_SERVER['DOCUMENT_ROOT'] . '/mip310/control-dashboard/includes/header.php'; ?>
+            <?php include $_SERVER['DOCUMENT_ROOT'] . '/control-dashboard/includes/header.php'; ?>
             
             <!-- Content -->
             <div class="content">

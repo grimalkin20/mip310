@@ -21,7 +21,7 @@ while ($row = $result->fetch_assoc()) {
         'image' => $row['image'],
         'status' => $row['status'],
         'sort_order' => (int)$row['sort_order'],
-        'image_url' => '/mip310/control-dashboard/uploads/materials/sliders/' . $row['image']
+        'image_url' => '/control-dashboard/uploads/materials/sliders/' . $row['image']
     ];
 }
 

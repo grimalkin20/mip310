@@ -5,15 +5,15 @@ require_once '../includes/functions.php';
 
 requireLogin();
 
-$page_title = "Manage Results";
+$page_title = "Manage Exam Schedules";
 
-// Fetch results
-$results = [];
-$query = "SELECT * FROM results ORDER BY created_at DESC";
+// Fetch schedules
+$schedules = [];
+$query = "SELECT * FROM exam_schedules ORDER BY created_at DESC";
 $res = $conn->query($query);
 if ($res) {
     while ($row = $res->fetch_assoc()) {
-        $results[] = $row;
+        $schedules[] = $row;
     }
 }
 ?>
@@ -39,11 +39,10 @@ if ($res) {
                     <div class="row">
                         <div class="col-12">
                             <div class="card shadow-sm">
-                                <div
-                                    class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-                                    <h5 class="mb-0"><i class="fas fa-cog me-2"></i>Manage Examination Results</h5>
-                                    <a href="add.php" class="btn btn-sm btn-light">
-                                        <i class="fas fa-plus me-1"></i>Upload New Result
+                                <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0"><i class="fas fa-calendar-alt me-2"></i>Manage Exam Schedules</h5>
+                                    <a href="add.php" class="btn btn-sm btn-dark">
+                                        <i class="fas fa-plus me-1"></i>Upload New Schedule
                                     </a>
                                 </div>
                                 <div class="card-body">
@@ -53,51 +52,47 @@ if ($res) {
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Course</th>
-                                                    <th>Year</th>
+                                                    <th>Session</th>
                                                     <th>Sem/Part</th>
-                                                    <th>Type</th>
+                                                    <th>Exam Type</th>
                                                     <th>Date Uploaded</th>
                                                     <th class="text-center">Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php if (empty($results)): ?>
+                                                <?php if (empty($schedules)): ?>
                                                     <tr>
                                                         <td colspan="7" class="text-center py-4 text-muted">
-                                                            <i class="fas fa-info-circle me-2"></i>No results found. Start
-                                                            by uploading one!
+                                                            <i class="fas fa-info-circle me-2"></i>No schedules found. Start by uploading one!
                                                         </td>
                                                     </tr>
                                                 <?php else: ?>
-                                                    <?php foreach ($results as $result): ?>
-                                                        <tr id="row-<?php echo $result['id']; ?>">
-                                                            <td><?php echo $result['id']; ?></td>
-                                                            <td><span
-                                                                    class="badge bg-info text-dark"><?php echo $result['course']; ?></span>
-                                                            </td>
-                                                            <td><?php echo $result['year']; ?></td>
-                                                            <td><?php echo $result['semester']; ?></td>
-                                                            <td><?php echo $result['result_type']; ?></td>
-                                                            <td><?php echo date('d M Y', strtotime($result['created_at'])); ?>
-                                                            </td>
+                                                    <?php foreach ($schedules as $schedule): ?>
+                                                        <tr id="row-<?php echo $schedule['id']; ?>">
+                                                            <td><?php echo $schedule['id']; ?></td>
+                                                            <td><span class="badge bg-warning text-dark"><?php echo $schedule['course']; ?></span></td>
+                                                            <td><?php echo $schedule['session']; ?></td>
+                                                            <td><?php echo $schedule['semester']; ?></td>
+                                                            <td><?php echo $schedule['exam_type']; ?></td>
+                                                            <td><?php echo date('d M Y', strtotime($schedule['created_at'])); ?></td>
                                                             <td class="text-center">
                                                                 <div class="btn-group btn-group-sm">
-                                                                    <a href="../../<?php echo $result['file_path']; ?>"
+                                                                    <a href="../../<?php echo $schedule['file_path']; ?>"
                                                                         class="btn btn-outline-primary" target="_blank"
                                                                         title="View PDF">
                                                                         <i class="fas fa-eye"></i>
                                                                     </a>
                                                                     <button class="btn btn-outline-info edit-btn"
-                                                                        data-id="<?php echo $result['id']; ?>"
-                                                                        data-course="<?php echo $result['course']; ?>"
-                                                                        data-year="<?php echo $result['year']; ?>"
-                                                                        data-semester="<?php echo $result['semester']; ?>"
-                                                                        data-type="<?php echo $result['result_type']; ?>"
+                                                                        data-id="<?php echo $schedule['id']; ?>"
+                                                                        data-course="<?php echo $schedule['course']; ?>"
+                                                                        data-session="<?php echo $schedule['session']; ?>"
+                                                                        data-semester="<?php echo $schedule['semester']; ?>"
+                                                                        data-examtype="<?php echo $schedule['exam_type']; ?>"
                                                                         title="Edit">
                                                                         <i class="fas fa-edit"></i>
                                                                     </button>
                                                                     <button class="btn btn-outline-danger delete-btn"
-                                                                        data-id="<?php echo $result['id']; ?>" title="Delete">
+                                                                        data-id="<?php echo $schedule['id']; ?>" title="Delete">
                                                                         <i class="fas fa-trash"></i>
                                                                     </button>
                                                                 </div>
@@ -117,13 +112,13 @@ if ($res) {
         </div>
     </div>
 
-    <!-- Edit Result Modal -->
+    <!-- Edit Schedule Modal -->
     <div class="modal fade" id="editModal" tabindex="-1">
         <div class="modal-dialog">
-            <form id="editResultForm" enctype="multipart/form-data">
+            <form id="editScheduleForm" enctype="multipart/form-data">
                 <div class="modal-content border-0 shadow">
                     <div class="modal-header bg-info text-white">
-                        <h5 class="modal-title"><i class="fas fa-edit me-2"></i>Edit Result Information</h5>
+                        <h5 class="modal-title"><i class="fas fa-edit me-2"></i>Edit Schedule Information</h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
@@ -137,8 +132,8 @@ if ($res) {
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="edit_year" class="form-label">Year</label>
-                            <input type="text" class="form-control" id="edit_year" name="year" required>
+                            <label for="edit_session" class="form-label">Session (e.g. 2023-27)</label>
+                            <input type="text" class="form-control" id="edit_session" name="session" required>
                         </div>
                         <div class="mb-3">
                             <label for="edit_semester" class="form-label">Semester / Part</label>
@@ -156,17 +151,19 @@ if ($res) {
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="edit_result_type" class="form-label">Result Type</label>
-                            <select class="form-select" id="edit_result_type" name="result_type" required>
-                                <option value="Regular">Regular</option>
-                                <option value="Supplementary">Supplementary</option>
-                                <option value="Revaluation">Revaluation</option>
+                            <label for="edit_exam_type" class="form-label">Exam Type</label>
+                            <select class="form-select" id="edit_exam_type" name="exam_type" required>
+                                <option value="Mid-Term">Mid-Term</option>
+                                <option value="End-Term">End-Term</option>
+                                <option value="1st Sessional">1st Sessional</option>
+                                <option value="2nd Sessional">2nd Sessional</option>
+                                <option value="Practical">Practical</option>
+                                <option value="University Exam">University Exam</option>
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="edit_result_file" class="form-label">Change PDF (Optional)</label>
-                            <input class="form-control" type="file" id="edit_result_file" name="result_file"
-                                accept=".pdf">
+                            <label for="edit_schedule_file" class="form-label">Change PDF (Optional)</label>
+                            <input class="form-control" type="file" id="edit_schedule_file" name="schedule_file" accept=".pdf">
                             <div class="form-text">Leave blank to keep existing file.</div>
                         </div>
                     </div>
@@ -188,8 +185,7 @@ if ($res) {
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Are you sure you want to delete this result? This action cannot be undone and the file will be
-                        permanently removed.</p>
+                    <p>Are you sure you want to delete this schedule? This action cannot be undone and the file will be permanently removed.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
@@ -205,15 +201,15 @@ if ($res) {
         document.addEventListener('DOMContentLoaded', function () {
             // Edit Functionality
             const editModal = new bootstrap.Modal(document.getElementById('editModal'));
-            const editForm = document.getElementById('editResultForm');
+            const editForm = document.getElementById('editScheduleForm');
 
             document.querySelectorAll('.edit-btn').forEach(btn => {
                 btn.addEventListener('click', function () {
                     document.getElementById('edit_id').value = this.dataset.id;
                     document.getElementById('edit_course').value = this.dataset.course;
-                    document.getElementById('edit_year').value = this.dataset.year;
+                    document.getElementById('edit_session').value = this.dataset.session;
                     document.getElementById('edit_semester').value = this.dataset.semester;
-                    document.getElementById('edit_result_type').value = this.dataset.type;
+                    document.getElementById('edit_exam_type').value = this.dataset.examtype;
                     editModal.show();
                 });
             });
@@ -225,7 +221,7 @@ if ($res) {
                 submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span>Saving...';
 
                 const formData = new FormData(editForm);
-                fetch('../api/edit-result.php', {
+                fetch('../api/edit-schedule.php', {
                     method: 'POST',
                     body: formData
                 })
@@ -249,34 +245,32 @@ if ($res) {
             });
 
             // Delete Functionality
-            let resultIdToDelete = null;
+            let scheduleIdToDelete = null;
             const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
             const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
 
             document.querySelectorAll('.delete-btn').forEach(btn => {
                 btn.addEventListener('click', function () {
-                    resultIdToDelete = this.getAttribute('data-id');
+                    scheduleIdToDelete = this.getAttribute('data-id');
                     deleteModal.show();
                 });
             });
 
             confirmDeleteBtn.addEventListener('click', function () {
-                if (!resultIdToDelete) return;
+                if (!scheduleIdToDelete) return;
 
                 confirmDeleteBtn.disabled = true;
                 confirmDeleteBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span>Deleting...';
 
-                fetch('../api/delete-result.php', {
+                fetch('../api/delete-schedule.php', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: `id=${resultIdToDelete}`
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `id=${scheduleIdToDelete}`
                 })
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
-                            const row = document.getElementById(`row-${resultIdToDelete}`);
+                            const row = document.getElementById(`row-${scheduleIdToDelete}`);
                             if (row) row.remove();
                             alert(data.message);
                             if (document.querySelectorAll('tbody tr').length === 0) {
@@ -294,7 +288,7 @@ if ($res) {
                         confirmDeleteBtn.disabled = false;
                         confirmDeleteBtn.innerText = 'Delete Permanently';
                         deleteModal.hide();
-                        resultIdToDelete = null;
+                        scheduleIdToDelete = null;
                     });
             });
         });

@@ -25,7 +25,7 @@ function requireSuperUser() {
 
 // Helper function to get admin panel root path
 function getAdminRootPath() {
-    return $_SERVER['DOCUMENT_ROOT'] . '/mip310/control-dashboard';
+    return $_SERVER['DOCUMENT_ROOT'] . '/control-dashboard';
 }
 
 // Navigation helper function

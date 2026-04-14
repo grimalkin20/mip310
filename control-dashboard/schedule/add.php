@@ -5,7 +5,7 @@ require_once '../includes/functions.php';
 
 requireLogin();
 
-$page_title = "Upload Results";
+$page_title = "Upload Exam Schedule";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,20 +29,17 @@ $page_title = "Upload Results";
                     <div class="row justify-content-center">
                         <div class="col-lg-10">
                             <div class="card shadow-sm">
-                                <div
-                                    class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-                                    <h5 class="mb-0"><i class="fas fa-file-upload me-2"></i>Upload Examination Result
-                                    </h5>
-                                    <a href="index.php" class="btn btn-sm btn-light">
-                                        <i class="fas fa-list me-1"></i>Manage Results
+                                <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0"><i class="fas fa-calendar-upload me-2"></i>Upload Exam Schedule</h5>
+                                    <a href="index.php" class="btn btn-sm btn-dark">
+                                        <i class="fas fa-list me-1"></i>Manage Schedules
                                     </a>
                                 </div>
                                 <div class="card-body">
-                                    <form id="uploadResultForm" enctype="multipart/form-data">
+                                    <form id="uploadScheduleForm" enctype="multipart/form-data">
                                         <div class="row mb-3">
                                             <div class="col-md-6">
-                                                <label for="course" class="form-label">Course <span
-                                                        class="text-danger">*</span></label>
+                                                <label for="course" class="form-label">Course <span class="text-danger">*</span></label>
                                                 <select class="form-select" id="course" name="course" required>
                                                     <option value="" selected disabled>Select Course</option>
                                                     <option value="D.Pharma">D.Pharma</option>
@@ -51,17 +48,15 @@ $page_title = "Upload Results";
                                                 </select>
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="year" class="form-label">Year <span
-                                                        class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" id="year" name="year"
-                                                    placeholder="e.g. 2024" required>
+                                                <label for="session" class="form-label">Session <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" id="session" name="session"
+                                                    placeholder="e.g. 2023-27 or 2024-25" required>
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <div class="col-md-6">
-                                                <label for="semester" class="form-label">Semester / Part <span
-                                                        class="text-danger">*</span></label>
+                                                <label for="semester" class="form-label">Semester / Part <span class="text-danger">*</span></label>
                                                 <select class="form-select" id="semester" name="semester" required>
                                                     <option value="" selected disabled>Select Semester/Part</option>
                                                     <option value="Part I">Part I</option>
@@ -77,32 +72,30 @@ $page_title = "Upload Results";
                                                 </select>
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="result_type" class="form-label">Result Type <span
-                                                        class="text-danger">*</span></label>
-                                                <select class="form-select" id="result_type" name="result_type"
-                                                    required>
-                                                    <option value="Regular" selected>Regular</option>
-                                                    <option value="Supplementary">Supplementary</option>
-                                                    <option value="Revaluation">Revaluation</option>
+                                                <label for="exam_type" class="form-label">Exam Type <span class="text-danger">*</span></label>
+                                                <select class="form-select" id="exam_type" name="exam_type" required>
+                                                    <option value="Mid-Term" selected>Mid-Term</option>
+                                                    <option value="End-Term">End-Term</option>
+                                                    <option value="1st Sessional">1st Sessional</option>
+                                                    <option value="2nd Sessional">2nd Sessional</option>
+                                                    <option value="Practical">Practical</option>
+                                                    <option value="University Exam">University Exam</option>
                                                 </select>
                                             </div>
                                         </div>
 
                                         <div class="mb-4">
-                                            <label for="result_file" class="form-label">Result File (PDF Only) <span
-                                                    class="text-danger">*</span></label>
-                                            <input class="form-control" type="file" id="result_file" name="result_file"
+                                            <label for="schedule_file" class="form-label">Schedule File (PDF Only) <span class="text-danger">*</span></label>
+                                            <input class="form-control" type="file" id="schedule_file" name="schedule_file"
                                                 accept=".pdf" required>
                                             <div class="form-text text-muted">Maximum file size: 10MB</div>
                                         </div>
 
                                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                             <button type="reset" class="btn btn-outline-secondary">Reset Form</button>
-                                            <button type="submit" class="btn btn-primary px-5" id="submitBtn">
-                                                <span id="btnText"><i class="fas fa-cloud-upload-alt me-2"></i>Upload
-                                                    Result</span>
-                                                <span id="btnSpinner" class="spinner-border spinner-border-sm d-none"
-                                                    role="status"></span>
+                                            <button type="submit" class="btn btn-warning text-dark px-5" id="submitBtn">
+                                                <span id="btnText"><i class="fas fa-cloud-upload-alt me-2"></i>Upload Schedule</span>
+                                                <span id="btnSpinner" class="spinner-border spinner-border-sm d-none" role="status"></span>
                                             </button>
                                         </div>
                                     </form>
@@ -121,7 +114,7 @@ $page_title = "Upload Results";
     <script src="<?php echo getAssetUrl('js/admin.js'); ?>"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const uploadForm = document.getElementById('uploadResultForm');
+            const uploadForm = document.getElementById('uploadScheduleForm');
             const submitBtn = document.getElementById('submitBtn');
             const btnText = document.getElementById('btnText');
             const btnSpinner = document.getElementById('btnSpinner');
@@ -130,8 +123,7 @@ $page_title = "Upload Results";
             uploadForm.addEventListener('submit', function (e) {
                 e.preventDefault();
 
-                // Basic frontend validation
-                const fileInput = document.getElementById('result_file');
+                const fileInput = document.getElementById('schedule_file');
                 if (fileInput.files.length > 0) {
                     const file = fileInput.files[0];
                     if (file.type !== 'application/pdf') {
@@ -144,7 +136,6 @@ $page_title = "Upload Results";
                     }
                 }
 
-                // Show loading state
                 submitBtn.disabled = true;
                 btnText.classList.add('d-none');
                 btnSpinner.classList.remove('d-none');
@@ -152,7 +143,7 @@ $page_title = "Upload Results";
 
                 const formData = new FormData(uploadForm);
 
-                fetch('../api/upload-result.php', {
+                fetch('../api/upload-schedule.php', {
                     method: 'POST',
                     body: formData
                 })

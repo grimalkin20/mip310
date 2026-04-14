@@ -26,7 +26,7 @@ while ($row = $result->fetch_assoc()) {
         'description' => $row['description'],
         'status' => $row['status'],
         'created_at' => $row['created_at'],
-        'image_url' => '/mip310/control-dashboard/uploads/materials/gallery/' . $row['image']
+        'image_url' => '/control-dashboard/uploads/materials/gallery/' . $row['image']
     ];
 }
 

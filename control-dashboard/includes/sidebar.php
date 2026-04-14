@@ -355,24 +355,45 @@ if (!function_exists('getAdminUrl')) {
             </div>
         </div>
 
-        <!-- Results Management -->
+        <!-- Examination (Results + Schedule) -->
         <div class="nav-item">
-            <a href="#" class="nav-link" data-bs-toggle="collapse" data-bs-target="#resultsSubmenu">
+            <a href="#" class="nav-link" data-bs-toggle="collapse" data-bs-target="#resultsSubmenu"
+                <?php echo (strpos($_SERVER['PHP_SELF'], '/results/') !== false || strpos($_SERVER['PHP_SELF'], '/schedule/') !== false) ? 'aria-expanded="true"' : ''; ?>>
                 <i class="fas fa-file-invoice"></i>
-                <span>Examination Results</span>
+                <span>Examination</span>
                 <i class="fas fa-chevron-down ms-auto"></i>
             </a>
-            <div class="collapse" id="resultsSubmenu">
+            <div class="collapse <?php echo (strpos($_SERVER['PHP_SELF'], '/results/') !== false || strpos($_SERVER['PHP_SELF'], '/schedule/') !== false) ? 'show' : ''; ?>" id="resultsSubmenu">
+                <!-- Results -->
+                <div class="nav-item ms-2 mt-1">
+                    <small class="text-white-50 px-3" style="font-size:0.72rem;letter-spacing:0.05em;">RESULTS</small>
+                </div>
                 <div class="nav-item ms-3">
-                    <a href="<?php echo getAdminUrl('results/add.php'); ?>" class="nav-link">
+                    <a href="<?php echo getAdminUrl('results/add.php'); ?>" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'add.php' && strpos($_SERVER['PHP_SELF'], '/results/') !== false ? 'active' : ''; ?>">
                         <i class="fas fa-plus"></i>
                         <span>Upload Results</span>
                     </a>
                 </div>
                 <div class="nav-item ms-3">
-                    <a href="<?php echo getAdminUrl('results/index.php'); ?>" class="nav-link">
+                    <a href="<?php echo getAdminUrl('results/index.php'); ?>" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'index.php' && strpos($_SERVER['PHP_SELF'], '/results/') !== false ? 'active' : ''; ?>">
                         <i class="fas fa-cog"></i>
                         <span>Manage Results</span>
+                    </a>
+                </div>
+                <!-- Exam Schedules -->
+                <div class="nav-item ms-2 mt-2">
+                    <small class="text-white-50 px-3" style="font-size:0.72rem;letter-spacing:0.05em;">SCHEDULES</small>
+                </div>
+                <div class="nav-item ms-3">
+                    <a href="<?php echo getAdminUrl('schedule/add.php'); ?>" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'add.php' && strpos($_SERVER['PHP_SELF'], '/schedule/') !== false ? 'active' : ''; ?>">
+                        <i class="fas fa-plus"></i>
+                        <span>Upload Schedule</span>
+                    </a>
+                </div>
+                <div class="nav-item ms-3">
+                    <a href="<?php echo getAdminUrl('schedule/index.php'); ?>" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'index.php' && strpos($_SERVER['PHP_SELF'], '/schedule/') !== false ? 'active' : ''; ?>">
+                        <i class="fas fa-cog"></i>
+                        <span>Manage Schedules</span>
                     </a>
                 </div>
             </div>
