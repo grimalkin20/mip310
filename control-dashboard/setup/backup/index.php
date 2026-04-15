@@ -1380,7 +1380,7 @@ include "control-dashboard/connect.php";
                             <i class="fas fa-phone"></i>
                         </div>
                         <h4>Phone</h4>
-                        <p>+91-9341512761<br>+91-7979735721<br>Office: 9341512763</p>
+                        <p>+91-9341512761<br>+91-7979735721<br></p>
                     </div>
                 </div>
                 <div class="col-lg-4 mb-4" data-aos="fade-left">
